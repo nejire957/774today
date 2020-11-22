@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PTQFBXW');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="utf8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>774トゥデイ</title>
+    <meta name="keywords" content="774inc.,配信,予定,スケジュール,あにまーれ,ハニーストラップ,ハニスト,ブイアパ,シュガーリリック,シュガリリ"/>
+    <meta name="description" content="774inc.(あにまーれ、ハニスト、ブイアパ、シュガリリ)所属のVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。"/>
+    <link rel="shortcut icon" href="https://774today.ytclipplay.website/fabicon.png">
+    <meta name="twitter:site" content="@nejire957"/>
+    <meta name="twitter:title" content="774トゥデイ"/>
+    <meta name="twitter:description" content="774inc.所属のVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。"/>
+    <meta name="twitter:image" content="https://774today.ytclipplay.website/screenshot.png" />
+    <meta name="twitter:card" content="summary"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/main.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/locales-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/main.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <style>
+        html, body{
+            height:100%;
+            font-family: Arial, Helvetica, sans-serif;
+            margin:0;
+            background-color: white;
+            color:black;
+        }
+        body{
+            display:none;
+        }
+        p{
+            margin-top:10px;
+            margin-bottom:10px;
+        }
+        #up{
+            height:calc(20px + 5vw);
+        }
+        #header{
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-left: 3vw;
+            padding-right: 3vw;
+            display: flex;
+            justify-content: space-between;
+            background-color: black;
+            color:white;
+        }
+        .header-item{
+            display: table-cell;
+            padding:5px;
+            font-size:calc(8px + 0.8vw);
+        }
+        #title{
+            vertical-align: middle;
+            font-weight: normal;
+        }
+        #update{
+            vertical-align: middle;
+        }
+        #darkmode-button{
+            text-align: right;
+        }
+        #darkmode-button:hover{
+            cursor:pointer;
+        }
+        #sun{
+            display:none;
+        }
+        #info-button{
+            text-align: right;
+        }
+        #info-button:hover{
+            cursor:pointer;
+        }
+        #date{
+            text-align: center;
+            font-weight: bold;
+            font-size:calc(15px + 1.2vw);
+            height:60;
+            overflow: hidden;
+        }
+        #content{
+            height:calc(100% - 20px - 5vw);
+            width:100%;
+        }
+        .fc table{
+            background-color: transparent;
+            font-size: calc(14px + 0.4vw);
+        }
+        .fc .fc-timegrid-col.fc-day-today {
+            background-color: transparent;
+        }
+        .fc .fc-timegrid-slot{
+            height:40px;
+            background-color: transparent;
+        }
+        .fc .fc-event-main{
+            cursor: pointer;
+        }
+        .fc .fc-event-time{
+            font-weight: bold;
+        }
+        .fc .fc-event-title-container{
+            font-weight: bold;
+            font-size: calc(10px + 0.4vw);
+        }
+        .popup{
+            position: fixed;
+            width:60vw;
+            max-width: 600px;
+            top: 50%; 
+            left: 50%;
+            transform : translate(-50%,-50%);
+            display: none;
+            box-shadow: 4px 4px 8px;
+            text-align: center;
+            border:solid rgb(128,128,128);
+            border-width:3px 3px 3px 3px;
+            padding:5px;
+            font-size:calc(10px + 0.8vw);
+            background-color:white;
+            color:black;
+        }
+        .info{
+            max-height: 80vh;
+            text-align: left;
+            overflow-x:hidden;
+            overflow-y:scroll;
+        }
+        ul{
+            padding-left:calc(10px + 1vw);
+        }
+        h2{
+            text-align:center;
+        }
+        #detail-banner{
+            display:inline-block;
+            vertical-align: middle;
+        }
+        #detail-channel{
+            display:block;
+            margin-top:0;
+            cursor: pointer;
+            text-decoration: none;
+            border:solid rgb(128,128,128);
+            border-width: 1px 0px 1px 0px;
+            padding: 3px;
+        }
+        #detail-channel:link, #detail-channel:visited, #detail-channel:hover, #detail-channel:active{
+            color:black;
+        }
+        #detail-name{
+            display:inline-block;
+            vertical-align: middle;
+            font-size:calc(8px + 0.6vw);
+            margin:0;
+            padding:0;
+        }
+    </style>
+    <script>
+        var isShown = false;
+        var videoId = "";
+        var image = new Image();
+        function toggleArticle(e){
+            if(isShown){
+                hideArticle();
+            }
+            else{
+                isShown = true;
+                $('#info').css({zIndex:100});
+                $('#info').fadeIn(250);
+                e.stopPropagation();
+            }
+        }
+        function hideArticle(){
+            $('.popup').fadeOut(250);
+            isShown = false;
+        }
+        function keepArticle(e){
+            e.stopPropagation();
+        }
+        function toggleDetail(e,title, id, channelId, imageurl, name){
+            if(isShown){
+                hideArticle();
+            }
+            else{
+                isShown = true;
+                videoId = id;
+                $detail = $('#detail');
+                $('#detail-title').text(title);
+                $('#detail-link').attr({href:"https://www.youtube.com/watch?v="+id});
+                image.src = "https://img.youtube.com/vi/"+id+"/maxresdefault.jpg";
+                $('#detail-channel').attr({href:"https://www.youtube.com/channel/"+channelId});
+                $('#detail-name').text(name)
+                $('#detail-banner').attr({src:imageurl});
+                e.stopPropagation();
+            }
+        }
+        image.onload = function(){
+            if(120 < image.naturalWidth){
+                $('#detail-thumbnail').attr({src:image.src})
+            }
+            else{
+                $('#detail-thumbnail').attr({src:"https://img.youtube.com/vi/"+videoId+"/sddefault.jpg"});
+            }
+        }
+        function showDetail(){
+            $('#detail').css({zIndex:100});
+            $('#detail').fadeIn(250);
+        }
+        function wait(msec) {
+            var d = $.Deferred();
+            setTimeout(function(){d.resolve();}, msec);
+            return d.promise();
+        }
+        var isDarkMode = false;
+        function changeColorMode(){
+            if(isDarkMode){
+                $('body').css({'background-color':'white', color:'black'});
+                $('#moon').show();
+                $('#sun').hide();
+                isDarkMode = false;
+                history.replaceState('','','/');
+            }
+            else{
+                $('body').css({'background-color':'#121212', color:'white'});
+                $('#moon').hide();
+                $('#sun').show();
+                isDarkMode = true;
+                history.replaceState('','','/?darkmode=on');
+            }
+        }
+        var now = new Date();
+        var month = now.getMonth() + 1;
+        var prevDate = 1;
+        document.addEventListener('DOMContentLoaded', function() {
+            var mySlotMinTime = "-24:00:00";
+            var mySlotMaxTime = "48:00:00";
+            var myScrollTime = now.getHours() - 2 + ":00:00";
+            $('#date').text(now.getFullYear() + "年" + month + "月" + now.getDate() + "日 (今日)");
+            var req = new XMLHttpRequest();
+            req.onreadystatechange = function() {
+                if(req.readyState == 4 && req.status == 200){
+                    log = JSON.parse(req.responseText);
+                    logDatetime = new Date(log.datetime);
+                    $('#update').text(" - " + logDatetime.toLocaleString() + "更新");
+                }
+            };
+            req.open("GET", "https://774today.ytclipplay.website/log.json", false);
+            req.send(null);
+            var calendarView = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarView, {
+                locale: "jp",
+                height:"100%",
+                headerToolbar: {
+                    left: '',
+                    center: '',
+                    right:''
+                },
+                initialView:'timeGridDay',
+                titleFormat:{
+                    day:"numeric"
+                },
+                eventTimeFormat: {
+                    hour: 'numeric',
+                    minute: 'numeric',
+                    hour12: false
+                },
+                slotLabelFormat:{
+                    hour: 'numeric',
+                    minute: 'numeric',
+                    hour12: false
+                },
+                allDaySlot:false,
+                slotMinTime:mySlotMinTime,
+                slotMaxTime:mySlotMaxTime,
+                scrollTime:myScrollTime,
+                nowIndicator:true,
+                dayHeaders:false,
+                eventDidMount: function(arg) {
+                    if (arg.event.extendedProps.imageurl) {
+                        var div = document.createElement('img');
+                        div.setAttribute('src', arg.event.extendedProps.imageurl);
+                        div.setAttribute('width',50);
+                        div.setAttribute('height',50);
+                        div.setAttribute('loading','lazy')
+                        arg.el.firstChild.firstChild.firstChild.insertBefore(div,arg.el.firstChild.firstChild.firstChild.firstChild);
+                    };
+                },
+                eventClick: function(info) {
+                    toggleDetail(
+                        info.jsEvent,
+                        info.event.title,info.event.id,
+                        info.event.extendedProps.resourceId,
+                        info.event.extendedProps.imageurl,
+                        info.event.extendedProps.channelName
+                    );
+                },
+                events:"https://774today.ytclipplay.website/events.json",
+                resources:"https://774today.ytclipplay.website/resources.json"
+            });
+            $.when(
+                calendar.render(),
+                wait(0)
+            ).done(function(){
+                $('div.fc-scroller').on("scroll", function(){
+                    var date = Math.floor($(this).scrollTop() / 80 / 24);
+                    if(prevDate != date){
+                        switch(date){
+                            case 0:
+                                var viewDate = new Date(now.getTime());
+                                viewDate.setDate(now.getDate() - 1);
+                                var viewMonth = viewDate.getMonth() + 1;
+                                $('#date').text(viewDate.getFullYear() + "年" + viewMonth + "月" + viewDate.getDate() + "日 (昨日)");
+                                break;
+                            case 1:
+                                $('#date').text(now.getFullYear() + "年" + month + "月" + now.getDate() + "日 (今日)");
+                                break;
+                            case 2:
+                                var viewDate = new Date(now.getTime());
+                                viewDate.setDate(now.getDate() + 1);
+                                var viewMonth = viewDate.getMonth() + 1;
+                                $('#date').text(viewDate.getFullYear() + "年" + viewMonth + "月" + viewDate.getDate() + "日 (明日)");
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    prevDate = date;
+                });
+            });
+            var urlParam = location.search.substring(1);
+            if(urlParam) {
+                var param = decodeURIComponent(urlParam).split('&');
+                var paramArray = [];
+                for (i = 0; i < param.length; i++) {
+                    var paramItem = param[i].split('=');
+                    paramArray[paramItem[0]] = paramItem[1];
+                }                    
+                if (paramArray.darkmode == 'on') {
+                    changeColorMode();
+                }
+            }
+            $('body').show();
+        });
+    </script>
+</head>
+<body onclick="hideArticle(event)">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PTQFBXW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div id="up">
+        <header id="header">
+            <div>
+                <h1 id="title" class="header-item">774トゥデイ</h1>
+                <div id="update" class="header-item"></div>
+            </div>
+            <div>
+                <div id="darkmode-button" class="header-item" onclick="changeColorMode()"><i id="sun" class="fas fa-sun"></i><i id="moon" class="fas fa-moon"></i></div>
+                <div id="info-button" class="header-item" onclick="toggleArticle(event)">このサイトについて</div>
+            </div>
+        </header>
+        <div id="date"></div>
+    </div>
+    <div id="content">
+        <div id="calendar"></div>
+    </div>
+    <div id="info" class="popup info" onclick="keepArticle(event)">
+        <h2>このサイトについて</h2>
+        <ul>
+            <li>774inc.(あにまーれ、ハニスト、ブイアパ、シュガリリ)所属のVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。</li>
+            <li>配信スケジュールはYouTubeの待機所やアーカイブから取得しています。待機所が作られていない予定は表示されません。</li>
+            <li>更新は1時間ごとに行っています。突発的な配信や長時間配信は正しく表示されない場合があります。</li>
+            <li>ご意見・ご要望は下記TwitterアカウントのDMで受け付けています。</li>
+            <li>製作者:ねじれ図形 | Twitter:<a target="_blank" href="https://twitter.com/nejire957">@nejire957</a></li>
+        </ul>
+        <h2>注意</h2>
+        <ul>
+            <li>このサイトはYouTube Data APIを使用しています。開発にあたっては<a target="_blank" href="https://www.youtube.com/t/terms">YouTubeの利用規約</a>と<a target="_blank" href="https://developers.google.com/youtube/terms/developer-policies">YouTube Data APIの開発方針</a>に従っています。</li>
+            <li>このサイトはGoogle Analyticsを使用しています。
+                <ul>
+                    <li>このサイトはユーザーからこのサイトへのアクセスに関するデータを収集します。データの収集にはcookieを使用します。</li>
+                    <li>Googleはこのデータを<a target="_blank" href="https://marketingplatform.google.com/about/analytics/terms/jp/">プライバシーポリシー</a>に従って管理・分析します。</li>
+                    <li>サイト製作者はこの分析結果を受け取り、サイトの利用状況を把握しています。</li>
+                    <li>このサイトを利用することは、上記のデータ処理について同意を示すこととみなされます。</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div id="detail" class="popup" onclick="keepArticle(event)">
+        <a id="detail-link" target="_blank" href=""><img id="detail-thumbnail" width="100%" src="" alt="サムネイル" onload="showDetail()"/></a>
+        <p id="detail-title">タイトル</p>
+        <a id="detail-channel" target="_blank" href="">
+            <img id="detail-banner" src="https://774today.ytclipplay.website/met.webp" width="40" height="40" loading="lazy">
+            <div id="detail-name">チャンネル</div>
+        </a>
+    </div>
+</body>

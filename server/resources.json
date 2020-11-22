@@ -1,0 +1,240 @@
+[
+    {
+        "id":"Animare",
+        "title":"有閑喫茶あにまーれ",
+        "order":"1",
+        "children":[
+            {
+                "id": "UC2kyQhzGOB-JPgcQX9OMgEw",
+                "title": "宗谷いちか",
+                "order":"1",
+                "color":"#AFDFE4",
+                "textColor":"#000000",
+                "borderColor":"#AFDFE4",
+                "imageurl":"https://774today.ytclipplay.website/ichika.webp",
+                "channelName":"Ichika Channel / 宗谷いちか 【あにまーれ】"
+            },
+            {
+                "id": "UC0Owc36U9lOyi9Gx9Ic-4qg",
+                "title": "因幡はねる",
+                "order":"2",
+                "color":"#FFD400",
+                "textColor":"#000000",
+                "borderColor":"#FFD400",
+                "imageurl":"https://774today.ytclipplay.website/haneru.webp",
+                "channelName":"Haneru Channel / 因幡はねる 【あにまーれ】"
+            },
+            {
+                "id": "UCRvpMpzAXBRKJQuk-8-Sdvg",
+                "title": "日ノ隈らん",
+                "order":"3",
+                "color":"#008000",
+                "textColor":"#ffffff",
+                "borderColor":"#008000",
+                "imageurl":"https://774today.ytclipplay.website/ran.webp",
+                "channelName":"Ran Channel / 日ノ隈らん 【あにまーれ】"
+            },
+            {
+                "id": "UCXp7sNC0F_qkjickvlYkg-Q",
+                "title": "風見くく",
+                "order":"4",
+                "color":"#ff7a3a",
+                "textColor":"#ffffff",
+                "borderColor":"#ff7a3a",
+                "imageurl":"https://774today.ytclipplay.website/kuku.webp",
+                "channelName":"Kuku Channel / 風見くく 【あにまーれ】"
+            },
+            {
+                "id": "UCW8WKciBixmaqaGqrlTITRQ",
+                "title": "柚原いづみ",
+                "order":"5",
+                "color":"#b6563b",
+                "textColor":"#ffffff",
+                "borderColor":"#b6563b",
+                "imageurl":"https://774today.ytclipplay.website/izumi.webp",
+                "channelName":"Izumi Channel / 柚原いづみ 【あにまーれ】"
+            },
+            {
+                "id": "UCtzCQnCT9E4o6U3mHHSHbQQ",
+                "title": "白宮みみ",
+                "order":"6",
+                "color":"#ffffff",
+                "textColor":"#000000",
+                "borderColor":"#000000",
+                "imageurl":"https://774today.ytclipplay.website/mimi.webp",
+                "channelName":"Mimi Channel / 白宮みみ 【あにまーれ】"
+            },
+            {
+                "id": "UC_BlXOQe5OcRC7o0GX8kp8A",
+                "title": "羽柴なつみ",
+                "order":"7",
+                "color":"#b7eb6d",
+                "textColor":"#000000",
+                "borderColor":"#b7eb6d",
+                "imageurl":"https://774today.ytclipplay.website/natsumi.webp",
+                "channelName":"Natsumi Channel / 羽柴なつみ 【あにまーれ】"
+            },
+            {
+                "id": "UCFsWaTQ7kT76jNNGeGIKNSA",
+                "title": "飛良ひかり",
+                "order":"8",
+                "color":"#fe846d",
+                "textColor":"#ffffff",
+                "borderColor":"#fe846d",
+                "imageurl":"https://774today.ytclipplay.website/hikari.webp",
+                "channelName":"Hikari Channel / 飛良ひかり 【あにまーれ】"
+            },
+            {
+                "id": "UC_WOBIopwUih0rytRnr_1Ag",
+                "title": "瀬島るい",
+                "order":"9",
+                "color":"#d2293e",
+                "textColor":"#ffffff",
+                "borderColor":"#d2293e",
+                "imageurl":"https://774today.ytclipplay.website/rui.webp",
+                "channelName":"Rui Channel / 瀬島るい 【あにまーれ】"
+            }
+        ]
+    },
+    {
+        "id":"HoneyStrap",
+        "title":"ハニーストラップ",
+        "order":"2",
+        "children":[
+            {
+                "id": "UCeLzT-7b2PBcunJplmWtoDg",
+                "title": "周防パトラ",
+                "order":"1",
+                "color":"#F25C79",
+                "textColor":"#000000",
+                "borderColor":"#F25C79",
+                "imageurl":"https://774today.ytclipplay.website/patra.webp",
+                "channelName":"Patra Channel / 周防パトラ 【ハニスト】"
+            },
+            {
+                "id": "UCYTz3uIgwVY3ZU-IQJS8r3A",
+                "title": "島村シャルロット",
+                "order":"2",
+                "color":"#3399FF",
+                "textColor":"#000000",
+                "borderColor":"#3399FF",
+                "imageurl":"https://774today.ytclipplay.website/charlotte.webp",
+                "channelName":"Charlotte Channel / 島村シャルロット【ハニスト】"
+            },
+            {
+                "id": "UCwePpiw1ocZRSNSkpKvVISw",
+                "title": "西園寺メアリ",
+                "order":"3",
+                "color":"#CC66FF",
+                "textColor":"#000000",
+                "borderColor":"#CC66FF",
+                "imageurl":"https://774today.ytclipplay.website/mary.webp",
+                "channelName":"Mary Channel / 西園寺メアリ【ハニスト】"
+            },
+            {
+                "id": "UCDh2bWI5EDu7PavqwICkVpA",
+                "title": "堰代ミコ",
+                "order":"4",
+                "color":"#66EE9D",
+                "textColor":"#000000",
+                "borderColor":"#66EE9D",
+                "imageurl":"https://774today.ytclipplay.website/mico.webp",
+                "channelName":"Mico Channel / 堰代ミコ【ハニスト】"
+            }
+        ]
+    },
+    {
+        "id":"VApArt",
+        "title":"ブイアパ",
+        "order":"3",
+        "children":[
+            {
+                "id": "UC3EhsuKdEkI99TWZwZgWutg",
+                "title": "杏戸ゆげ",
+                "order":"1",
+                "color":"#D9DFDF",
+                "textColor":"#000000",
+                "borderColor":"#D9DFDF",
+                "imageurl":"https://774today.ytclipplay.website/uge.webp",
+                "channelName":"Uge Channel / 杏戸ゆげ 【ブイアパ】"
+            },
+            {
+                "id": "UCmqrvfLMws-GLGHQcB5dasg",
+                "title": "花奏かのん",
+                "order":"3",
+                "color":"#c9fff3",
+                "textColor":"#000000",
+                "borderColor":"#c9fff3",
+                "imageurl":"https://774today.ytclipplay.website/kanon.webp",
+                "channelName":"花奏 かのん -Kanade Kanon Official-"
+            },
+            {
+                "id": "UChXm-xAYPfygrbyLo2yCASQ",
+                "title": "季咲あんこ",
+                "order":"4",
+                "color":"#ffccff",
+                "textColor":"#000000",
+                "borderColor":"#ffccff",
+                "imageurl":"https://774today.ytclipplay.website/anko.webp",
+                "channelName":"Anko Channel / 季咲あんこ 【ブイアパ】"
+            },
+            {
+                "id": "UCzUNASdzI4PV5SlqtYwAkKQ",
+                "title": "小森めと",
+                "order":"5",
+                "color":"#FFC000",
+                "textColor":"#000000",
+                "borderColor":"#FFC000",
+                "imageurl":"https://774today.ytclipplay.website/met.webp",
+                "channelName":"Met Channel / 小森めと 【ブイアパ】"
+            },
+            {
+                "id": "UCV4EoK6BVNl7wxuxpUvvSWA",
+                "title": "不磨わっと",
+                "order":"6",
+                "color":"#EE82EE",
+                "textColor":"#000000",
+                "borderColor":"#EE82EE",
+                "imageurl":"https://774today.ytclipplay.website/wat.webp",
+                "channelName":"Wat Channel / 不磨わっと 【ブイアパ】"
+            }
+        ]
+    },
+    {
+        "id":"SugarLylic",
+        "title":"シュガーリリック",
+        "order":"4",
+        "children":[
+            {
+                "id": "UCvPPBoTOor5gm8zSlE2tg4w",
+                "title": "虎城アンナ",
+                "order":"1",
+                "color":"#9966FF",
+                "textColor":"#000000",
+                "borderColor":"#9966FF",
+                "imageurl":"https://774today.ytclipplay.website/anna.webp",
+                "channelName":"Anna Channel / 虎城アンナ 【シュガリリ】"
+            },
+            {
+                "id": "UC--A2dwZW7-M2kID0N6_lfA",
+                "title": "獅子王クリス",
+                "order":"2",
+                "color":"#7FFFD4",
+                "textColor":"#000000",
+                "borderColor":"#7FFFD4",
+                "imageurl":"https://774today.ytclipplay.website/chris.webp",
+                "channelName":"Chris Channel / 獅子王クリス 【シュガリリ】"
+            },
+            {
+                "id": "UC2hc-00y-MSR6eYA4eQ4tjQ",
+                "title": "龍ヶ崎リン",
+                "order":"3",
+                "color":"#FF3300",
+                "textColor":"#000000",
+                "borderColor":"#FF3300",
+                "imageurl":"https://774today.ytclipplay.website/rene.webp",
+                "channelName":"Rene Channel / 龍ヶ崎リン 【シュガリリ】"
+            }
+        ]
+    }
+]
