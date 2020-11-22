@@ -172,7 +172,7 @@ def lambda_handler(lambdaEvent,context):
         "totalEvents":str(len(events)),
         "failedResource":','.join(failedResource)
     }
-    ftp = FTP("sv37.star.ne.jp","ytclipplay.website","SGr-Dntw,Q7y9C")
+    ftp = FTP("sv37.star.ne.jp","ytclipplay.website",os.environ['serverPassword'])
     ftp.cwd("774today.ytclipplay.website")
     f = io.BytesIO(json.dumps(events, indent=4).encode())
     ftp.storlines("STOR events.json",f)
