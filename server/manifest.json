@@ -1,0 +1,31 @@
+{
+  "name": "774トゥデイ",
+  "short_name": "774トゥデイ",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#fff",
+  "theme_color": "#fff",
+  "icons": [
+    {
+      "src": "https://774today.ytclipplay.website/774todaylogo.png",
+      "type": "image/png",
+      "sizes": "1024x1024"
+    },
+    {
+      "src": "https://774today.ytclipplay.website/774todaylogo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "https://774today.ytclipplay.website/774todaylogo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://774today.ytclipplay.website/774todaylogo96.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    }
+  ]
+}

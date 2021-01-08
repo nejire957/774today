@@ -13,7 +13,7 @@
     <meta name="keywords" content="774inc.,配信,予定,スケジュール,あにまーれ,ハニーストラップ,ハニスト,ブイアパ,シュガーリリック,シュガリリ"/>
     <meta name="description" content="774inc.(あにまーれ、ハニスト、ブイアパ、シュガリリ)所属のVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。"/>
     <link rel="canonical" href="https://774today.ytclipplay.website"/>
-    <link rel="shortcut icon" href="https://774today.ytclipplay.website/fabicon.png">
+    <link rel="shortcut icon" href="https://774today.ytclipplay.website/favicon.png">
     <meta name="twitter:site" content="@nejire957"/>
     <meta name="twitter:title" content="774トゥデイ"/>
     <meta name="twitter:description" content="774inc.所属のVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。"/>
@@ -24,6 +24,7 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/main.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link rel="manifest" href="/manifest.json">
     <style>
         html, body{
             height:100%;
@@ -63,6 +64,11 @@
         }
         #update{
             vertical-align: middle;
+        }
+        #notice{
+            display:none;
+            background-color: crimson;
+            cursor:pointer;
         }
         #darkmode-button{
             text-align: right;
@@ -237,10 +243,31 @@
                 history.replaceState('','','/?darkmode=on');
             }
         }
+        function alarm(){       //次の16分にお知らせを表示する
+            var notice = function(){ $('#notice').css({'display':'table-cell'}) };
+            var now = new Date();
+            var currentSecond = now.getHours()*3600 + now.getMinutes()*60 + now.getSeconds();
+            if(now.getMinutes() < 16){
+                var targetSecond = now.getHours()*3600 + 16*60;
+            } else{
+                var targetSecond = (now.getHours()+1)*3600 + 16*60;
+            }
+            var durationSecond = targetSecond - currentSecond;
+            if( durationSecond < 0 ) durationSecond += 24*60*60;
+            return setTimeout( notice, durationSecond*1000);
+        }
         var now = new Date();
         var month = now.getMonth() + 1;
         var prevDate = 1;
         document.addEventListener('DOMContentLoaded', function() {
+            if ('serviceWorker' in navigator) {
+                console.log('Found serviceWorker');
+                navigator.serviceWorker.register('/sw.js').then((reg) => {
+                    console.log('Service Worker Registered', reg);
+                });
+            } else {
+                console.log('Not Found serviceWorker');
+            }
             var mySlotMinTime = "-24:00:00";
             var mySlotMaxTime = "48:00:00";
             var myScrollTime = now.getHours() - 2 + ":00:00";
@@ -250,7 +277,7 @@
                 if(req.readyState == 4 && req.status == 200){
                     log = JSON.parse(req.responseText);
                     logDatetime = new Date(log.datetime);
-                    $('#update').text(" - " + logDatetime.toLocaleString() + "更新");
+                    $('#update').text(" - " + logDatetime.toLocaleString());
                 }
             };
             req.open("GET", "https://774today.ytclipplay.website/log.json", false);
@@ -349,6 +376,7 @@
                 }
             }
             $('body').show();
+            alarm();
         });
     </script>
 </head>
@@ -361,6 +389,7 @@
             <div>
                 <h1 id="title" class="header-item">774トゥデイ</h1>
                 <div id="update" class="header-item"></div>
+                <div id="notice" class="header-item" onclick="location.reload()">更新あり</div>
             </div>
             <div>
                 <div id="darkmode-button" class="header-item" onclick="changeColorMode()"><i id="sun" class="fas fa-sun"></i><i id="moon" class="fas fa-moon"></i></div>
@@ -378,6 +407,7 @@
             <li>774inc.(あにまーれ、ハニスト、ブイアパ、シュガリリ)所属のVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。</li>
             <li>配信スケジュールはYouTubeの待機所やアーカイブから取得しています。待機所が作られていない予定は表示されません。</li>
             <li>更新は1時間ごとに行っています。突発的な配信や長時間配信は正しく表示されない場合があります。</li>
+            <li>スマートフォンアプリのように、ホーム画面から直接使うことができます。ブラウザのメニューから「インストール」を実行してください。(PWA対応)</li>
             <li>ご意見・ご要望は下記TwitterアカウントのDMで受け付けています。</li>
             <li>製作者:ねじれ図形 | <a target="_blank" href="https://twitter.com/nejire957">Twitter</a> | <a target="_blank" href="https://github.com/nejire957/774today">GitHub</a></li>
         </ul>
