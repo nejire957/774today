@@ -106,7 +106,7 @@ def lambda_handler(lambdaEvent,context):
                                         "textColor":streamer["textColor"],
                                         "borderColor":streamer["borderColor"],
                                         "start":start.astimezone(JST).isoformat(),
-                                        "end":now.astimezone(JST).isoformat(),
+                                        "end":(now + datetime.timedelta(hours=1)).astimezone(JST).isoformat(),
                                         "imageurl":streamer["imageurl"],
                                         "liveBroadcastContent":"live",
                                         "channelName":streamer["channelName"]

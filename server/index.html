@@ -171,53 +171,40 @@
         }
     </style>
     <script>
-        var isShown = false;
-        var videoId = "";
-        var image = new Image();
-        function toggleArticle(e){
-            if(isShown){
+        var articleIsVisible = false;       //動画サムネイルの表示状態を示すパラメータ
+        var videoId = "";       //選択された動画のIDを一時保存するパラメータ
+        var thumbnailImage = new Image();       //動画のサムネイルが入るパラメータ
+        var isDarkMode = false;     //ライトモード/ダークモードの状態を示すパラメータ
+        var now = new Date();       //現在日時が入るパラメータ
+        var month = now.getMonth() + 1;     //現在の月が入るパラメータ
+        var prevDate = 1;       //表示中の日を示すパラメータ(0:昨日, 1:今日, 2:明日)
+        function toggleInfo(e){      //サイト情報の表示/非表示を切り替える
+            if(articleIsVisible){
                 hideArticle();
             }
             else{
-                isShown = true;
+                articleIsVisible = true;
                 $('#info').css({zIndex:100});
                 $('#info').fadeIn(250);
                 e.stopPropagation();
             }
         }
-        function hideArticle(){
+        function hideArticle(){     //動画詳細を非表示にする
             $('.popup').fadeOut(250);
-            isShown = false;
+            articleIsVisible = false;
         }
-        function keepArticle(e){
+        function keepArticle(e){        //動画詳細を表示したままにする
             e.stopPropagation();
         }
-        function toggleDetail(e,title, id, channelId, imageurl, name){
-            if(isShown){
-                hideArticle();
+        thumbnailImage.onload = function(){     //サムネイル画像が読み込まれたときに動画詳細を表示する
+            if(120 < thumbnailImage.naturalWidth){
+                $('#detail-thumbnail').attr({src:thumbnailImage.src})
             }
-            else{
-                isShown = true;
-                videoId = id;
-                $detail = $('#detail');
-                $('#detail-title').text(title);
-                $('#detail-link').attr({href:"https://www.youtube.com/watch?v="+id});
-                image.src = "https://img.youtube.com/vi/"+id+"/maxresdefault.jpg";
-                $('#detail-channel').attr({href:"https://www.youtube.com/channel/"+channelId});
-                $('#detail-name').text(name)
-                $('#detail-banner').attr({src:imageurl});
-                e.stopPropagation();
-            }
-        }
-        image.onload = function(){
-            if(120 < image.naturalWidth){
-                $('#detail-thumbnail').attr({src:image.src})
-            }
-            else{
+            else{       //サムネイル画像の幅が120以下(=読み込み失敗)の時は別画像を参照する
                 $('#detail-thumbnail').attr({src:"https://img.youtube.com/vi/"+videoId+"/sddefault.jpg"});
             }
         }
-        function showDetail(){
+        function showDetail(){      //動画詳細を表示する
             $('#detail').css({zIndex:100});
             $('#detail').fadeIn(250);
         }
@@ -226,8 +213,7 @@
             setTimeout(function(){d.resolve();}, msec);
             return d.promise();
         }
-        var isDarkMode = false;
-        function changeColorMode(){
+        function changeColorMode(){     //ライトモード/ダークモードを切り替える
             if(isDarkMode){
                 $('body').css({'background-color':'white', color:'black'});
                 $('#moon').show();
@@ -243,7 +229,7 @@
                 history.replaceState('','','/?darkmode=on');
             }
         }
-        function alarm(){       //次の16分にお知らせを表示する
+        function alarm(){       //毎時16分に更新のお知らせを表示する
             var notice = function(){ $('#notice').css({'display':'table-cell'}) };
             var now = new Date();
             var currentSecond = now.getHours()*3600 + now.getMinutes()*60 + now.getSeconds();
@@ -256,11 +242,8 @@
             if( durationSecond < 0 ) durationSecond += 24*60*60;
             return setTimeout( notice, durationSecond*1000);
         }
-        var now = new Date();
-        var month = now.getMonth() + 1;
-        var prevDate = 1;
-        document.addEventListener('DOMContentLoaded', function() {
-            if ('serviceWorker' in navigator) {
+        document.addEventListener('DOMContentLoaded', function() {      //DOMが読み込まれてから、PWA対応、ダークモード設定、カレンダーの初期化、更新日時の取得、を行う
+            if ('serviceWorker' in navigator) {     //PWA対応
                 console.log('Found serviceWorker');
                 navigator.serviceWorker.register('/sw.js').then((reg) => {
                     console.log('Service Worker Registered', reg);
@@ -268,22 +251,21 @@
             } else {
                 console.log('Not Found serviceWorker');
             }
-            var mySlotMinTime = "-24:00:00";
-            var mySlotMaxTime = "48:00:00";
-            var myScrollTime = now.getHours() - 2 + ":00:00";
-            $('#date').text(now.getFullYear() + "年" + month + "月" + now.getDate() + "日 (今日)");
-            var req = new XMLHttpRequest();
-            req.onreadystatechange = function() {
-                if(req.readyState == 4 && req.status == 200){
-                    log = JSON.parse(req.responseText);
-                    logDatetime = new Date(log.datetime);
-                    $('#update').text(" - " + logDatetime.toLocaleString());
+            var urlParam = location.search.substring(1);
+            if(urlParam) {      //クエリに応じてダークモードを設定する
+                var param = decodeURIComponent(urlParam).split('&');
+                var paramArray = [];
+                for (i = 0; i < param.length; i++) {
+                    var paramItem = param[i].split('=');
+                    paramArray[paramItem[0]] = paramItem[1];
+                }                    
+                if (paramArray.darkmode == 'on') {
+                    changeColorMode();
                 }
-            };
-            req.open("GET", "https://774today.ytclipplay.website/log.json", false);
-            req.send(null);
+            }
+            $('#date').text(now.getFullYear() + "年" + month + "月" + now.getDate() + "日 (今日)");
             var calendarView = document.getElementById('calendar');
-            var calendar = new FullCalendar.Calendar(calendarView, {
+            var calendar = new FullCalendar.Calendar(calendarView, {        //カレンダーを初期化する
                 locale: "jp",
                 height:"100%",
                 headerToolbar: {
@@ -306,12 +288,12 @@
                     hour12: false
                 },
                 allDaySlot:false,
-                slotMinTime:mySlotMinTime,
-                slotMaxTime:mySlotMaxTime,
-                scrollTime:myScrollTime,
+                slotMinTime:"-24:00:00",
+                slotMaxTime:"48:00:00",
+                scrollTime:now.getHours() - 2 + ":00:00",
                 nowIndicator:true,
                 dayHeaders:false,
-                eventDidMount: function(arg) {
+                eventDidMount: function(arg) {      //イベントに顔画像を入れる
                     if (arg.event.extendedProps.imageurl) {
                         var div = document.createElement('img');
                         div.setAttribute('src', arg.event.extendedProps.imageurl);
@@ -321,19 +303,26 @@
                         arg.el.firstChild.firstChild.firstChild.insertBefore(div,arg.el.firstChild.firstChild.firstChild.firstChild);
                     };
                 },
-                eventClick: function(info) {
-                    toggleDetail(
-                        info.jsEvent,
-                        info.event.title,info.event.id,
-                        info.event.extendedProps.resourceId,
-                        info.event.extendedProps.imageurl,
-                        info.event.extendedProps.channelName
-                    );
+                eventClick: function(info) {        //イベントクリック時に動画詳細を表示する
+                    if(articleIsVisible){
+                        hideArticle();
+                    }
+                    else{
+                        articleIsVisible = true;
+                        videoId = info.event.id;
+                        $('#detail-title').text(info.event.title);
+                        $('#detail-link').attr({href:"https://www.youtube.com/watch?v="+info.event.id});
+                        thumbnailImage.src = "https://img.youtube.com/vi/"+info.event.id+"/maxresdefault.jpg";
+                        $('#detail-channel').attr({href:"https://www.youtube.com/channel/"+info.event.extendedProps.resourceId});
+                        $('#detail-name').text(info.event.extendedProps.channelName)
+                        $('#detail-banner').attr({src:info.event.extendedProps.imageurl});
+                        info.jsEvent.stopPropagation();
+                    }
                 },
                 events:"https://774today.ytclipplay.website/events.json",
                 resources:"https://774today.ytclipplay.website/resources.json"
             });
-            $.when(
+            $.when(     //カレンダーが初期化されてから、スクロール時の日付変更イベントをつける
                 calendar.render(),
                 wait(0)
             ).done(function(){
@@ -363,19 +352,17 @@
                     prevDate = date;
                 });
             });
-            var urlParam = location.search.substring(1);
-            if(urlParam) {
-                var param = decodeURIComponent(urlParam).split('&');
-                var paramArray = [];
-                for (i = 0; i < param.length; i++) {
-                    var paramItem = param[i].split('=');
-                    paramArray[paramItem[0]] = paramItem[1];
-                }                    
-                if (paramArray.darkmode == 'on') {
-                    changeColorMode();
-                }
-            }
             $('body').show();
+            var req = new XMLHttpRequest();
+            req.onreadystatechange = function() {       //更新日時を取得する
+                if(req.readyState == 4 && req.status == 200){
+                    log = JSON.parse(req.responseText);
+                    logDatetime = new Date(log.datetime);
+                    $('#update').text(logDatetime.toLocaleString());
+                }
+            };
+            req.open("GET", "https://774today.ytclipplay.website/log.json", false);
+            req.send(null);
             alarm();
         });
     </script>
@@ -393,7 +380,7 @@
             </div>
             <div>
                 <div id="darkmode-button" class="header-item" onclick="changeColorMode()"><i id="sun" class="fas fa-sun"></i><i id="moon" class="fas fa-moon"></i></div>
-                <div id="info-button" class="header-item" onclick="toggleArticle(event)">このサイトについて</div>
+                <div id="info-button" class="header-item" onclick="toggleInfo(event)">このサイトについて</div>
             </div>
         </header>
         <div id="date"></div>
