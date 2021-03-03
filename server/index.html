@@ -53,11 +53,13 @@
         }
         .header-item{
             display: table-cell;
-            padding:5px;
+            padding-left:5px;
+            padding-right:5px;
             font-size:calc(10px + 0.6vw);
+            height:calc(28px + 0.6vw);
+            vertical-align: middle;
         }
         #title{
-            vertical-align: middle;
             font-weight: normal;
         }
         #update{
@@ -234,7 +236,10 @@
             }
         }
         function alarm(){       //毎時16分に更新のお知らせを表示する
-            var notice = function(){ $('#notice').css({'display':'table-cell'}) };
+            var notice = function(){ 
+                $('#notice').css({'display':'table-cell'});
+                $('#update').css({'display':'none'});
+            };
             var now = new Date();
             var currentSecond = now.getHours()*3600 + now.getMinutes()*60 + now.getSeconds();
             if(now.getMinutes() < 16){
