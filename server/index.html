@@ -40,9 +40,6 @@
             margin-top:10px;
             margin-bottom:10px;
         }
-        #up{
-            height:calc(20px + 5vw);
-        }
         #header{
             margin-top: 0;
             margin-bottom: 0;
@@ -52,11 +49,12 @@
             justify-content: space-between;
             background-color: black;
             color:white;
+            height:calc(28px + 0.6vw);
         }
         .header-item{
             display: table-cell;
             padding:5px;
-            font-size:calc(8px + 0.8vw);
+            font-size:calc(10px + 0.6vw);
         }
         #title{
             vertical-align: middle;
@@ -88,12 +86,11 @@
         #date{
             text-align: center;
             font-weight: bold;
-            font-size:calc(15px + 1.2vw);
-            height:60;
-            overflow: hidden;
+            font-size:calc(20px + 0.9vw);
+            height:calc(36px + 0.9vw);
         }
         #content{
-            height:calc(100% - 20px - 5vw);
+            height:calc(100% - 64px - 1.5vw);
             width:100%;
             overflow-y:scroll;
         }
@@ -380,20 +377,18 @@
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PTQFBXW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <div id="up">
-        <header id="header">
-            <div>
-                <h1 id="title" class="header-item">774トゥデイ</h1>
-                <div id="update" class="header-item"></div>
-                <div id="notice" class="header-item" onclick="location.reload()">更新あり</div>
-            </div>
-            <div>
-                <div id="darkmode-button" class="header-item" onclick="changeColorMode()"><i id="sun" class="fas fa-sun"></i><i id="moon" class="fas fa-moon"></i></div>
-                <div id="info-button" class="header-item" onclick="toggleInfo(event)">このサイトについて</div>
-            </div>
-        </header>
-        <div id="date"></div>
-    </div>
+    <header id="header">
+        <div>
+            <h1 id="title" class="header-item">774トゥデイ</h1>
+            <div id="update" class="header-item"></div>
+            <div id="notice" class="header-item" onclick="location.reload()">更新あり</div>
+        </div>
+        <div>
+            <div id="darkmode-button" class="header-item" onclick="changeColorMode()"><i id="sun" class="fas fa-sun"></i><i id="moon" class="fas fa-moon"></i></div>
+            <div id="info-button" class="header-item" onclick="toggleInfo(event)">このサイトについて</div>
+        </div>
+    </header>
+    <div id="date"></div>
     <div id="content" onscroll="onScroll()">
         <div id="calendar"></div>
     </div>
