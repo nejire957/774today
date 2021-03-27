@@ -17,6 +17,9 @@ def lambda_handler(lambdaEvent,context):
         start = dateutil.parser.parse(knownEvent["start"])
         if yesterday < start < twoHourAgo:
             events.append(knownEvent)
+        else if twoHourAgo < start:
+            if "mode" in knownEvent and knownEvent["mode"] == "manual":
+                events.append(knownEvent)
     newEventCount = 0
     for group in resources:
         for streamer in group["children"]:
@@ -78,7 +81,8 @@ def lambda_handler(lambdaEvent,context):
                                         "end":end.astimezone(JST).isoformat(),
                                         "imageurl":streamer["imageurl"],
                                         "liveBroadcastContent":"over",
-                                        "channelName":streamer["channelName"]
+                                        "channelName":streamer["channelName"],
+                                        "mode":"auto"
                                     })
                                     newEventCount += 1
                                 else:
@@ -93,7 +97,8 @@ def lambda_handler(lambdaEvent,context):
                                         "allDay":False,
                                         "imageurl":streamer["imageurl"],
                                         "liveBroadcastContent":"over",
-                                        "channelName":streamer["channelName"]
+                                        "channelName":streamer["channelName"],
+                                        "mode":"auto"
                                     })
                                     newEventCount += 1
                             else:
@@ -109,7 +114,8 @@ def lambda_handler(lambdaEvent,context):
                                         "end":(now + datetime.timedelta(hours=1)).astimezone(JST).isoformat(),
                                         "imageurl":streamer["imageurl"],
                                         "liveBroadcastContent":"live",
-                                        "channelName":streamer["channelName"]
+                                        "channelName":streamer["channelName"],
+                                        "mode":"auto"
                                     })
                                     newEventCount += 1
                                 else:
@@ -124,7 +130,8 @@ def lambda_handler(lambdaEvent,context):
                                         "allDay":False,
                                         "imageurl":streamer["imageurl"],
                                         "liveBroadcastContent":"live",
-                                        "channelName":streamer["channelName"]
+                                        "channelName":streamer["channelName"],
+                                        "mode":"auto"
                                     })
                                     newEventCount += 1
                         else:
@@ -142,7 +149,8 @@ def lambda_handler(lambdaEvent,context):
                                 "allDay":False,
                                 "imageurl":streamer["imageurl"],
                                 "liveBroadcastContent":"upcoming",
-                                "channelName":streamer["channelName"]
+                                "channelName":streamer["channelName"],
+                                "mode":"auto"
                             })
                             newEventCount += 1
                     else:
@@ -160,7 +168,8 @@ def lambda_handler(lambdaEvent,context):
                             "allDay":False,
                             "imageurl":streamer["imageurl"],
                             "liveBroadcastContent":"none",
-                            "channelName":streamer["channelName"]
+                            "channelName":streamer["channelName"],
+                            "mode":"auto"
                         })
                         newEventCount += 1
             except:
