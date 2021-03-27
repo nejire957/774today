@@ -17,8 +17,8 @@ def lambda_handler(lambdaEvent,context):
         start = dateutil.parser.parse(knownEvent["start"])
         if yesterday < start < twoHourAgo:
             events.append(knownEvent)
-        else if twoHourAgo < start:
-            if "mode" in knownEvent and knownEvent["mode"] == "manual":
+        else:
+            if twoHourAgo < start and "mode" in knownEvent and knownEvent["mode"] == "manual":
                 events.append(knownEvent)
     newEventCount = 0
     for group in resources:
