@@ -37,6 +37,7 @@ def lambda_handler(lambdaEvent,context):
             timeoverFlag = False
             try:
                 channelData = channelResponse.json()
+                idList = []
                 for item in channelData["items"]:
                     isKnown = False
                     skip = False
@@ -53,9 +54,26 @@ def lambda_handler(lambdaEvent,context):
                             continue
                         else:
                             events.remove(oldEvent)
+                    idList.append(item["id"]["videoId"])
+                removeEvents = []
+                for event in events:
+                    isOverlooked = True
+                    if event["resourceId"] == streamer["id"]:
+                        for item in channelData["items"]:
+                            if event["id"] == item["id"]["videoId"]:
+                                isOverlooked = False
+                                break
+                    else:
+                        isOverlooked = False
+                    if isOverlooked == True:
+                        removeEvents.append(event)
+                        idList.append(event["id"])
+                for event in removeEvents:
+                    events.remove(event)
+                for id in idList:
                     videoResponse = requests.get("https://www.googleapis.com/youtube/v3/videos",params={
                         "key":apiKey,
-                        "id":item["id"]["videoId"],
+                        "id":id,
                         "part":"snippet,liveStreamingDetails",
                         "fields":"items(snippet(title,publishedAt),liveStreamingDetails(actualStartTime,actualEndTime,scheduledStartTime))"
                     })
@@ -71,7 +89,7 @@ def lambda_handler(lambdaEvent,context):
                                 end = dateutil.parser.parse(videoData["items"][0]["liveStreamingDetails"]["actualEndTime"])
                                 if end - start > datetime.timedelta(minutes=55):
                                     events.append({
-                                        "id":item["id"]["videoId"],
+                                        "id":id,
                                         "title":videoData["items"][0]["snippet"]["title"],
                                         "resourceId":streamer["id"],
                                         "color":streamer["color"],
@@ -87,7 +105,7 @@ def lambda_handler(lambdaEvent,context):
                                     newEventCount += 1
                                 else:
                                     events.append({
-                                        "id":item["id"]["videoId"],
+                                        "id":id,
                                         "title":videoData["items"][0]["snippet"]["title"],
                                         "resourceId":streamer["id"],
                                         "color":streamer["color"],
@@ -104,7 +122,7 @@ def lambda_handler(lambdaEvent,context):
                             else:
                                 if (now - start) > datetime.timedelta(hours=1):
                                     events.append({
-                                        "id":item["id"]["videoId"],
+                                        "id":id,
                                         "title":videoData["items"][0]["snippet"]["title"],
                                         "resourceId":streamer["id"],
                                         "color":streamer["color"],
@@ -120,7 +138,7 @@ def lambda_handler(lambdaEvent,context):
                                     newEventCount += 1
                                 else:
                                     events.append({
-                                        "id":item["id"]["videoId"],
+                                        "id":id,
                                         "title":videoData["items"][0]["snippet"]["title"],
                                         "resourceId":streamer["id"],
                                         "color":streamer["color"],
@@ -139,7 +157,7 @@ def lambda_handler(lambdaEvent,context):
                             if start < yesterday:
                                 continue
                             events.append({
-                                "id":item["id"]["videoId"],
+                                "id":id,
                                 "title":videoData["items"][0]["snippet"]["title"],
                                 "resourceId":streamer["id"],
                                 "color":streamer["color"],
@@ -158,7 +176,7 @@ def lambda_handler(lambdaEvent,context):
                         if start < yesterday:
                             continue
                         events.append({
-                            "id":item["id"]["videoId"],
+                            "id":id,
                             "title":videoData["items"][0]["snippet"]["title"],
                             "resourceId":streamer["id"],
                             "color":streamer["color"],

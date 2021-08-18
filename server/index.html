@@ -50,6 +50,8 @@
             background-color: black;
             color:white;
             height:calc(28px + 0.6vw);
+            z-index: 2;
+            position: relative;
         }
         .header-item{
             display: table-cell;
@@ -88,13 +90,24 @@
         #date{
             text-align: center;
             font-weight: bold;
+            background-color: white;
             font-size:calc(20px + 0.9vw);
             height:calc(36px + 0.9vw);
+            z-index: 2;
+            position: relative;
         }
         #content{
             height:calc(100% - 64px - 1.5vw);
             width:100%;
             overflow-y:scroll;
+            z-index: 1;
+            top: 0;
+        }
+        #content.fixed{
+            position:fixed;
+            width:100%;
+            height:5770px;
+            left:0;
         }
         .fc table{
             background-color: transparent;
@@ -136,6 +149,7 @@
             font-size:calc(10px + 0.8vw);
             background-color:white;
             color:black;
+            z-index: 5;
         }
         .info{
             max-height: 80vh;
@@ -189,6 +203,7 @@
         var tomorrowMonth = tomorrow.getMonth() + 1;
         var timeoutId;      //スクロールイベントの発火量調整用
         var cooling = false;      //スクロールイベントの発火量調整用
+        var scrollPosition = 0;     //パネル表示時のスクロール量記録
         function toggleInfo(e){      //サイト情報の表示/非表示を切り替える
             if(articleIsVisible){
                 hideArticle();
@@ -197,11 +212,17 @@
                 articleIsVisible = true;
                 $('#info').css({zIndex:100});
                 $('#info').fadeIn(250);
+                scrollPosition = $('#content').scrollTop();
+                var top = scrollPosition - $('#header').height() - $('#date').height();
+                $('#content').addClass('fixed');
+                $('#content').css({'top': -top});
                 e.stopPropagation();
             }
         }
         function hideArticle(){     //動画詳細を非表示にする
             $('.popup').fadeOut(250);
+            $('#content').removeClass('fixed').css({'top': 0});
+            $('#content').scrollTop( scrollPosition );
             articleIsVisible = false;
         }
         function keepArticle(e){        //動画詳細を表示したままにする
@@ -218,10 +239,15 @@
         function showDetail(){      //動画詳細を表示する
             $('#detail').css({zIndex:100});
             $('#detail').fadeIn(250);
+            scrollPosition = $('#content').scrollTop();
+            var top = scrollPosition - $('#header').height() - $('#date').height();
+            $('#content').addClass('fixed');
+            $('#content').css({'top': -top});
         }
         function changeColorMode(){     //ライトモード/ダークモードを切り替える
             if(isDarkMode){
                 $('body').css({'background-color':'white', color:'black'});
+                $('#date').css({'background-color':'white', color:'black'});
                 $('#moon').show();
                 $('#sun').hide();
                 isDarkMode = false;
@@ -229,6 +255,7 @@
             }
             else{
                 $('body').css({'background-color':'#121212', color:'white'});
+                $('#date').css({'background-color':'#121212', color:'white'});
                 $('#moon').hide();
                 $('#sun').show();
                 isDarkMode = true;
@@ -401,7 +428,7 @@
         <h2>このサイトについて</h2>
         <ul>
             <li>774inc.(あにまーれ、ハニスト、ブイアパ、シュガリリ)所属のVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。</li>
-            <li>配信スケジュールはYouTubeの待機所やアーカイブから取得しています。待機所が作られていない予定は表示されません。</li>
+            <li>配信スケジュールは各メンバーのYouTubeチャンネルから取得しています。他チャンネルでの配信や待機所が作られていない予定は表示されません。</li>
             <li>更新は1時間ごとに行っています。突発的な配信や長時間配信は正しく表示されない場合があります。</li>
             <li>スマートフォンアプリのように、ホーム画面から直接使うことができます。ブラウザのメニューから「インストール」を実行してください。(PWA対応)</li>
             <li>ご意見・ご要望は下記TwitterアカウントのDMで受け付けています。</li>
