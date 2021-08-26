@@ -220,10 +220,12 @@
             }
         }
         function hideArticle(){     //動画詳細を非表示にする
-            $('.popup').fadeOut(250);
-            $('#content').removeClass('fixed').css({'top': 0});
-            $('#content').scrollTop( scrollPosition );
-            articleIsVisible = false;
+            if(articleIsVisible){
+                $('.popup').fadeOut(250);
+                $('#content').removeClass('fixed').css({'top': 0});
+                $('#content').scrollTop( scrollPosition );
+                articleIsVisible = false;
+            }
         }
         function keepArticle(e){        //動画詳細を表示したままにする
             e.stopPropagation();
