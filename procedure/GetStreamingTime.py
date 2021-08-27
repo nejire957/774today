@@ -155,12 +155,12 @@ def lambda_handler(lambdaEvent,context):
         #配信開始が昨日から2時間前までの場合
         if yesterday < start < twoHoursAgo:
             #配信中の場合は更新
-            if knownEvent["liveBroadcastContent"] is "live":
+            if knownEvent["liveBroadcastContent"] == "live":
                 for group in resources:
                     for streamer in group["children"]:
                         if knownEvent["resourceId"] == streamer["id"]:
                             eventData = getEventData(streamer, knownEvent["id"])
-                            if eventData is not None:
+                            if eventData != None:
                                 events.append(eventData)
                                 knownIdList.append(eventData["id"])
             #それ以外は既存データを維持
@@ -176,7 +176,7 @@ def lambda_handler(lambdaEvent,context):
                         for streamer in group["children"]:
                             if knownEvent["resourceId"] == streamer["id"]:
                                 eventData = getEventData(streamer, knownEvent["id"])
-                                if eventData is not None:
+                                if eventData != None:
                                     eventData["mode"] = "manual"
                                     events.append(eventData)
                                     knownIdList.append(eventData["id"])
@@ -206,7 +206,7 @@ def lambda_handler(lambdaEvent,context):
                     for id in idList:
                         #イベントデータを取得
                         eventData = getEventData(streamer, id)
-                        if eventData is not None:
+                        if eventData != None:
                             events.append(eventData)
                     #ページがまだあれば繰り返し
                     if pageNum < checkPageCount - 1 and "nextPageToken" in channelData:
