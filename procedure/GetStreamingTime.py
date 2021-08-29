@@ -135,7 +135,7 @@ def lambda_handler(lambdaEvent,context):
     now = datetime.datetime.now(JST)
     print(now.astimezone(JST).isoformat())
     global yesterday
-    yesterday = (now - datetime.timedelta(days=1)).replace(hour=0,minute=0)
+    yesterday = (now - datetime.timedelta(days=2)).replace(hour=12,minute=0)
     sevenDaysAgo = (now - datetime.timedelta(days=7)).replace(hour=0,minute=0)
     dayAfterTomorrow = (now + datetime.timedelta(days=2)).replace(hour=0,minute=0)
     twoHoursAgo = now - datetime.timedelta(hours=2)
