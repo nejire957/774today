@@ -256,5 +256,72 @@
                 "channelName":"Rene Channel / 龍ヶ崎リン 【シュガリリ】"
             }
         ]
+    },
+    {
+        "id":"Hiyocro",
+        "title":"緋翼のクロスピース",
+        "order":"5",
+        "children":[
+            {
+                "id": "UCkpqb53xiOvOgNYEbNpFSyw",
+                "title": "茜音カンナ",
+                "order":"1",
+                "color":"#DC143C",
+                "textColor":"#FFFFFF",
+                "borderColor":"#DC143C",
+                "imageurl":"https://774today.ytclipplay.website/canna.webp",
+                "channelName":"Canna Channel / 茜音カンナ【ひよクロ】"
+            },
+            {
+                "id": "UCBJ6nejlzes6mm9UruaxQsA",
+                "title": "涼海ネモ",
+                "order":"2",
+                "color":"#000080",
+                "textColor":"#FFFFFF",
+                "borderColor":"#000080",
+                "imageurl":"https://774today.ytclipplay.website/nemo.webp",
+                "channelName":"Nemo Channel / 涼海ネモ【ひよクロ】"
+            },
+            {
+                "id": "UCBxw5bdrbKO7E60E4s3KgQg",
+                "title": "橙里セイ",
+                "order":"3",
+                "color":"#FF4500",
+                "textColor":"#000000",
+                "borderColor":"#FF4500",
+                "imageurl":"https://774today.ytclipplay.website/sei.webp",
+                "channelName":"Sei Channel / 橙里セイ【ひよクロ】"
+            },
+            {
+                "id": "UC_hjHmi-ODGhHlSzD16p5Pw",
+                "title": "家入ポポ",
+                "order":"4",
+                "color":"#FFD700",
+                "textColor":"#000000",
+                "borderColor":"#FFD700",
+                "imageurl":"https://774today.ytclipplay.website/popo.webp",
+                "channelName":"Popo Channel / 家入ポポ【ひよクロ】"
+            },
+            {
+                "id": "UCGyywYAJd2O5Y7yUyr7qBRQ",
+                "title": "瑚白ユリ",
+                "order":"5",
+                "color":"#FFFFFF",
+                "textColor":"#000000",
+                "borderColor":"#000000",
+                "imageurl":"https://774today.ytclipplay.website/yuri.webp",
+                "channelName":"Yuri Channel / 瑚白ユリ【ひよクロ】"
+            },
+            {
+                "id": "UC3MBUvkVTI9p-p0be7y7TQA",
+                "title": "紫水キキ",
+                "order":"6",
+                "color":"#6A5ACD",
+                "textColor":"#FFFFFF",
+                "borderColor":"#6A5ACD",
+                "imageurl":"https://774today.ytclipplay.website/kiki.webp",
+                "channelName":"Kiki Channel / 紫水キキ【ひよクロ】"
+            }
+        ]
     }
 ]
