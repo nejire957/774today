@@ -1,24 +1,28 @@
 <!DOCTYPE html>
+
 <head>
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-PTQFBXW');</script>
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-PTQFBXW');</script>
     <!-- End Google Tag Manager -->
     <meta charset="utf8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>774トゥデイ</title>
-    <meta name="keywords" content="774inc.,配信,予定,スケジュール,あにまーれ,ハニーストラップ,ハニスト,ブイアパ,シュガーリリック,シュガリリ"/>
-    <meta name="description" content="774inc.(あにまーれ、ハニスト、ブイアパ、シュガリリ)所属のVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。"/>
-    <link rel="canonical" href="https://774today.ytclipplay.website"/>
+    <meta name="keywords" content="774inc.,配信,予定,スケジュール,あにまーれ,ハニーストラップ,ハニスト,ブイアパ,シュガーリリック,シュガリリ" />
+    <meta name="description" content="774inc.(あにまーれ、ハニスト、ブイアパ、シュガリリ)所属のVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。" />
+    <link rel="canonical" href="https://774today.ytclipplay.website" />
     <link rel="shortcut icon" href="https://774today.ytclipplay.website/favicon.png">
-    <meta name="twitter:site" content="@nejire957"/>
-    <meta name="twitter:title" content="774トゥデイ"/>
-    <meta name="twitter:description" content="774inc.所属のVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。"/>
+    <meta name="twitter:site" content="@nejire957" />
+    <meta name="twitter:title" content="774トゥデイ" />
+    <meta name="twitter:description" content="774inc.所属のVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。" />
     <meta name="twitter:image" content="https://774today.ytclipplay.website/screenshot.png" />
-    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:card" content="summary" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/main.min.css">
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/locales-all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/main.min.js"></script>
@@ -26,21 +30,25 @@
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <link rel="manifest" href="/manifest.json">
     <style>
-        html, body{
-            height:100%;
+        html,
+        body {
+            height: 100%;
             font-family: Arial, Helvetica, sans-serif;
-            margin:0;
+            margin: 0;
             background-color: white;
-            color:black;
+            color: black;
         }
-        body{
-            display:none;
+
+        body {
+            display: none;
         }
-        p{
-            margin-top:10px;
-            margin-bottom:10px;
+
+        p {
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
-        #header{
+
+        #header {
             margin-top: 0;
             margin-bottom: 0;
             padding-left: 3vw;
@@ -48,143 +56,173 @@
             display: flex;
             justify-content: space-between;
             background-color: black;
-            color:white;
-            height:calc(28px + 0.6vw);
+            color: white;
+            height: calc(28px + 0.6vw);
             z-index: 2;
             position: relative;
         }
-        .header-item{
+
+        .header-item {
             display: table-cell;
-            padding-left:5px;
-            padding-right:5px;
-            font-size:calc(10px + 0.6vw);
-            height:calc(28px + 0.6vw);
+            padding-left: 5px;
+            padding-right: 5px;
+            font-size: calc(10px + 0.6vw);
+            height: calc(28px + 0.6vw);
             vertical-align: middle;
         }
-        #title{
+
+        #title {
             font-weight: normal;
         }
-        #update{
+
+        #update {
             vertical-align: middle;
         }
-        #notice{
-            display:none;
+
+        #notice {
+            display: none;
             background-color: crimson;
-            cursor:pointer;
+            cursor: pointer;
         }
-        #darkmode-button{
+
+        #darkmode-button {
             text-align: right;
         }
-        #darkmode-button:hover{
-            cursor:pointer;
+
+        #darkmode-button:hover {
+            cursor: pointer;
         }
-        #sun{
-            display:none;
+
+        #sun {
+            display: none;
         }
-        #info-button{
+
+        #info-button {
             text-align: right;
         }
-        #info-button:hover{
-            cursor:pointer;
+
+        #info-button:hover {
+            cursor: pointer;
         }
-        #date{
+
+        #date {
             text-align: center;
             font-weight: bold;
             background-color: white;
-            font-size:calc(20px + 0.9vw);
-            height:calc(36px + 0.9vw);
+            font-size: calc(20px + 0.9vw);
+            height: calc(36px + 0.9vw);
             z-index: 2;
             position: relative;
         }
-        #content{
-            height:calc(100% - 64px - 1.5vw);
-            width:100%;
-            overflow-y:scroll;
+
+        #content {
+            height: calc(100% - 64px - 1.5vw);
+            width: 100%;
+            overflow-y: scroll;
             z-index: 1;
             top: 0;
         }
-        #content.fixed{
-            position:fixed;
-            width:100%;
-            height:5770px;
-            left:0;
+
+        #content.fixed {
+            position: fixed;
+            width: 100%;
+            height: 5770px;
+            left: 0;
         }
-        .fc table{
+
+        .fc table {
             background-color: transparent;
             font-size: calc(14px + 0.4vw);
         }
-        .fc .fc-toolbar.fc-header-toolbar{
+
+        .fc .fc-toolbar.fc-header-toolbar {
             margin-bottom: 0px;
         }
+
         .fc .fc-timegrid-col.fc-day-today {
             background-color: transparent;
         }
-        .fc .fc-timegrid-slot{
-            height:40px;
+
+        .fc .fc-timegrid-slot {
+            height: 40px;
             background-color: transparent;
         }
-        .fc .fc-event-main{
+
+        .fc .fc-event-main {
             cursor: pointer;
         }
-        .fc .fc-event-time{
+
+        .fc .fc-event-time {
             font-weight: bold;
         }
-        .fc .fc-event-title-container{
+
+        .fc .fc-event-title-container {
             font-weight: bold;
             font-size: calc(10px + 0.4vw);
         }
-        .popup{
+
+        .popup {
             position: fixed;
-            width:60vw;
+            width: 60vw;
             max-width: 600px;
-            top: 50%; 
+            top: 50%;
             left: 50%;
-            transform : translate(-50%,-50%);
+            transform: translate(-50%, -50%);
             display: none;
             box-shadow: 4px 4px 8px;
             text-align: center;
-            border:solid rgb(128,128,128);
-            border-width:3px 3px 3px 3px;
-            padding:5px;
-            font-size:calc(10px + 0.8vw);
-            background-color:white;
-            color:black;
+            border: solid rgb(128, 128, 128);
+            border-width: 3px 3px 3px 3px;
+            padding: 5px;
+            font-size: calc(10px + 0.8vw);
+            background-color: white;
+            color: black;
             z-index: 5;
         }
-        .info{
+
+        .info {
             max-height: 80vh;
             text-align: left;
-            overflow-x:hidden;
-            overflow-y:scroll;
+            overflow-x: hidden;
+            overflow-y: scroll;
         }
-        ul{
-            padding-left:calc(10px + 1vw);
+
+        ul {
+            padding-left: calc(10px + 1vw);
         }
-        h2{
-            text-align:center;
+
+        h2 {
+            text-align: center;
         }
-        #detail-banner{
-            display:inline-block;
+
+        #detail-banner {
+            display: inline-block;
             vertical-align: middle;
         }
-        #detail-channel{
-            display:block;
-            margin-top:0;
+
+        #detail-channel {
+            display: block;
+            margin-top: 0;
             cursor: pointer;
             text-decoration: none;
-            border:solid rgb(128,128,128);
+            border: solid rgb(128, 128, 128);
             border-width: 1px 0px 1px 0px;
             padding: 3px;
         }
-        #detail-channel:link, #detail-channel:visited, #detail-channel:hover, #detail-channel:active{
-            color:black;
+
+        #detail-channel:link,
+        #detail-channel:visited,
+        #detail-channel:hover,
+        #detail-channel:active {
+            color: black;
         }
-        #detail-name{
-            display:inline-block;
+
+        #detail-name {
+            display: inline-block;
             vertical-align: middle;
-            font-size:calc(8px + 0.6vw);
-            margin:0;
-            padding:0;
+            font-size: calc(8px + 0.6vw);
+            margin: 0;
+            padding: 0;
         }
     </style>
     <script>
@@ -204,97 +242,97 @@
         var timeoutId;      //スクロールイベントの発火量調整用
         var cooling = false;      //スクロールイベントの発火量調整用
         var scrollPosition = 0;     //パネル表示時のスクロール量記録
-        function toggleInfo(e){      //サイト情報の表示/非表示を切り替える
-            if(articleIsVisible){
+        function toggleInfo(e) {      //サイト情報の表示/非表示を切り替える
+            if (articleIsVisible) {
                 hideArticle();
             }
-            else{
+            else {
                 articleIsVisible = true;
-                $('#info').css({zIndex:100});
+                $('#info').css({ zIndex: 100 });
                 $('#info').fadeIn(250);
                 scrollPosition = $('#content').scrollTop();
                 var top = scrollPosition - $('#header').height() - $('#date').height();
                 $('#content').addClass('fixed');
-                $('#content').css({'top': -top});
+                $('#content').css({ 'top': -top });
                 e.stopPropagation();
             }
         }
-        function hideArticle(){     //動画詳細を非表示にする
-            if(articleIsVisible){
+        function hideArticle() {     //動画詳細を非表示にする
+            if (articleIsVisible) {
                 $('.popup').fadeOut(250);
-                $('#content').removeClass('fixed').css({'top': 0});
-                $('#content').scrollTop( scrollPosition );
+                $('#content').removeClass('fixed').css({ 'top': 0 });
+                $('#content').scrollTop(scrollPosition);
                 articleIsVisible = false;
             }
         }
-        function keepArticle(e){        //動画詳細を表示したままにする
+        function keepArticle(e) {        //動画詳細を表示したままにする
             e.stopPropagation();
         }
-        thumbnailImage.onload = function(){     //サムネイル画像が読み込まれたときに動画詳細を表示する
-            if(120 < thumbnailImage.naturalWidth){
-                $('#detail-thumbnail').attr({src:thumbnailImage.src})
+        thumbnailImage.onload = function () {     //サムネイル画像が読み込まれたときに動画詳細を表示する
+            if (120 < thumbnailImage.naturalWidth) {
+                $('#detail-thumbnail').attr({ src: thumbnailImage.src })
             }
-            else{       //サムネイル画像の幅が120以下(=読み込み失敗)の時は別画像を参照する
-                $('#detail-thumbnail').attr({src:"https://img.youtube.com/vi/"+videoId+"/sddefault.jpg"});
+            else {       //サムネイル画像の幅が120以下(=読み込み失敗)の時は別画像を参照する
+                $('#detail-thumbnail').attr({ src: "https://img.youtube.com/vi/" + videoId + "/mqdefault.jpg" });
             }
         }
-        function showDetail(){      //動画詳細を表示する
-            $('#detail').css({zIndex:100});
+        function showDetail() {      //動画詳細を表示する
+            $('#detail').css({ zIndex: 100 });
             $('#detail').fadeIn(250);
             scrollPosition = $('#content').scrollTop();
             var top = scrollPosition - $('#header').height() - $('#date').height();
             $('#content').addClass('fixed');
-            $('#content').css({'top': -top});
+            $('#content').css({ 'top': -top });
         }
-        function changeColorMode(){     //ライトモード/ダークモードを切り替える
-            if(isDarkMode){
-                $('body').css({'background-color':'white', color:'black'});
-                $('#date').css({'background-color':'white', color:'black'});
+        function changeColorMode() {     //ライトモード/ダークモードを切り替える
+            if (isDarkMode) {
+                $('body').css({ 'background-color': 'white', color: 'black' });
+                $('#date').css({ 'background-color': 'white', color: 'black' });
                 $('#moon').show();
                 $('#sun').hide();
                 isDarkMode = false;
-                history.replaceState('','','/');
+                history.replaceState('', '', '/');
             }
-            else{
-                $('body').css({'background-color':'#121212', color:'white'});
-                $('#date').css({'background-color':'#121212', color:'white'});
+            else {
+                $('body').css({ 'background-color': '#121212', color: 'white' });
+                $('#date').css({ 'background-color': '#121212', color: 'white' });
                 $('#moon').hide();
                 $('#sun').show();
                 isDarkMode = true;
-                history.replaceState('','','/?darkmode=on');
+                history.replaceState('', '', '/?darkmode=on');
             }
         }
-        function alarm(){       //毎時16分に更新のお知らせを表示する
-            var notice = function(){ 
-                $('#notice').css({'display':'table-cell'});
-                $('#update').css({'display':'none'});
+        function alarm() {       //毎時16分に更新のお知らせを表示する
+            var notice = function () {
+                $('#notice').css({ 'display': 'table-cell' });
+                $('#update').css({ 'display': 'none' });
             };
             var now = new Date();
-            var currentSecond = now.getHours()*3600 + now.getMinutes()*60 + now.getSeconds();
-            if(now.getMinutes() < 16){
-                var targetSecond = now.getHours()*3600 + 16*60;
-            } else{
-                var targetSecond = (now.getHours()+1)*3600 + 16*60;
+            var currentSecond = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+            if (now.getMinutes() < 16) {
+                var targetSecond = now.getHours() * 3600 + 16 * 60;
+            } else {
+                var targetSecond = (now.getHours() + 1) * 3600 + 16 * 60;
             }
             var durationSecond = targetSecond - currentSecond;
-            if( durationSecond < 0 ) durationSecond += 24*60*60;
-            return setTimeout( notice, durationSecond*1000);
+            if (durationSecond < 0) durationSecond += 24 * 60 * 60;
+            return setTimeout(notice, durationSecond * 1000);
         }
-        function onScroll(){
+        function onScroll() {
             scrollDate = Math.floor($('#content').scrollTop() / 80 / 24);
             updateDate();
             clearTimeout(timeoutId);
-            setTimeout(function(){
-                cooling=false;
+            setTimeout(function () {
+                cooling = false;
                 updateDate();
             }, 1000);
         }
-        function updateDate(){
-            if(cooling){
+        function updateDate() {
+            if (cooling) {
                 return;
             }
             cooling = true;
-            switch(scrollDate){
+            switch (scrollDate) {
                 case 0:
                     $('#date').text(yesterday.getFullYear() + "年" + yesterdayMonth + "月" + yesterday.getDate() + "日 (昨日)");
                     break;
@@ -307,11 +345,11 @@
                 default:
                     break;
             }
-            setTimeout(function(){
+            setTimeout(function () {
                 cooling = false;
             }, 500);
         }
-        document.addEventListener('DOMContentLoaded', function() {      //DOMが読み込まれてから、PWA対応、ダークモード設定、カレンダーの初期化、更新日時の取得、を行う
+        document.addEventListener('DOMContentLoaded', function () {      //DOMが読み込まれてから、PWA対応、ダークモード設定、カレンダーの初期化、更新日時の取得、を行う
             if ('serviceWorker' in navigator) {     //PWA対応
                 console.log('Found serviceWorker');
                 navigator.serviceWorker.register('/sw.js').then((reg) => {
@@ -321,13 +359,13 @@
                 console.log('Not Found serviceWorker');
             }
             var urlParam = location.search.substring(1);
-            if(urlParam) {      //クエリに応じてダークモードを設定する
+            if (urlParam) {      //クエリに応じてダークモードを設定する
                 var param = decodeURIComponent(urlParam).split('&');
                 var paramArray = [];
                 for (i = 0; i < param.length; i++) {
                     var paramItem = param[i].split('=');
                     paramArray[paramItem[0]] = paramItem[1];
-                }                    
+                }
                 if (paramArray.darkmode == 'on') {
                     changeColorMode();
                 }
@@ -336,66 +374,66 @@
             var calendarView = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarView, {        //カレンダーを初期化する
                 locale: "jp",
-                height:"auto",
+                height: "auto",
                 headerToolbar: {
                     left: '',
                     center: '',
-                    right:''
+                    right: ''
                 },
-                initialView:'timeGridDay',
-                titleFormat:{
-                    day:"numeric"
+                initialView: 'timeGridDay',
+                titleFormat: {
+                    day: "numeric"
                 },
                 eventTimeFormat: {
                     hour: 'numeric',
                     minute: 'numeric',
                     hour12: false
                 },
-                slotLabelFormat:{
+                slotLabelFormat: {
                     hour: 'numeric',
                     minute: 'numeric',
                     hour12: false
                 },
-                allDaySlot:false,
-                slotMinTime:"-24:00:00",
-                slotMaxTime:"48:00:00",
-                nowIndicator:true,
-                dayHeaders:false,
-                eventDidMount: function(arg) {      //イベントに顔画像を入れる
+                allDaySlot: false,
+                slotMinTime: "-24:00:00",
+                slotMaxTime: "48:00:00",
+                nowIndicator: true,
+                dayHeaders: false,
+                eventDidMount: function (arg) {      //イベントに顔画像を入れる
                     if (arg.event.extendedProps.imageurl) {
                         var div = document.createElement('img');
                         div.setAttribute('src', arg.event.extendedProps.imageurl);
-                        div.setAttribute('width',50);
-                        div.setAttribute('height',50);
-                        div.setAttribute('loading','lazy')
-                        arg.el.firstChild.firstChild.firstChild.insertBefore(div,arg.el.firstChild.firstChild.firstChild.firstChild);
+                        div.setAttribute('width', 50);
+                        div.setAttribute('height', 50);
+                        div.setAttribute('loading', 'lazy')
+                        arg.el.firstChild.firstChild.firstChild.insertBefore(div, arg.el.firstChild.firstChild.firstChild.firstChild);
                     };
                 },
-                eventClick: function(info) {        //イベントクリック時に動画詳細を表示する
-                    if(articleIsVisible){
+                eventClick: function (info) {        //イベントクリック時に動画詳細を表示する
+                    if (articleIsVisible) {
                         hideArticle();
                     }
-                    else{
+                    else {
                         articleIsVisible = true;
                         videoId = info.event.id;
                         $('#detail-title').text(info.event.title);
-                        $('#detail-link').attr({href:"https://www.youtube.com/watch?v="+info.event.id});
-                        thumbnailImage.src = "https://img.youtube.com/vi/"+info.event.id+"/maxresdefault.jpg";
-                        $('#detail-channel').attr({href:"https://www.youtube.com/channel/"+info.event.extendedProps.resourceId});
+                        $('#detail-link').attr({ href: "https://www.youtube.com/watch?v=" + info.event.id });
+                        thumbnailImage.src = "https://img.youtube.com/vi/" + info.event.id + "/maxresdefault.jpg";
+                        $('#detail-channel').attr({ href: "https://www.youtube.com/channel/" + info.event.extendedProps.resourceId });
                         $('#detail-name').text(info.event.extendedProps.channelName)
-                        $('#detail-banner').attr({src:info.event.extendedProps.imageurl});
+                        $('#detail-banner').attr({ src: info.event.extendedProps.imageurl });
                         info.jsEvent.stopPropagation();
                     }
                 },
-                events:"https://774today.ytclipplay.website/events.json",
-                resources:"https://774today.ytclipplay.website/resources.json"
+                events: "https://774today.ytclipplay.website/events.json",
+                resources: "https://774today.ytclipplay.website/resources.json"
             });
             calendar.render();
             $('body').show();
             $('#content').scrollTop((24 + now.getHours() - 3) * 80);
             var req = new XMLHttpRequest();
-            req.onreadystatechange = function() {       //更新日時を取得する
-                if(req.readyState == 4 && req.status == 200){
+            req.onreadystatechange = function () {       //更新日時を取得する
+                if (req.readyState == 4 && req.status == 200) {
                     log = JSON.parse(req.responseText);
                     logDatetime = new Date(log.datetime);
                     $('#update').text(logDatetime.toLocaleString());
@@ -407,9 +445,11 @@
         });
     </script>
 </head>
+
 <body onclick="hideArticle(event)">
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PTQFBXW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PTQFBXW" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <header id="header">
         <div>
@@ -418,7 +458,8 @@
             <div id="notice" class="header-item" onclick="location.reload()">更新あり</div>
         </div>
         <div>
-            <div id="darkmode-button" class="header-item" onclick="changeColorMode()"><i id="sun" class="fas fa-sun"></i><i id="moon" class="fas fa-moon"></i></div>
+            <div id="darkmode-button" class="header-item" onclick="changeColorMode()"><i id="sun"
+                    class="fas fa-sun"></i><i id="moon" class="fas fa-moon"></i></div>
             <div id="info-button" class="header-item" onclick="toggleInfo(event)">このサイトについて</div>
         </div>
     </header>
@@ -434,28 +475,38 @@
             <li>更新は1時間ごとに行っています。突発的な配信や長時間配信は正しく表示されない場合があります。</li>
             <li>スマートフォンアプリのように、ホーム画面から直接使うことができます。ブラウザのメニューから「インストール」を実行してください。(PWA対応)</li>
             <li>ご意見・ご要望は下記TwitterアカウントのDMで受け付けています。</li>
-            <li>製作者:ねじれ図形 | <a target="_blank" href="https://twitter.com/nejire957">Twitter</a> | <a target="_blank" href="https://github.com/nejire957/774today">GitHub</a></li>
+            <li>製作者:ねじれ図形 | <a target="_blank" href="https://twitter.com/nejire957">Twitter</a> | <a target="_blank"
+                    href="https://github.com/nejire957/774today">GitHub</a></li>
         </ul>
         <h2>注意</h2>
         <ul>
-            <li>このサイトは<a target="_blank" href="https://www.774.ai">774 inc.</a>所属タレントの二次創作です。開発にあたっては<a target="_blank" href="https://www.774.ai/guideline">「774 inc.」所属タレント二次創作ガイドライン</a>に従っています。</li>
-            <li>このサイトはYouTube Data APIを使用しています。開発にあたっては<a target="_blank" href="https://www.youtube.com/t/terms">YouTubeの利用規約</a>と<a target="_blank" href="https://developers.google.com/youtube/terms/developer-policies">YouTube Data APIの開発方針</a>に従っています。</li>
+            <li>このサイトは<a target="_blank" href="https://www.774.ai">774 inc.</a>所属タレントの二次創作です。開発にあたっては<a target="_blank"
+                    href="https://www.774.ai/guideline">「774 inc.」所属タレント二次創作ガイドライン</a>に従っています。</li>
+            <li>このサイトはYouTube Data APIを使用しています。開発にあたっては<a target="_blank"
+                    href="https://www.youtube.com/t/terms">YouTubeの利用規約</a>と<a target="_blank"
+                    href="https://developers.google.com/youtube/terms/developer-policies">YouTube Data
+                    APIの開発方針</a>に従っています。</li>
             <li>このサイトはGoogle Analyticsを使用しています。
                 <ul>
                     <li>このサイトはユーザーからこのサイトへのアクセスに関するデータを収集します。データの収集にはcookieを使用します。</li>
-                    <li>Googleはこのデータを<a target="_blank" href="https://policies.google.com/privacy">プライバシーポリシー</a>に従って管理・分析します。</li>
+                    <li>Googleはこのデータを<a target="_blank"
+                            href="https://policies.google.com/privacy">プライバシーポリシー</a>に従って管理・分析します。</li>
                     <li>サイト製作者はこの分析結果を受け取り、サイトの利用状況を把握しています。</li>
                     <li>このサイトを利用することは、上記のデータ処理について同意を示すこととみなされます。</li>
-                    <li>このサイトの開発にあたっては、<a target="_blank" href="https://support.google.com/analytics/answer/4597324">Googleアナリティクスポリシー</a>に従っています。</li>
+                    <li>このサイトの開発にあたっては、<a target="_blank"
+                            href="https://support.google.com/analytics/answer/4597324">Googleアナリティクスポリシー</a>に従っています。
+                    </li>
                 </ul>
             </li>
         </ul>
     </div>
     <div id="detail" class="popup" onclick="keepArticle(event)">
-        <a id="detail-link" target="_blank" href=""><img id="detail-thumbnail" width="100%" src="" alt="サムネイル" onload="showDetail()"/></a>
+        <a id="detail-link" target="_blank" href=""><img id="detail-thumbnail" width="100%" src="" alt="サムネイル"
+                onload="showDetail()" /></a>
         <p id="detail-title">タイトル</p>
         <a id="detail-channel" target="_blank" href="">
-            <img id="detail-banner" src="https://774today.ytclipplay.website/met.webp" width="40" height="40" loading="lazy">
+            <img id="detail-banner" src="https://774today.ytclipplay.website/met.webp" width="40" height="40"
+                loading="lazy">
             <div id="detail-name">チャンネル</div>
         </a>
     </div>
