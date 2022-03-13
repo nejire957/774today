@@ -55,19 +55,9 @@
                 "channelName": "Izumi Channel / 柚原いづみ 【あにまーれ】"
             },
             {
-                "id": "UCtzCQnCT9E4o6U3mHHSHbQQ",
-                "title": "白宮みみ",
-                "order": "6",
-                "color": "#ffffff",
-                "textColor": "#000000",
-                "borderColor": "#000000",
-                "imageurl": "https://774today.ytclipplay.website/mimi.webp",
-                "channelName": "Mimi Channel / 白宮みみ 【あにまーれ】"
-            },
-            {
                 "id": "UCFsWaTQ7kT76jNNGeGIKNSA",
                 "title": "飛良ひかり",
-                "order": "7",
+                "order": "6",
                 "color": "#fe846d",
                 "textColor": "#ffffff",
                 "borderColor": "#fe846d",
@@ -77,7 +67,7 @@
             {
                 "id": "UC_WOBIopwUih0rytRnr_1Ag",
                 "title": "瀬島るい",
-                "order": "8",
+                "order": "7",
                 "color": "#d2293e",
                 "textColor": "#ffffff",
                 "borderColor": "#d2293e",
@@ -87,7 +77,7 @@
             {
                 "id": "UC3xG1XWzAKt5dxSxktJvtxg",
                 "title": "大浦るかこ",
-                "order": "9",
+                "order": "8",
                 "color": "#3798a9",
                 "textColor": "#ffffff",
                 "borderColor": "#3798a9e",
@@ -97,7 +87,7 @@
             {
                 "id": "UCqskJ0nmw-_eweWfsKvbrzQ",
                 "title": "月野木ちろる",
-                "order": "10",
+                "order": "9",
                 "color": "#93dfd5",
                 "textColor": "#000000",
                 "borderColor": "#93dfd5",
@@ -107,7 +97,7 @@
             {
                 "id": "UC4PrHgUcAtOoj_LKmUL-uLQ",
                 "title": "湖南みあ",
-                "order": "11",
+                "order": "10",
                 "color": "#f5e29e",
                 "textColor": "#000000",
                 "borderColor": "#f5e29e",
