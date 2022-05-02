@@ -182,8 +182,6 @@ def lambda_handler(lambdaEvent,context):
                                     knownIdList.append(eventData["id"])
     #グループごとに繰り返し
     for group in resources:
-        if group["id"] == "official":
-            continue
         #メンバーごとに繰り返し
         for streamer in group["children"]:
             print(streamer["title"])

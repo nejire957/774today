@@ -5,19 +5,9 @@
         "order": "1",
         "children": [
             {
-                "id": "UC2kyQhzGOB-JPgcQX9OMgEw",
-                "title": "宗谷いちか",
-                "order": "1",
-                "color": "#AFDFE4",
-                "textColor": "#000000",
-                "borderColor": "#AFDFE4",
-                "imageurl": "https://774today.ytclipplay.website/ichika.webp",
-                "channelName": "Ichika Channel / 宗谷いちか 【あにまーれ】"
-            },
-            {
                 "id": "UC0Owc36U9lOyi9Gx9Ic-4qg",
                 "title": "因幡はねる",
-                "order": "2",
+                "order": "1",
                 "color": "#FFD400",
                 "textColor": "#000000",
                 "borderColor": "#FFD400",
@@ -27,7 +17,7 @@
             {
                 "id": "UCRvpMpzAXBRKJQuk-8-Sdvg",
                 "title": "日ノ隈らん",
-                "order": "3",
+                "order": "2",
                 "color": "#008000",
                 "textColor": "#ffffff",
                 "borderColor": "#008000",
@@ -37,7 +27,7 @@
             {
                 "id": "UCXp7sNC0F_qkjickvlYkg-Q",
                 "title": "風見くく",
-                "order": "4",
+                "order": "3",
                 "color": "#ff7a3a",
                 "textColor": "#ffffff",
                 "borderColor": "#ff7a3a",
@@ -47,7 +37,7 @@
             {
                 "id": "UCW8WKciBixmaqaGqrlTITRQ",
                 "title": "柚原いづみ",
-                "order": "5",
+                "order": "4",
                 "color": "#b6563b",
                 "textColor": "#ffffff",
                 "borderColor": "#b6563b",
@@ -57,7 +47,7 @@
             {
                 "id": "UCFsWaTQ7kT76jNNGeGIKNSA",
                 "title": "飛良ひかり",
-                "order": "6",
+                "order": "5",
                 "color": "#fe846d",
                 "textColor": "#ffffff",
                 "borderColor": "#fe846d",
@@ -67,7 +57,7 @@
             {
                 "id": "UC_WOBIopwUih0rytRnr_1Ag",
                 "title": "瀬島るい",
-                "order": "7",
+                "order": "6",
                 "color": "#d2293e",
                 "textColor": "#ffffff",
                 "borderColor": "#d2293e",
@@ -77,7 +67,7 @@
             {
                 "id": "UC3xG1XWzAKt5dxSxktJvtxg",
                 "title": "大浦るかこ",
-                "order": "8",
+                "order": "7",
                 "color": "#3798a9",
                 "textColor": "#ffffff",
                 "borderColor": "#3798a9e",
@@ -87,7 +77,7 @@
             {
                 "id": "UCqskJ0nmw-_eweWfsKvbrzQ",
                 "title": "月野木ちろる",
-                "order": "9",
+                "order": "8",
                 "color": "#93dfd5",
                 "textColor": "#000000",
                 "borderColor": "#93dfd5",
@@ -97,7 +87,7 @@
             {
                 "id": "UC4PrHgUcAtOoj_LKmUL-uLQ",
                 "title": "湖南みあ",
-                "order": "10",
+                "order": "9",
                 "color": "#f5e29e",
                 "textColor": "#000000",
                 "borderColor": "#f5e29e",
@@ -328,6 +318,16 @@
                 "borderColor": "#000000",
                 "imageurl": "https://774today.ytclipplay.website/774.png",
                 "channelName": "ななし公式チャンネル【774inc.】"
+            },
+            {
+                "id": "UC2kyQhzGOB-JPgcQX9OMgEw",
+                "title": "宗谷いちか",
+                "order": "2",
+                "color": "#AFDFE4",
+                "textColor": "#000000",
+                "borderColor": "#AFDFE4",
+                "imageurl": "https://774today.ytclipplay.website/ichika.webp",
+                "channelName": "Ichika Channel / 宗谷いちか 【あにまーれ】"
             }
         ]
     }
