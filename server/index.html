@@ -191,6 +191,10 @@
             padding-left: calc(10px + 1vw);
         }
 
+        li {
+            margin: 20px 0 20px 0;
+        }
+
         h2 {
             text-align: center;
         }
@@ -406,6 +410,9 @@
                         div.setAttribute('width', 50);
                         div.setAttribute('height', 50);
                         div.setAttribute('loading', 'lazy')
+                        if (arg.event.extendedProps.platform == "twitch") {
+                            arg.el.firstChild.firstChild.firstChild.textContent = arg.el.firstChild.firstChild.firstChild.textContent + " (Twitch)"
+                        }
                         arg.el.firstChild.firstChild.firstChild.insertBefore(div, arg.el.firstChild.firstChild.firstChild.firstChild);
                     };
                 },
@@ -417,9 +424,14 @@
                         articleIsVisible = true;
                         videoId = info.event.id;
                         $('#detail-title').text(info.event.title);
-                        $('#detail-link').attr({ href: "https://www.youtube.com/watch?v=" + info.event.id });
-                        thumbnailImage.src = "https://img.youtube.com/vi/" + info.event.id + "/maxresdefault.jpg";
-                        $('#detail-channel').attr({ href: "https://www.youtube.com/channel/" + info.event.extendedProps.resourceId });
+                        if (info.event.extendedProps.platform == "youtube") {
+                            $('#detail-link').attr({ href: "https://www.youtube.com/watch?v=" + info.event.id });
+                        }
+                        else {
+                            $('#detail-link').attr({ href: "https://www.twitch.tv/videos/" + info.event.id });
+                        }
+                        thumbnailImage.src = info.event.extendedProps.thumbnailUrl;
+                        $('#detail-channel').attr({ href: info.event.extendedProps.channelUrl });
                         $('#detail-name').text(info.event.extendedProps.channelName)
                         $('#detail-banner').attr({ src: info.event.extendedProps.imageurl });
                         info.jsEvent.stopPropagation();
@@ -470,8 +482,8 @@
     <div id="info" class="popup info" onclick="keepArticle(event)">
         <h2>このサイトについて</h2>
         <ul>
-            <li>774inc.(あにまーれ、ハニスト、ブイアパ、シュガリリ)所属のVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。</li>
-            <li>配信スケジュールは各メンバーのYouTubeチャンネルから取得しています。他チャンネルでの配信や待機所が作られていない予定は表示されません。</li>
+            <li>774inc.(有閑喫茶あにまーれ、ハニーストラップ、ブイアパ、シュガーリリック、緋翼のクロスピース)所属のVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。</li>
+            <li>配信スケジュールは各メンバーのYouTubeチャンネルとTwitchチャンネルから取得しています。他者のチャンネルでの配信や待機所が作られていない予定は表示されません。</li>
             <li>更新は1時間ごとに行っています。突発的な配信や長時間配信は正しく表示されない場合があります。</li>
             <li>スマートフォンアプリのように、ホーム画面から直接使うことができます。ブラウザのメニューから「インストール」を実行してください。(PWA対応)</li>
             <li>ご意見・ご要望は下記TwitterアカウントのDMで受け付けています。</li>
@@ -486,6 +498,9 @@
                     href="https://www.youtube.com/t/terms">YouTubeの利用規約</a>と<a target="_blank"
                     href="https://developers.google.com/youtube/terms/developer-policies">YouTube Data
                     APIの開発方針</a>に従っています。</li>
+            <li>このサイトはTwitch APIを使用しています。開発にあたってはTwitchの<a target="_blank"
+                    href="https://www.twitch.tv/p/ja-jp/legal/terms-of-service/">サービス利用規約</a>と<a target="_blank"
+                    href="https://www.twitch.tv/p/ja-jp/legal/developer-agreement/">デベロッパー規約</a>に従っています。</li>
             <li>このサイトはGoogle Analyticsを使用しています。
                 <ul>
                     <li>このサイトはユーザーからこのサイトへのアクセスに関するデータを収集します。データの収集にはcookieを使用します。</li>

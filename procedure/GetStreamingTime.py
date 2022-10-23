@@ -1,4 +1,4 @@
-import requests,json,datetime,dateutil.parser,os,io
+import requests,json,datetime,dateutil.parser,os,io,re
 from ftplib import FTP
 def getEventData(streamer, id):
     #動画データを取得
@@ -37,7 +37,10 @@ def getEventData(streamer, id):
                         "imageurl":streamer["imageurl"],
                         "liveBroadcastContent":"over",
                         "channelName":streamer["channelName"],
-                        "mode":"auto"
+                        "mode":"auto",
+                        "platform": "youtube",
+                        "thumbnailUrl": "https://img.youtube.com/vi/{0}/maxresdefault.jpg".replace("{0}", id),
+                        "channelUrl": "https://www.youtube.com/channel/" + streamer["id"]
                     }
                 #配信時間が1時間以内の場合
                 else:
@@ -53,7 +56,10 @@ def getEventData(streamer, id):
                         "imageurl":streamer["imageurl"],
                         "liveBroadcastContent":"over",
                         "channelName":streamer["channelName"],
-                        "mode":"auto"
+                        "mode":"auto",
+                        "platform": "youtube",
+                        "thumbnailUrl": "https://img.youtube.com/vi/{0}/maxresdefault.jpg".replace("{0}", id),
+                        "channelUrl": "https://www.youtube.com/channel/" + streamer["id"]
                     }
             #配信中の場合
             else:
@@ -71,7 +77,10 @@ def getEventData(streamer, id):
                         "imageurl":streamer["imageurl"],
                         "liveBroadcastContent":"live",
                         "channelName":streamer["channelName"],
-                        "mode":"auto"
+                        "mode":"auto",
+                        "platform": "youtube",
+                        "thumbnailUrl": "https://img.youtube.com/vi/{0}/maxresdefault.jpg".replace("{0}", id),
+                        "channelUrl": "https://www.youtube.com/channel/" + streamer["id"]
                     }
                 #配信時間が1時間以内の場合
                 else:
@@ -87,7 +96,10 @@ def getEventData(streamer, id):
                         "imageurl":streamer["imageurl"],
                         "liveBroadcastContent":"live",
                         "channelName":streamer["channelName"],
-                        "mode":"auto"
+                        "mode":"auto",
+                        "platform": "youtube",
+                        "thumbnailUrl": "https://img.youtube.com/vi/{0}/maxresdefault.jpg".replace("{0}", id),
+                        "channelUrl": "https://www.youtube.com/channel/" + streamer["id"]
                     }
         #配信開始前の場合
         else:
@@ -106,7 +118,10 @@ def getEventData(streamer, id):
                 "imageurl":streamer["imageurl"],
                 "liveBroadcastContent":"upcoming",
                 "channelName":streamer["channelName"],
-                "mode":"auto"
+                "mode":"auto",
+                "platform": "youtube",
+                "thumbnailUrl": "https://img.youtube.com/vi/{0}/maxresdefault.jpg".replace("{0}", id),
+                "channelUrl": "https://www.youtube.com/channel/" + streamer["id"]
             }
     #動画の場合
     else:
@@ -125,8 +140,115 @@ def getEventData(streamer, id):
             "imageurl":streamer["imageurl"],
             "liveBroadcastContent":"none",
             "channelName":streamer["channelName"],
-            "mode":"auto"
+            "mode":"auto",
+            "platform": "youtube",
+            "thumbnailUrl": "https://img.youtube.com/vi/{0}/maxresdefault.jpg".replace("{0}", id),
+            "channelUrl": "https://www.youtube.com/channel/" + streamer["id"]
         }
+
+#Twitch認証
+def getHeaders(clientId, clientSecret):
+    url = 'https://id.twitch.tv/oauth2/token'
+    json = {
+        'client_id': clientId,
+        'client_secret': clientSecret,
+        'grant_type': 'client_credentials'
+    }
+    response = requests.post(url, json=json).json()
+    headers = {
+        'Authorization': 'Bearer ' + response["access_token"],
+        'Client-id': clientId,
+    }
+    return headers
+
+#Twitch配信データ取得
+def getEventDataTwitch(streamer, videoData):
+    start = dateutil.parser.parse(videoData['published_at'])
+    if start < yesterday:
+        return None
+    regex = re.compile(
+        r'((?P<hours>\d+?)h)?((?P<minutes>\d+?)m)?((?P<seconds>\d+?)s)?')
+    parts = regex.match(videoData["duration"]).groupdict()
+    time_params = {}
+    for name, param in parts.items():
+        if param:
+            time_params[name] = int(param)
+    end = start + datetime.timedelta(**time_params)
+    if now-end > datetime.timedelta(minutes=1):
+        if end-start > datetime.timedelta(minutes=55):
+            return {
+                "id": videoData["id"],
+                "title": videoData["title"],
+                "resourceId": streamer["id"],
+                "color": streamer["color"],
+                "textColor": streamer["textColor"],
+                "borderColor": streamer["borderColor"],
+                "start": start.astimezone(JST).isoformat(),
+                "end": end.astimezone(JST).isoformat(),
+                "imageurl": streamer["imageurl"],
+                "liveBroadcastContent": "over",
+                "channelName": streamer["channelName"],
+                "mode": "auto",
+                "platform": "twitch",
+                "thumbnailUrl": videoData["thumbnail_url"].replace("%{width}", "1280").replace("%{height}", "720"),
+                "channelUrl": "https://www.twitch.tv/" + streamer["englishTitle"]
+            }
+        else:
+            return {
+                "id": videoData["id"],
+                "title": videoData["title"],
+                "resourceId": streamer["id"],
+                "color": streamer["color"],
+                "textColor": streamer["textColor"],
+                "borderColor": streamer["borderColor"],
+                "start": start.astimezone(JST).isoformat(),
+                "allDay": False,
+                "imageurl": streamer["imageurl"],
+                "liveBroadcastContent": "over",
+                "channelName": streamer["channelName"],
+                "mode": "auto",
+                "platform": "twitch",
+                "thumbnailUrl": videoData["thumbnail_url"].replace("%{width}", "1280").replace("%{height}", "720"),
+                "channelUrl": "https://www.twitch.tv/" + streamer["englishTitle"]
+            }
+    else:
+        if end-start > datetime.timedelta(minutes=55):
+            return {
+                "id": videoData["id"],
+                "title": videoData["title"],
+                "resourceId": streamer["id"],
+                "color": streamer["color"],
+                "textColor": streamer["textColor"],
+                "borderColor": streamer["borderColor"],
+                "start": start.astimezone(JST).isoformat(),
+                "end": (now + datetime.timedelta(hours=1)).astimezone(JST).isoformat(),
+                "imageurl": streamer["imageurl"],
+                "liveBroadcastContent": "live",
+                "channelName": streamer["channelName"],
+                "mode": "auto",
+                "platform": "twitch",
+                "thumbnailUrl": videoData["thumbnail_url"].replace("%{width}", "1280").replace("%{height}", "720"),
+                "channelUrl": "https://www.twitch.tv/" + streamer["englishTitle"]
+            }
+        else:
+            return {
+                "id": videoData["id"],
+                "title": videoData["title"],
+                "resourceId": streamer["id"],
+                "color": streamer["color"],
+                "textColor": streamer["textColor"],
+                "borderColor": streamer["borderColor"],
+                "start": start.astimezone(JST).isoformat(),
+                "allDay": False,
+                "imageurl": streamer["imageurl"],
+                "liveBroadcastContent": "live",
+                "channelName": streamer["channelName"],
+                "mode": "auto",
+                "platform": "twitch",
+                "thumbnailUrl": videoData["thumbnail_url"].replace("%{width}", "1280").replace("%{height}", "720"),
+                "channelUrl": "https://www.twitch.tv/" + streamer["englishTitle"]
+            }
+
 def lambda_handler(lambdaEvent,context):
     #変数の初期化
     global JST
@@ -149,8 +271,8 @@ def lambda_handler(lambdaEvent,context):
     #リソースデータとイベントデータを取得
     resources = requests.get("https://774today.ytclipplay.website/resources.json").json()
     knownEvents = requests.get("https://774today.ytclipplay.website/events.json").json()
-    #既存イベントの整理
-    for knownEvent in knownEvents:
+    #既存イベントの整理(youtubeのみ)
+    for knownEvent in filter(lambda x: x["platform"] == "youtube", knownEvents):
         start = dateutil.parser.parse(knownEvent["start"])
         #配信開始が昨日から2時間前までの場合
         if yesterday < start < twoHoursAgo:
@@ -180,7 +302,8 @@ def lambda_handler(lambdaEvent,context):
                                     eventData["mode"] = "manual"
                                     events.append(eventData)
                                     knownIdList.append(eventData["id"])
-    #グループごとに繰り返し
+    
+    # グループごとに繰り返し
     for group in resources:
         #メンバーごとに繰り返し
         for streamer in group["children"]:
@@ -225,12 +348,37 @@ def lambda_handler(lambdaEvent,context):
                         break
             except:
                 failedResource.append(streamer["title"])
-                continue                
+                continue
+    
+    #Twitch配信データ更新
+    clientId = os.environ['clientId']
+    clientSecret = os.environ['clientSecret']
+    headers = getHeaders(clientId, clientSecret)
+    for group in resources:
+        for streamer in group["children"]:
+            if streamer["twitchId"] < 0:
+                continue
+            print(streamer["title"]+"(Twitch)")
+            try:
+                url = "https://api.twitch.tv/helix/videos"
+                params = {'user_id': streamer["twitchId"]}
+                response = requests.get(
+                    url, headers=headers, params=params).json()
+                videos = response['data']
+                for video in filter(lambda x: x["type"] == "archive", videos):
+                    eventData = getEventDataTwitch(streamer, video)
+                    if eventData != None:
+                        events.append(eventData)
+            except:
+                failedResource.append(streamer["title"] + "(Twitch)")
+                continue
+
     log = {
         "datetime":now.astimezone(JST).isoformat(),
         "totalEvents":str(len(events)),
         "failedResource":','.join(failedResource)
     }
+
     ftp = FTP("sv37.star.ne.jp","ytclipplay.website",os.environ['serverPassword'])
     ftp.cwd("774today.ytclipplay.website")
     f = io.BytesIO(json.dumps(events, indent=4).encode())
@@ -238,6 +386,7 @@ def lambda_handler(lambdaEvent,context):
     f = io.BytesIO(json.dumps(log, indent=4).encode())
     ftp.storlines("STOR log.json",f)
     ftp.quit()
+    
     if 0 < len(failedResource):
         raise NameError("Failed to access channels of " + ','.join(failedResource))
     return {
