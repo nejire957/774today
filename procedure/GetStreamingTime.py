@@ -73,8 +73,8 @@ def getEventData(streamer, id):
                     }
             # 配信中の場合
             else:
-                # 配信時間が1時間以上の場合
-                if (now - start) > datetime.timedelta(minutes=55):
+                # 配信時間が30分以上の場合
+                if (now - start) > datetime.timedelta(minutes=25):
                     return {
                         "id": id,
                         "title": videoData["items"][0]["snippet"]["title"],
@@ -92,7 +92,7 @@ def getEventData(streamer, id):
                         "thumbnailUrl": "https://img.youtube.com/vi/{0}/maxresdefault.jpg".replace("{0}", id),
                         "channelUrl": "https://www.youtube.com/channel/" + streamer["id"]
                     }
-                # 配信時間が1時間以内の場合
+                # 配信時間が30分以内の場合
                 else:
                     return {
                         "id": id,
@@ -159,7 +159,7 @@ def getEventData(streamer, id):
         }
 
 
-def getHeaders(clientId, clientSecret):
+def getTwitchHeaders(clientId, clientSecret):
     """Twitch認証"""
     url = 'https://id.twitch.tv/oauth2/token'
     json = {
@@ -175,7 +175,7 @@ def getHeaders(clientId, clientSecret):
     return headers
 
 
-def getStreamEvent(headers, streamer):
+def getTwitchStreamEvent(headers, streamer):
     """Twitchライブデータ取得"""
     url = "https://api.twitch.tv/helix/streams"
     params = {"user_id": streamer["twitchId"]}
@@ -224,7 +224,7 @@ def getStreamEvent(headers, streamer):
     return streamEvent
 
 
-def getArchive(headers, streamer):
+def getTwitchArchive(headers, streamer):
     """Twitchアーカイブデータ取得"""
     url = "https://api.twitch.tv/helix/videos"
     params = {'user_id': streamer["twitchId"]}
@@ -236,7 +236,7 @@ def getArchive(headers, streamer):
     return videos
 
 
-def parseEventDataTwitch(streamer, videoData):
+def parseTwitchEventData(streamer, videoData):
     """Twitchビデオデータ整形"""
     start = dateutil.parser.parse(videoData['published_at'])
     if start < yesterday:
@@ -397,19 +397,19 @@ def lambda_handler(lambdaEvent, context):
     # Twitch配信データ更新
     clientId = os.environ['clientId']
     clientSecret = os.environ['clientSecret']
-    headers = getHeaders(clientId, clientSecret)
+    headers = getTwitchHeaders(clientId, clientSecret)
     for group in resources:
         for streamer in group["children"]:
             if streamer["twitchId"] < 0:
                 continue
             print(streamer["title"]+"(Twitch)")
             try:
-                streamEvent = getStreamEvent(headers, streamer)
+                streamEvent = getTwitchStreamEvent(headers, streamer)
                 if streamEvent != {}:
                     events.append(streamEvent)
-                videos = getArchive(headers, streamer)
+                videos = getTwitchArchive(headers, streamer)
                 for video in filter(lambda x: "title" not in streamEvent or x["title"] != streamEvent["title"], videos):
-                    eventData = parseEventDataTwitch(streamer, video)
+                    eventData = parseTwitchEventData(streamer, video)
                     if eventData != None:
                         events.append(eventData)
             except:
