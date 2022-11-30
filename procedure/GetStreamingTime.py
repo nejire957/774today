@@ -185,7 +185,7 @@ def getTwitchStreamEvent(headers, streamer):
     else:
         videoData = response["data"][0]
         start = dateutil.parser.parse(videoData['started_at'])
-        if now - start > datetime.timedelta(minutes=55):
+        if now - start > datetime.timedelta(minutes=25):
             streamEvent = {
                 "id": videoData["id"],
                 "title": videoData["title"],
