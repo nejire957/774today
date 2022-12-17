@@ -242,21 +242,9 @@
         "order": "4",
         "children": [
             {
-                "id": "UCvPPBoTOor5gm8zSlE2tg4w",
-                "title": "虎城アンナ",
-                "order": "1",
-                "color": "#9966FF",
-                "textColor": "#000000",
-                "borderColor": "#9966FF",
-                "imageurl": "https://774today.ytclipplay.website/anna.webp",
-                "channelName": "Anna Channel / 虎城アンナ 【シュガリリ】",
-                "twitchId": -1,
-                "englishTitle": "anna_kojo"
-            },
-            {
                 "id": "UC--A2dwZW7-M2kID0N6_lfA",
                 "title": "獅子王クリス",
-                "order": "2",
+                "order": "1",
                 "color": "#7FFFD4",
                 "textColor": "#000000",
                 "borderColor": "#7FFFD4",
@@ -268,7 +256,7 @@
             {
                 "id": "UC2hc-00y-MSR6eYA4eQ4tjQ",
                 "title": "龍ヶ崎リン",
-                "order": "3",
+                "order": "2",
                 "color": "#FF3300",
                 "textColor": "#000000",
                 "borderColor": "#FF3300",
@@ -276,6 +264,30 @@
                 "channelName": "Rene Channel / 龍ヶ崎リン 【シュガリリ】",
                 "twitchId": -1,
                 "englishTitle": "rene_ryugasaki"
+            },
+            {
+                "id": "UCrt4cTM_sWH0iySLMkwwYLQ",
+                "title": "蛇宵ティア",
+                "order": "3",
+                "color": "#C0CCFF",
+                "textColor": "#000000",
+                "borderColor": "#C0CCFF",
+                "imageurl": "https://774today.ytclipplay.website/tier.webp",
+                "channelName": "Tier Channel / 蛇宵ティア 【シュガリリ】",
+                "twitchId": -1,
+                "englishTitle": "tier_hebiyoi"
+            },
+            {
+                "id": "UCRY0-zJ1pV4EiKUSLXCXTAg",
+                "title": "狼森メイ",
+                "order": "4",
+                "color": "#FFAFC0",
+                "textColor": "#000000",
+                "borderColor": "#FFAFC0",
+                "imageurl": "https://774today.ytclipplay.website/may.webp",
+                "channelName": "May Channel / 狼森メイ 【シュガリリ】",
+                "twitchId": -1,
+                "englishTitle": "may_oinomori"
             }
         ]
     },
@@ -359,9 +371,40 @@
         ]
     },
     {
+        "id": "solo",
+        "title": "ソロタレント",
+        "order": "6",
+        "children": [
+            {
+                "id": "UC2kyQhzGOB-JPgcQX9OMgEw",
+                "title": "宗谷いちか",
+                "order": "2",
+                "color": "#AFDFE4",
+                "textColor": "#000000",
+                "borderColor": "#AFDFE4",
+                "imageurl": "https://774today.ytclipplay.website/ichika.webp",
+                "channelName": "Ichika Channel / 宗谷 いちか 【774inc.】",
+                "twitchId": -1,
+                "englishTitle": "ichika_souya"
+            },
+            {
+                "id": "UCvPPBoTOor5gm8zSlE2tg4w",
+                "title": "虎城アンナ",
+                "order": "3",
+                "color": "#9966FF",
+                "textColor": "#000000",
+                "borderColor": "#9966FF",
+                "imageurl": "https://774today.ytclipplay.website/anna.webp",
+                "channelName": "Anna Channel / 虎城アンナ 【シュガリリ】",
+                "twitchId": -1,
+                "englishTitle": "anna_kojo"
+            }
+        ]
+    },
+    {
         "id": "official",
         "title": "公式",
-        "order": "6",
+        "order": "7",
         "children": [
             {
                 "id": "UCJEpkwwDiTKS5lxwFttEbIQ",
@@ -374,18 +417,6 @@
                 "channelName": "ななし公式チャンネル【774inc.】",
                 "twitchId": -1,
                 "englishTitle": "nanashi_official"
-            },
-            {
-                "id": "UC2kyQhzGOB-JPgcQX9OMgEw",
-                "title": "宗谷いちか",
-                "order": "2",
-                "color": "#AFDFE4",
-                "textColor": "#000000",
-                "borderColor": "#AFDFE4",
-                "imageurl": "https://774today.ytclipplay.website/ichika.webp",
-                "channelName": "Ichika Channel / 宗谷 いちか 【774inc.】",
-                "twitchId": -1,
-                "englishTitle": "ichika_souya"
             }
         ]
     }

@@ -201,6 +201,10 @@
             text-align: center;
         }
 
+        #detail-title {
+            white-space: pre-wrap;
+        }
+
         #detail-banner {
             display: inline-block;
             vertical-align: middle;
@@ -425,11 +429,12 @@
                     else {
                         articleIsVisible = true;
                         videoId = info.event.id;
-                        $('#detail-title').text(info.event.title);
                         if (info.event.extendedProps.platform == "youtube") {
+                            $('#detail-title').text(info.event.title);
                             $('#detail-link').attr({ href: "https://www.youtube.com/watch?v=" + info.event.id });
                         }
                         else {
+                            $('#detail-title').text("(Twitch)\n" + info.event.title);
                             if (info.event.extendedProps.liveBroadcastContent == "live") {
                                 $('#detail-link').attr({ href: info.event.extendedProps.channelUrl });
                             }
