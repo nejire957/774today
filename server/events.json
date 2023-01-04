@@ -1,15 +1,36 @@
 [
     {
-        "id": "iKc_D8OCsgU",
-        "title": "【うたってみた】Mr.Music【774inc.】",
-        "resourceId": "UC3EhsuKdEkI99TWZwZgWutg",
-        "color": "#FFFFFF",
+        "id": "sxkxqhvFFx4",
+        "title": "【クロックタワー2】怖すぎる伝説ゲーム？！クロックタワー2やるぞ！！！【周防パトラ / ハニスト】",
+        "resourceId": "UCeLzT-7b2PBcunJplmWtoDg",
+        "color": "#F25C79",
         "textColor": "#000000",
-        "borderColor": "#000000",
-        "start": "2020-10-25T20:00:13+09:00",
-        "end": "2020-10-25T20:06:43+09:00",
-        "imageurl": "https://774today.ytclipplay.website/uge.webp",
-        "liveBroadcastContent": "none",
-        "channelName":"Uge Channel / 杏戸ゆげ 【ブイアパ】"
+        "borderColor": "#F25C79",
+        "start": "2023-01-03T15:00:31+09:00",
+        "end": "2023-01-03T18:37:57+09:00",
+        "imageurl": "https://774today.ytclipplay.website/patra.webp",
+        "liveBroadcastContent": "over",
+        "channelName": "Patra Channel / 周防パトラ 【ハニスト】",
+        "mode": "auto",
+        "platform": "youtube",
+        "thumbnailUrl": "https://img.youtube.com/vi/sxkxqhvFFx4/maxresdefault.jpg",
+        "channelUrl": "https://www.youtube.com/channel/UCeLzT-7b2PBcunJplmWtoDg"
+    },
+    {
+        "id": "1697290319",
+        "title": "魚採って寿司作って",
+        "resourceId": "UCXp7sNC0F_qkjickvlYkg-Q",
+        "color": "#ff7a3a",
+        "textColor": "#ffffff",
+        "borderColor": "#ff7a3a",
+        "start": "2023-01-04T19:02:39+09:00",
+        "end": "2023-01-04T23:44:57+09:00",
+        "imageurl": "https://774today.ytclipplay.website/kuku.webp",
+        "liveBroadcastContent": "over",
+        "channelName": "Kuku Channel / 風見くく 【あにまーれ】",
+        "mode": "auto",
+        "platform": "twitch",
+        "thumbnailUrl": "https://static-cdn.jtvnw.net/cf_vods/d3vd9lfkzbru3h/0737626cf070cd27082d_kuku_kazami_39972142007_1672826554//thumb/thumb0-1280x720.jpg",
+        "channelUrl": "https://www.twitch.tv/kuku_kazami"
     }
 ]
