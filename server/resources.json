@@ -1,6 +1,6 @@
 [
     {
-        "id": "Animare",
+        "id": "animare",
         "title": "有閑喫茶あにまーれ",
         "order": "1",
         "children": [
@@ -115,7 +115,7 @@
         ]
     },
     {
-        "id": "HoneyStrap",
+        "id": "honeystrap",
         "title": "ハニーストラップ",
         "order": "2",
         "children": [
@@ -170,7 +170,7 @@
         ]
     },
     {
-        "id": "VApArt",
+        "id": "vapart",
         "title": "ブイアパ",
         "order": "3",
         "children": [
@@ -237,7 +237,7 @@
         ]
     },
     {
-        "id": "SugarLylic",
+        "id": "sugarlyric",
         "title": "シュガーリリック",
         "order": "4",
         "children": [
@@ -269,9 +269,9 @@
                 "id": "UCrt4cTM_sWH0iySLMkwwYLQ",
                 "title": "蛇宵ティア",
                 "order": "3",
-                "color": "#C0CCFF",
+                "color": "#84A2D4",
                 "textColor": "#000000",
-                "borderColor": "#C0CCFF",
+                "borderColor": "#84A2D4",
                 "imageurl": "https://774today.ytclipplay.website/tier.webp",
                 "channelName": "Tier Channel / 蛇宵ティア 【シュガリリ】",
                 "twitchId": -1,
@@ -281,9 +281,9 @@
                 "id": "UCRY0-zJ1pV4EiKUSLXCXTAg",
                 "title": "狼森メイ",
                 "order": "4",
-                "color": "#FFAFC0",
+                "color": "#FEEEED",
                 "textColor": "#000000",
-                "borderColor": "#FFAFC0",
+                "borderColor": "#FEEEED",
                 "imageurl": "https://774today.ytclipplay.website/may.webp",
                 "channelName": "May Channel / 狼森メイ 【シュガリリ】",
                 "twitchId": -1,
@@ -292,7 +292,7 @@
         ]
     },
     {
-        "id": "Hiyocro",
+        "id": "hiyocro",
         "title": "緋翼のクロスピース",
         "order": "5",
         "children": [

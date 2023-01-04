@@ -1,3 +1,11 @@
+<!--
+    Copyright (c) 2022 nejire957
+    This file is part of 774today.
+    774today is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+    774today is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+    You should have received a copy of the GNU General Public License along with Foobar. If not, see <https://www.gnu.org/licenses/>. 
+-->
+
 <!DOCTYPE html>
 
 <head>
@@ -25,11 +33,9 @@
     <meta name="twitter:description" content="774inc.所属のVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。" />
     <meta name="twitter:image" content="https://774today.ytclipplay.website/screenshot.png" />
     <meta name="twitter:card" content="summary" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/main.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/locales-all.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.0.2/index.global.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8b2237670b.js" crossorigin="anonymous"></script>
     <link rel="manifest" href="/manifest.json">
     <style>
         html,
@@ -62,6 +68,12 @@
             height: calc(28px + 0.6vw);
             z-index: 2;
             position: relative;
+        }
+
+        #header-buttons {
+            display: table;
+            border-collapse: separate;
+            border-spacing: 10px 0;
         }
 
         .header-item {
@@ -104,6 +116,14 @@
         }
 
         #info-button:hover {
+            cursor: pointer;
+        }
+
+        #filter-button {
+            text-align: right;
+        }
+
+        #filter-button:hover {
             cursor: pointer;
         }
 
@@ -180,10 +200,39 @@
             background-color: white;
             color: black;
             z-index: 5;
+            max-height: 80vh;
         }
 
-        .info {
-            max-height: 80vh;
+        .filter-group {
+            margin: 20px 0 20px 0;
+        }
+
+        .filter-legend {
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .checkbox-area {
+            display: inline-block;
+        }
+
+        input[type=checkbox] {
+            transform: scale(1.2);
+            vertical-align: 0.2vw;
+            display: inline;
+        }
+
+        input:hover {
+            cursor: pointer;
+        }
+
+        .filter-page {
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+
+        .info-page {
             text-align: left;
             overflow-x: hidden;
             overflow-y: scroll;
@@ -252,7 +301,7 @@
         var timeoutId;      //スクロールイベントの発火量調整用
         var cooling = false;      //スクロールイベントの発火量調整用
         var scrollPosition = 0;     //パネル表示時のスクロール量記録
-        function toggleInfo(e) {      //サイト情報の表示/非表示を切り替える
+        function toggleInfoPage(e) {      //サイト情報の表示/非表示を切り替える
             if (articleIsVisible) {
                 hideArticle();
             }
@@ -260,6 +309,21 @@
                 articleIsVisible = true;
                 $('#info').css({ zIndex: 100 });
                 $('#info').fadeIn(250);
+                scrollPosition = $('#content').scrollTop();
+                var top = scrollPosition - $('#header').height() - $('#date').height();
+                $('#content').addClass('fixed');
+                $('#content').css({ 'top': -top });
+                e.stopPropagation();
+            }
+        }
+        function toggleFilterPage(e) {      //フィルターの表示/非表示を切り替える
+            if (articleIsVisible) {
+                hideArticle();
+            }
+            else {
+                articleIsVisible = true;
+                $('#filter').css({ zIndex: 100 });
+                $('#filter').fadeIn(250);
                 scrollPosition = $('#content').scrollTop();
                 var top = scrollPosition - $('#header').height() - $('#date').height();
                 $('#content').addClass('fixed');
@@ -359,6 +423,69 @@
                 cooling = false;
             }, 500);
         }
+        function toggleGroupFilter(e, elem) {
+            var legend = $(elem).parent()[0];
+            var checkboxAreas = $(legend).nextAll();
+            checkboxAreas.each(function () {
+                checkbox = $(this).children()[0];
+                if ($(elem).prop('checked')) {
+                    $(checkbox).prop('checked', true);
+                    window.localStorage.setItem($(checkbox).attr('id'), 'true');
+                } else {
+                    $(checkbox).prop('checked', false);
+                    window.localStorage.setItem($(checkbox).attr('id'), 'false');
+                }
+            });
+            flag = true;
+            $('.filter').each(function () {
+                if ($(this).prop('checked') == false) {
+                    flag = false;
+                }
+            });
+            if (flag) {
+                $('#filter-button').removeAttr('style');
+            } else {
+                $('#filter-button').attr('style', "color: crimson;");
+            }
+            calendarModel.refetchEvents();
+        }
+        function toggleFilter(e, elem) {
+            var targetCheckboxArea = $(elem).parent()[0];
+            var fieldset = $(targetCheckboxArea).parent()[0];
+            var legend = $(fieldset).children()[0];
+            var checkboxAreas = $(fieldset).children().slice(1);
+            var checkboxGroup = $(legend).children()[0];
+            var flag = true;
+            if ($(elem).prop('checked')) {
+                window.localStorage.setItem($(elem).attr('id'), 'true');
+                checkboxAreas.each(function () {
+                    var tempCheckbox = $(this).children()[0];
+                    if ($(tempCheckbox).prop('checked') == false) {
+                        flag = false;
+                    }
+                })
+                if (flag) {
+                    $(checkboxGroup).prop('checked', true);
+                }
+            } else {
+                window.localStorage.setItem($(elem).attr('id'), 'false');
+                $(checkboxGroup).prop('checked', false);
+            }
+            flag = true;
+            $('.filter').each(function () {
+                if ($(this).prop('checked') == false) {
+                    flag = false;
+                }
+            });
+            if (flag) {
+                $('#filter-button').removeAttr('style');
+            } else {
+                $('#filter-button').attr('style', "color: crimson;");
+            }
+            calendarModel.refetchEvents();
+        }
+        var calendarModel;
+        var resources;
         document.addEventListener('DOMContentLoaded', function () {      //DOMが読み込まれてから、PWA対応、ダークモード設定、カレンダーの初期化、更新日時の取得、を行う
             if ('serviceWorker' in navigator) {     //PWA対応
                 console.log('Found serviceWorker');
@@ -382,82 +509,112 @@
             }
             $('#date').text(now.getFullYear() + "年" + month + "月" + now.getDate() + "日 (今日)");
             var calendarView = document.getElementById('calendar');
-            var calendar = new FullCalendar.Calendar(calendarView, {        //カレンダーを初期化する
-                locale: "jp",
-                height: "auto",
-                headerToolbar: {
-                    left: '',
-                    center: '',
-                    right: ''
-                },
-                initialView: 'timeGridDay',
-                titleFormat: {
-                    day: "numeric"
-                },
-                eventTimeFormat: {
-                    hour: 'numeric',
-                    minute: 'numeric',
-                    hour12: false
-                },
-                slotLabelFormat: {
-                    hour: 'numeric',
-                    minute: 'numeric',
-                    hour12: false
-                },
-                allDaySlot: false,
-                slotMinTime: "-24:00:00",
-                slotMaxTime: "48:00:00",
-                nowIndicator: true,
-                dayHeaders: false,
-                eventDidMount: function (arg) {      //イベントに顔画像を入れる
-                    if (arg.event.extendedProps.imageurl) {
-                        var div = document.createElement('img');
-                        div.setAttribute('src', arg.event.extendedProps.imageurl);
-                        div.setAttribute('width', 50);
-                        div.setAttribute('height', 50);
-                        div.setAttribute('loading', 'lazy')
-                        if (arg.event.extendedProps.platform == "twitch") {
-                            arg.el.firstChild.firstChild.firstChild.textContent = arg.el.firstChild.firstChild.firstChild.textContent + " (Twitch)"
+            $.when(
+                $.getJSON("https://774today.ytclipplay.website/resources.json", (data) => {
+                    resources = data;
+                    resources.forEach((group, index) => {
+                        group.children.forEach((talent, index2) => {
+                            if (window.localStorage.getItem(talent.id) == null) {
+                                window.localStorage.setItem(talent.id, 'true');
+                            } else if (window.localStorage.getItem(talent.id) == 'false') {
+                                $('#' + talent.id).prop('checked', false);
+                                var checkboxArea = $('#' + talent.id).parent()[0];
+                                var legend = $(checkboxArea).siblings()[0];
+                                var checkbox = $(checkboxArea).children()[0];
+                                $(checkbox).prop('checked', false);
+                                $('#filter-button').attr('style', "color: crimson;");
+                            }
+                        });
+                    });
+                })
+            ).done(
+                calendarModel = new FullCalendar.Calendar(calendarView, {        //カレンダーを初期化する
+                    schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
+                    locale: "jp",
+                    height: "auto",
+                    headerToolbar: {
+                        left: '',
+                        center: '',
+                        right: ''
+                    },
+                    initialView: 'timeGridDay',
+                    titleFormat: {
+                        day: "numeric"
+                    },
+                    eventTimeFormat: {
+                        hour: 'numeric',
+                        minute: 'numeric',
+                        hour12: false
+                    },
+                    slotLabelFormat: {
+                        hour: 'numeric',
+                        minute: 'numeric',
+                        hour12: false
+                    },
+                    allDaySlot: false,
+                    slotMinTime: "-24:00:00",
+                    slotMaxTime: "48:00:00",
+                    nowIndicator: true,
+                    dayHeaders: false,
+                    eventDidMount: function (arg) {      //イベントに顔画像を入れる
+                        if (arg.event.extendedProps.imageurl) {
+                            var div = document.createElement('img');
+                            div.setAttribute('src', arg.event.extendedProps.imageurl);
+                            div.setAttribute('width', 50);
+                            div.setAttribute('height', 50);
+                            div.setAttribute('loading', 'lazy')
+                            if (arg.event.extendedProps.platform == "twitch") {
+                                arg.el.firstChild.firstChild.firstChild.textContent = arg.el.firstChild.firstChild.firstChild.textContent + " (Twitch)"
+                            }
+                            arg.el.firstChild.firstChild.firstChild.insertBefore(div, arg.el.firstChild.firstChild.firstChild.firstChild);
                         }
-                        arg.el.firstChild.firstChild.firstChild.insertBefore(div, arg.el.firstChild.firstChild.firstChild.firstChild);
-                    };
-                },
-                eventClick: function (info) {        //イベントクリック時に動画詳細を表示する
-                    if (articleIsVisible) {
-                        hideArticle();
-                    }
-                    else {
-                        articleIsVisible = true;
-                        videoId = info.event.id;
-                        if (info.event.extendedProps.platform == "youtube") {
-                            $('#detail-title').text(info.event.title);
-                            $('#detail-link').attr({ href: "https://www.youtube.com/watch?v=" + info.event.id });
+                    },
+                    eventClick: function (info) {        //イベントクリック時に動画詳細を表示する
+                        if (articleIsVisible) {
+                            hideArticle();
                         }
                         else {
-                            $('#detail-title').text("(Twitch)\n" + info.event.title);
-                            if (info.event.extendedProps.liveBroadcastContent == "live") {
-                                $('#detail-link').attr({ href: info.event.extendedProps.channelUrl });
+                            articleIsVisible = true;
+                            videoId = info.event.id;
+                            if (info.event.extendedProps.platform == "youtube") {
+                                $('#detail-title').text(info.event.title);
+                                $('#detail-link').attr({ href: "https://www.youtube.com/watch?v=" + info.event.id });
                             }
                             else {
-                                $('#detail-link').attr({ href: "https://www.twitch.tv/videos/" + info.event.id });
+                                $('#detail-title').text("(Twitch)\n" + info.event.title);
+                                if (info.event.extendedProps.liveBroadcastContent == "live") {
+                                    $('#detail-link').attr({ href: info.event.extendedProps.channelUrl });
+                                }
+                                else {
+                                    $('#detail-link').attr({ href: "https://www.twitch.tv/videos/" + info.event.id });
+                                }
                             }
+                            if (info.event.extendedProps.thumbnailUrl == "") {
+                                thumbnailImage.src = "https://774today.ytclipplay.website/no_image.png"
+                            }
+                            else {
+                                thumbnailImage.src = info.event.extendedProps.thumbnailUrl;
+                            }
+                            $('#detail-channel').attr({ href: info.event.extendedProps.channelUrl });
+                            $('#detail-name').text(info.event.extendedProps.channelName)
+                            $('#detail-banner').attr({ src: info.event.extendedProps.imageurl });
+                            info.jsEvent.stopPropagation();
                         }
-                        if (info.event.extendedProps.thumbnailUrl == "") {
-                            thumbnailImage.src = "https://774today.ytclipplay.website/no_image.png"
-                        }
-                        else {
-                            thumbnailImage.src = info.event.extendedProps.thumbnailUrl;
-                        }
-                        $('#detail-channel').attr({ href: info.event.extendedProps.channelUrl });
-                        $('#detail-name').text(info.event.extendedProps.channelName)
-                        $('#detail-banner').attr({ src: info.event.extendedProps.imageurl });
-                        info.jsEvent.stopPropagation();
-                    }
-                },
-                events: "https://774today.ytclipplay.website/events.json",
-                resources: "https://774today.ytclipplay.website/resources.json"
-            });
-            calendar.render();
+                    },
+                    eventSourceSuccess: function (contents, response) {
+                        var events = [];
+                        contents.forEach(content => {
+                            if (window.localStorage.getItem(content.resourceId) == 'true') {
+                                events.push(content);
+                            }
+                        });
+                        return events;
+                    },
+                    events: "https://774today.ytclipplay.website/events.json",
+                    resources: resources
+                })
+            );
+            calendarModel.render();
             $('body').show();
             $('#content').scrollTop((24 + now.getHours() - 3) * 80);
             var req = new XMLHttpRequest();
@@ -486,23 +643,236 @@
             <div id="update" class="header-item"></div>
             <div id="notice" class="header-item" onclick="location.reload()">更新あり</div>
         </div>
-        <div>
+        <div id="header-buttons">
             <div id="darkmode-button" class="header-item" onclick="changeColorMode()"><i id="sun"
                     class="fas fa-sun"></i><i id="moon" class="fas fa-moon"></i></div>
-            <div id="info-button" class="header-item" onclick="toggleInfo(event)">このサイトについて</div>
+            <div id="filter-button" class="header-item" onclick="toggleFilterPage(event)">
+                <i class="fa-solid fa-filter"></i>
+            </div>
+            <div id="info-button" class="header-item" onclick="toggleInfoPage(event)">
+                <i class="fa-solid fa-circle-info"></i>
+            </div>
         </div>
     </header>
     <div id="date"></div>
     <div id="content" onscroll="onScroll()">
         <div id="calendar"></div>
     </div>
-    <div id="info" class="popup info" onclick="keepArticle(event)">
+    <div id="filter" class="popup filter-page" onclick="keepArticle(event)">
+        <h2>表示するタレントを選択</h2>
+        <fieldset class="filter-group">
+            <legend class="filter-legend">
+                <input type="checkbox" class="filter" id="checkbox-animare" name="有閑喫茶あにまーれ"
+                    onclick="toggleGroupFilter(event, this)" checked>
+                有閑喫茶あにまーれ
+            </legend>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UC0Owc36U9lOyi9Gx9Ic-4qg" name="因幡はねる"
+                    onclick="toggleFilter(event, this)" checked>
+                因幡はねる
+            </div>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UCRvpMpzAXBRKJQuk-8-Sdvg" name="日ノ隈らん"
+                    onclick="toggleFilter(event, this)" checked>
+                日ノ隈らん
+            </div>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UCXp7sNC0F_qkjickvlYkg-Q" name="風見くく"
+                    onclick="toggleFilter(event, this)" checked>
+                風見くく
+            </div>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UCW8WKciBixmaqaGqrlTITRQ" name="柚原いづみ"
+                    onclick="toggleFilter(event, this)" checked>
+                柚原いづみ
+            </div>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UCFsWaTQ7kT76jNNGeGIKNSA" name="飛良ひかり"
+                    onclick="toggleFilter(event, this)" checked>
+                飛良ひかり
+            </div>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UC_WOBIopwUih0rytRnr_1Ag" name="瀬島るい"
+                    onclick="toggleFilter(event, this)" checked>
+                瀬島るい
+            </div>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UC3xG1XWzAKt5dxSxktJvtxg" name="大浦るかこ"
+                    onclick="toggleFilter(event, this)" checked>
+                大浦るかこ
+            </div>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UCqskJ0nmw-_eweWfsKvbrzQ" name="月野木ちろる"
+                    onclick="toggleFilter(event, this)" checked>
+                月野木ちろる
+            </div>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UC4PrHgUcAtOoj_LKmUL-uLQ" name="湖南みあ"
+                    onclick="toggleFilter(event, this)" checked>
+                湖南みあ
+            </div>
+        </fieldset>
+        <fieldset class="filter-group">
+            <legend class="filter-legend">
+                <input type="checkbox" class="filter" id="checkbox-honeystrap" name="ハニーストラップ"
+                    onclick="toggleGroupFilter(event, this)" checked>
+                ハニーストラップ
+            </legend>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UCeLzT-7b2PBcunJplmWtoDg" name="周防パトラ"
+                    onclick="toggleFilter(event, this)" checked>
+                周防パトラ
+            </div>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UCYTz3uIgwVY3ZU-IQJS8r3A" name="島村シャルロット"
+                    onclick="toggleFilter(event, this)" checked>
+                島村シャルロット
+            </div>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UCwePpiw1ocZRSNSkpKvVISw" name="西園寺メアリ"
+                    onclick="toggleFilter(event, this)" checked>
+                西園寺メアリ
+            </div>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UCDh2bWI5EDu7PavqwICkVpA" name="堰代ミコ"
+                    onclick="toggleFilter(event, this)" checked>
+                堰代ミコ
+            </div>
+        </fieldset>
+        <fieldset class="filter-group">
+            <legend class="filter-legend">
+                <input type="checkbox" class="filter" id="checkbox-vapart" name="ブイアパ"
+                    onclick="toggleGroupFilter(event, this)" checked>
+                ブイアパ
+            </legend>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UC3EhsuKdEkI99TWZwZgWutg" name="杏戸ゆげ"
+                    onclick="toggleFilter(event, this)" checked>
+                杏戸ゆげ
+            </div>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UCmqrvfLMws-GLGHQcB5dasg" name="花奏かのん"
+                    onclick="toggleFilter(event, this)" checked>
+                花奏かのん
+            </div>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UChXm-xAYPfygrbyLo2yCASQ" name="季咲あんこ"
+                    onclick="toggleFilter(event, this)" checked>
+                季咲あんこ
+            </div>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UCzUNASdzI4PV5SlqtYwAkKQ" name="小森めと"
+                    onclick="toggleFilter(event, this)" checked>
+                小森めと
+            </div>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UCV4EoK6BVNl7wxuxpUvvSWA" name="不磨わっと"
+                    onclick="toggleFilter(event, this)" checked>
+                不磨わっと
+            </div>
+        </fieldset>
+        <fieldset class="filter-group">
+            <legend class="filter-legend">
+                <input type="checkbox" class="filter" id="checkbox-sugarlyric" name="シュガーリリック"
+                    onclick="toggleGroupFilter(event, this)" checked>
+                シュガーリリック
+            </legend>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UC--A2dwZW7-M2kID0N6_lfA" name="獅子王クリス"
+                    onclick="toggleFilter(event, this)" checked>
+                獅子王クリス
+            </div>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UC2hc-00y-MSR6eYA4eQ4tjQ" name="龍ヶ崎リン"
+                    onclick="toggleFilter(event, this)" checked>
+                龍ヶ崎リン
+            </div>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UCrt4cTM_sWH0iySLMkwwYLQ" name="蛇宵ティア"
+                    onclick="toggleFilter(event, this)" checked>
+                蛇宵ティア
+            </div>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UCRY0-zJ1pV4EiKUSLXCXTAg" name="狼森メイ"
+                    onclick="toggleFilter(event, this)" checked>
+                狼森メイ
+            </div>
+        </fieldset>
+        <fieldset class="filter-group">
+            <legend class="filter-legend">
+                <input type="checkbox" class="filter" id="checkbox-hiyocro" name="緋翼のクロスピース"
+                    onclick="toggleGroupFilter(event, this)" checked>
+                緋翼のクロスピース
+            </legend>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UCkpqb53xiOvOgNYEbNpFSyw" name="茜音カンナ"
+                    onclick="toggleFilter(event, this)" checked>
+                茜音カンナ
+            </div>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UCBJ6nejlzes6mm9UruaxQsA" name="涼海ネモ"
+                    onclick="toggleFilter(event, this)" checked>
+                涼海ネモ
+            </div>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UCBxw5bdrbKO7E60E4s3KgQg" name="橙里セイ"
+                    onclick="toggleFilter(event, this)" checked>
+                橙里セイ
+            </div>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UC_hjHmi-ODGhHlSzD16p5Pw" name="家入ポポ"
+                    onclick="toggleFilter(event, this)" checked>
+                家入ポポ
+            </div>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UCGyywYAJd2O5Y7yUyr7qBRQ" name="瑚白ユリ"
+                    onclick="toggleFilter(event, this)" checked>
+                瑚白ユリ
+            </div>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UC3MBUvkVTI9p-p0be7y7TQA" name="紫水キキ"
+                    onclick="toggleFilter(event, this)" checked>
+                紫水キキ
+            </div>
+        </fieldset>
+        <fieldset class="filter-group">
+            <legend class="filter-legend">
+                <input type="checkbox" class="filter" id="checkbox-solo" name="ソロタレント"
+                    onclick="toggleGroupFilter(event, this)" checked>
+                ソロタレント
+            </legend>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UC2kyQhzGOB-JPgcQX9OMgEw" name="宗谷いちか"
+                    onclick="toggleFilter(event, this)" checked>
+                宗谷いちか
+            </div>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UCvPPBoTOor5gm8zSlE2tg4w" name="虎城アンナ"
+                    onclick="toggleFilter(event, this)" checked>
+                虎城アンナ
+            </div>
+        </fieldset>
+        <fieldset class="filter-group">
+            <legend class="filter-legend">
+                <input type="checkbox" class="filter" id="checkbox-official" name="公式"
+                    onclick="toggleGroupFilter(event, this)" checked>
+                公式
+            </legend>
+            <div class="checkbox-area">
+                <input type="checkbox" class="filter" id="UCJEpkwwDiTKS5lxwFttEbIQ" name="ななし公式"
+                    onclick="toggleFilter(event, this)" checked>
+                ななし公式チャンネル
+            </div>
+        </fieldset>
+    </div>
+    <div id="info" class="popup info-page" onclick="keepArticle(event)">
         <h2>このサイトについて</h2>
         <ul>
-            <li>774inc.(有閑喫茶あにまーれ、ハニーストラップ、ブイアパ、シュガーリリック、緋翼のクロスピース)所属のVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。</li>
-            <li>配信スケジュールは各メンバーのYouTubeチャンネルとTwitchチャンネルから取得しています。他者のチャンネルでの配信や待機所が作られていない予定は表示されません。</li>
-            <li>更新は1時間ごとに行っています。突発的な配信や長時間配信は正しく表示されない場合があります。</li>
+            <li>774inc.に所属するタレントの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。</li>
+            <li>配信スケジュールは各タレントのYouTubeチャンネルとTwitchチャンネルから取得しています。他者のチャンネルでの配信や待機所が作られていない予定は表示されません。</li>
+            <li>更新は1時間ごとに行っています。突発的な配信や長時間の配信は正しく表示されない場合があります。</li>
             <li>スマートフォンアプリのように、ホーム画面から直接使うことができます。ブラウザのメニューから「インストール」を実行してください。(PWA対応)</li>
+            <li>画面右上の右から2番目にあるボタンから表示するタレントを選択できます。選択内容はこのサイトを離れても維持されます。この機能のために、このサイトはブラウザのローカルストレージを使用します。</li>
             <li>ご意見・ご要望は下記TwitterアカウントのDMで受け付けています。</li>
             <li>製作者:ねじれ図形 | <a target="_blank" href="https://twitter.com/nejire957">Twitter</a> | <a target="_blank"
                     href="https://github.com/nejire957/774today">GitHub</a></li>
