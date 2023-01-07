@@ -170,76 +170,9 @@
         ]
     },
     {
-        "id": "vapart",
-        "title": "ブイアパ",
-        "order": "3",
-        "children": [
-            {
-                "id": "UC3EhsuKdEkI99TWZwZgWutg",
-                "title": "杏戸ゆげ",
-                "order": "1",
-                "color": "#D9DFDF",
-                "textColor": "#000000",
-                "borderColor": "#D9DFDF",
-                "imageurl": "https://774today.ytclipplay.website/uge.webp",
-                "channelName": "Uge Channel / 杏戸ゆげ 【ブイアパ】",
-                "twitchId": 840391068,
-                "englishTitle": "uge_and"
-            },
-            {
-                "id": "UCmqrvfLMws-GLGHQcB5dasg",
-                "title": "花奏かのん",
-                "order": "3",
-                "color": "#c9fff3",
-                "textColor": "#000000",
-                "borderColor": "#c9fff3",
-                "imageurl": "https://774today.ytclipplay.website/kanon.webp",
-                "channelName": "花奏 かのん -Kanade Kanon Official-",
-                "twitchId": -1,
-                "englishTitle": "kanon_kanade"
-            },
-            {
-                "id": "UChXm-xAYPfygrbyLo2yCASQ",
-                "title": "季咲あんこ",
-                "order": "4",
-                "color": "#ffccff",
-                "textColor": "#000000",
-                "borderColor": "#ffccff",
-                "imageurl": "https://774today.ytclipplay.website/anko.webp",
-                "channelName": "Anko Channel / 季咲あんこ 【ブイアパ】",
-                "twitchId": 823830476,
-                "englishTitle": "anko_kisaki"
-            },
-            {
-                "id": "UCzUNASdzI4PV5SlqtYwAkKQ",
-                "title": "小森めと",
-                "order": "5",
-                "color": "#FFC000",
-                "textColor": "#000000",
-                "borderColor": "#FFC000",
-                "imageurl": "https://774today.ytclipplay.website/met.webp",
-                "channelName": "Met Channel / 小森めと 【ブイアパ】",
-                "twitchId": 801682194,
-                "englishTitle": "met_komori"
-            },
-            {
-                "id": "UCV4EoK6BVNl7wxuxpUvvSWA",
-                "title": "不磨わっと",
-                "order": "6",
-                "color": "#EE82EE",
-                "textColor": "#000000",
-                "borderColor": "#EE82EE",
-                "imageurl": "https://774today.ytclipplay.website/wat.webp",
-                "channelName": "Wat Channel / 不磨わっと 【ブイアパ】",
-                "twitchId": -1,
-                "englishTitle": "wat_huma"
-            }
-        ]
-    },
-    {
         "id": "sugarlyric",
         "title": "シュガーリリック",
-        "order": "4",
+        "order": "3",
         "children": [
             {
                 "id": "UC--A2dwZW7-M2kID0N6_lfA",
@@ -294,7 +227,7 @@
     {
         "id": "hiyocro",
         "title": "緋翼のクロスピース",
-        "order": "5",
+        "order": "4",
         "children": [
             {
                 "id": "UCkpqb53xiOvOgNYEbNpFSyw",
@@ -373,12 +306,12 @@
     {
         "id": "solo",
         "title": "ソロタレント",
-        "order": "6",
+        "order": "5",
         "children": [
             {
                 "id": "UC2kyQhzGOB-JPgcQX9OMgEw",
                 "title": "宗谷いちか",
-                "order": "2",
+                "order": "1",
                 "color": "#AFDFE4",
                 "textColor": "#000000",
                 "borderColor": "#AFDFE4",
@@ -390,7 +323,7 @@
             {
                 "id": "UCvPPBoTOor5gm8zSlE2tg4w",
                 "title": "虎城アンナ",
-                "order": "3",
+                "order": "2",
                 "color": "#9966FF",
                 "textColor": "#000000",
                 "borderColor": "#9966FF",
@@ -398,13 +331,73 @@
                 "channelName": "Anna Channel / 虎城アンナ 【シュガリリ】",
                 "twitchId": -1,
                 "englishTitle": "anna_kojo"
+            },
+            {
+                "id": "UC3EhsuKdEkI99TWZwZgWutg",
+                "title": "杏戸ゆげ",
+                "order": "3",
+                "color": "#D9DFDF",
+                "textColor": "#000000",
+                "borderColor": "#D9DFDF",
+                "imageurl": "https://774today.ytclipplay.website/uge.webp",
+                "channelName": "Uge Channel / 杏戸ゆげ 【ブイアパ】",
+                "twitchId": 840391068,
+                "englishTitle": "uge_and"
+            },
+            {
+                "id": "UCmqrvfLMws-GLGHQcB5dasg",
+                "title": "花奏かのん",
+                "order": "4",
+                "color": "#c9fff3",
+                "textColor": "#000000",
+                "borderColor": "#c9fff3",
+                "imageurl": "https://774today.ytclipplay.website/kanon.webp",
+                "channelName": "花奏 かのん -Kanade Kanon Official-",
+                "twitchId": -1,
+                "englishTitle": "kanon_kanade"
+            },
+            {
+                "id": "UChXm-xAYPfygrbyLo2yCASQ",
+                "title": "季咲あんこ",
+                "order": "5",
+                "color": "#ffccff",
+                "textColor": "#000000",
+                "borderColor": "#ffccff",
+                "imageurl": "https://774today.ytclipplay.website/anko.webp",
+                "channelName": "Anko Channel / 季咲あんこ 【ブイアパ】",
+                "twitchId": 823830476,
+                "englishTitle": "anko_kisaki"
+            },
+            {
+                "id": "UCzUNASdzI4PV5SlqtYwAkKQ",
+                "title": "小森めと",
+                "order": "6",
+                "color": "#FFC000",
+                "textColor": "#000000",
+                "borderColor": "#FFC000",
+                "imageurl": "https://774today.ytclipplay.website/met.webp",
+                "channelName": "Met Channel / 小森めと 【ブイアパ】",
+                "twitchId": 801682194,
+                "englishTitle": "met_komori"
+            },
+            {
+                "id": "UCV4EoK6BVNl7wxuxpUvvSWA",
+                "title": "不磨わっと",
+                "order": "7",
+                "color": "#EE82EE",
+                "textColor": "#000000",
+                "borderColor": "#EE82EE",
+                "imageurl": "https://774today.ytclipplay.website/wat.webp",
+                "channelName": "Wat Channel / 不磨わっと 【ブイアパ】",
+                "twitchId": -1,
+                "englishTitle": "wat_huma"
             }
         ]
     },
     {
         "id": "official",
         "title": "公式",
-        "order": "7",
+        "order": "6",
         "children": [
             {
                 "id": "UCJEpkwwDiTKS5lxwFttEbIQ",
