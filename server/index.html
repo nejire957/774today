@@ -24,8 +24,10 @@
     <meta http-equiv="Cache-Control" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>774トゥデイ</title>
-    <meta name="keywords" content="774inc.,配信,予定,スケジュール,あにまーれ,ハニーストラップ,ハニスト,ブイアパ,シュガーリリック,シュガリリ" />
-    <meta name="description" content="774inc.(あにまーれ、ハニスト、ブイアパ、シュガリリ)所属のVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。" />
+    <meta name="keywords"
+        content="774inc.,ななしいんく,配信,予定,スケジュール,有閑喫茶あにまーれ,あにまーれ,ハニーストラップ,ハニスト,シュガーリリック,シュガリリ,緋翼のクロスピース,ひよクロ,YouTube,Twitch" />
+    <meta name="description"
+        content="774inc.(有閑喫茶あにまーれ、ハニーストラップ、シュガーリリック、緋翼のクロスピース、ソロタレント)のVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。" />
     <link rel="canonical" href="https://774today.ytclipplay.website" />
     <link rel="shortcut icon" href="https://774today.ytclipplay.website/favicon.png">
     <meta name="twitter:site" content="@nejire957" />
@@ -519,9 +521,10 @@
                             } else if (window.localStorage.getItem(talent.id) == 'false') {
                                 $('#' + talent.id).prop('checked', false);
                                 var checkboxArea = $('#' + talent.id).parent()[0];
-                                var legend = $(checkboxArea).siblings()[0];
-                                var checkbox = $(checkboxArea).children()[0];
-                                $(checkbox).prop('checked', false);
+                                var fieldset = $(checkboxArea).parent()[0];
+                                var legend = $(fieldset).children()[0];
+                                var checkboxGroup = $(legend).children()[0];
+                                $(checkboxGroup).prop('checked', false);
                                 $('#filter-button').attr('style', "color: crimson;");
                             }
                         });
@@ -861,7 +864,7 @@
     <div id="info" class="popup info-page" onclick="keepArticle(event)">
         <h2>このサイトについて</h2>
         <ul>
-            <li>774inc.に所属するタレントの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。</li>
+            <li>774inc.のVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。</li>
             <li>配信スケジュールは各タレントのYouTubeチャンネルとTwitchチャンネルから取得しています。他者のチャンネルでの配信や待機所が作られていない予定は表示されません。</li>
             <li>更新は1時間ごとに行っています。突発的な配信や長時間の配信は正しく表示されない場合があります。</li>
             <li>スマートフォンアプリのように、ホーム画面から直接使うことができます。ブラウザのメニューから「インストール」を実行してください。(PWA対応)</li>
