@@ -448,7 +448,6 @@
             var index = Number($(elem).attr("index"));
             var fieldSet = $(elem).parent();
             var groupIndex = Number($(fieldSet).attr("index"));
-            var resource = resources[groupIndex].children[index];
             if (window.localStorage.getItem($(elem).attr('id')) == "true") {
                 window.localStorage.setItem($(elem).attr('id'), 'false');
                 $(elem).removeClass("checked");
@@ -456,6 +455,7 @@
                 window.localStorage.setItem($(elem).attr('id'), 'true');
                 $(elem).addClass("checked");
             }
+            var resource = resources[groupIndex].children[index];
             var flag = true;
             for (var i = 0; i < resources.length; i++) {
                 for (var j = 0; j < resources[i].children.length; j++) {
@@ -650,17 +650,17 @@
                     loading="lazy">
                 因幡はねる
             </div>
-            <div class="filter-channel checked" id="UCRvpMpzAXBRKJQuk-8-Sdvg" index="1"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/ran.webp" width="80%" height="80%"
-                    loading="lazy">
-                日ノ隈らん
-            </div>
-            <div class="filter-channel checked" id="UC2kyQhzGOB-JPgcQX9OMgEw" index="2"
+            <div class="filter-channel checked" id="UC2kyQhzGOB-JPgcQX9OMgEw" index="1"
                 onclick="toggleFilter(event, this)">
                 <img class="filter-image" src="https://774today.ytclipplay.website/ichika.webp" width="80%" height="80%"
                     loading="lazy">
                 宗谷いちか
+            </div>
+            <div class="filter-channel checked" id="UCRvpMpzAXBRKJQuk-8-Sdvg" index="2"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/ran.webp" width="80%" height="80%"
+                    loading="lazy">
+                日ノ隈らん
             </div>
             <div class="filter-channel checked" id="UCeLzT-7b2PBcunJplmWtoDg" index="3"
                 onclick="toggleFilter(event, this)">

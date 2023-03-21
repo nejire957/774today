@@ -17,21 +17,9 @@
                 "englishTitle": "hanru_inaba"
             },
             {
-                "id": "UCRvpMpzAXBRKJQuk-8-Sdvg",
-                "title": "日ノ隈らん",
-                "order": "2",
-                "color": "#008000",
-                "textColor": "#ffffff",
-                "borderColor": "#008000",
-                "imageurl": "https://774today.ytclipplay.website/ran.webp",
-                "channelName": "Ran Channel / 日ノ隈らん 【あにまーれ】",
-                "twitchId": 517857559,
-                "englishTitle": "ran_hinokuma"
-            },
-            {
                 "id": "UC2kyQhzGOB-JPgcQX9OMgEw",
                 "title": "宗谷いちか",
-                "order": "3",
+                "order": "2",
                 "color": "#AFDFE4",
                 "textColor": "#000000",
                 "borderColor": "#AFDFE4",
@@ -39,6 +27,18 @@
                 "channelName": "Ichika Channel / 宗谷 いちか 【774inc.】",
                 "twitchId": -1,
                 "englishTitle": "ichika_souya"
+            },
+            {
+                "id": "UCRvpMpzAXBRKJQuk-8-Sdvg",
+                "title": "日ノ隈らん",
+                "order": "3",
+                "color": "#008000",
+                "textColor": "#ffffff",
+                "borderColor": "#008000",
+                "imageurl": "https://774today.ytclipplay.website/ran.webp",
+                "channelName": "Ran Channel / 日ノ隈らん 【あにまーれ】",
+                "twitchId": 517857559,
+                "englishTitle": "ran_hinokuma"
             },
             {
                 "id": "UCeLzT-7b2PBcunJplmWtoDg",
