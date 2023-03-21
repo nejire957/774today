@@ -23,16 +23,15 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta http-equiv="Cache-Control" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>774トゥデイ</title>
+    <title>ななしトゥデイ</title>
     <meta name="keywords"
         content="774inc.,ななしいんく,配信,予定,スケジュール,有閑喫茶あにまーれ,あにまーれ,ハニーストラップ,ハニスト,シュガーリリック,シュガリリ,緋翼のクロスピース,ひよクロ,YouTube,Twitch" />
-    <meta name="description"
-        content="774inc.(有閑喫茶あにまーれ、ハニーストラップ、シュガーリリック、緋翼のクロスピース、ソロタレント)のVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。" />
+    <meta name="description" content="ななしいんくのVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。" />
     <link rel="canonical" href="https://774today.ytclipplay.website" />
     <link rel="shortcut icon" href="https://774today.ytclipplay.website/favicon.png">
     <meta name="twitter:site" content="@nejire957" />
-    <meta name="twitter:title" content="774トゥデイ" />
-    <meta name="twitter:description" content="774inc.所属のVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。" />
+    <meta name="twitter:title" content="ななしトゥデイ" />
+    <meta name="twitter:description" content="ななしいんくのVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。" />
     <meta name="twitter:image" content="https://774today.ytclipplay.website/screenshot.png" />
     <meta name="twitter:card" content="summary" />
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.0.2/index.global.min.js"></script>
@@ -215,18 +214,24 @@
             margin-right: auto;
         }
 
-        .checkbox-area {
+        .filter-channel {
+            width: calc(50px + 5vw);
+            height: calc(50px + 5vw);
             display: inline-block;
+            background-color: white;
+            margin: 2px auto;
+            padding: 2px;
+            font-size: calc(8px + 0.8vw);
+            vertical-align: top;
         }
 
-        input[type=checkbox] {
-            transform: scale(1.2);
-            vertical-align: 0.2vw;
-            display: inline;
-        }
-
-        input:hover {
+        .filter-channel:hover {
             cursor: pointer;
+        }
+
+        #UCYTz3uIgwVY3ZU-IQJS8r3A,
+        #UCJEpkwwDiTKS5lxwFttEbIQ {
+            font-size: calc(6px + 0.6vw);
         }
 
         .filter-page {
@@ -244,8 +249,12 @@
             padding-left: calc(10px + 1vw);
         }
 
-        li {
+        li.first {
             margin: 20px 0 20px 0;
+        }
+
+        li.second {
+            margin: 0;
         }
 
         h2 {
@@ -284,6 +293,15 @@
             font-size: calc(8px + 0.6vw);
             margin: 0;
             padding: 0;
+        }
+
+        .checked {
+            background-color: #FF3278;
+        }
+
+        .filter-image {
+            display: block;
+            margin: auto;
         }
     </style>
     <script>
@@ -425,60 +443,27 @@
                 cooling = false;
             }, 500);
         }
-        function toggleGroupFilter(e, elem) {
-            var legend = $(elem).parent()[0];
-            var checkboxAreas = $(legend).nextAll();
-            checkboxAreas.each(function () {
-                checkbox = $(this).children()[0];
-                if ($(elem).prop('checked')) {
-                    $(checkbox).prop('checked', true);
-                    window.localStorage.setItem($(checkbox).attr('id'), 'true');
-                } else {
-                    $(checkbox).prop('checked', false);
-                    window.localStorage.setItem($(checkbox).attr('id'), 'false');
-                }
-            });
-            flag = true;
-            $('.filter').each(function () {
-                if ($(this).prop('checked') == false) {
-                    flag = false;
-                }
-            });
-            if (flag) {
-                $('#filter-button').removeAttr('style');
-            } else {
-                $('#filter-button').attr('style', "color: crimson;");
-            }
-            calendarModel.refetchEvents();
-        }
+        var resources;
         function toggleFilter(e, elem) {
-            var targetCheckboxArea = $(elem).parent()[0];
-            var fieldset = $(targetCheckboxArea).parent()[0];
-            var legend = $(fieldset).children()[0];
-            var checkboxAreas = $(fieldset).children().slice(1);
-            var checkboxGroup = $(legend).children()[0];
-            var flag = true;
-            if ($(elem).prop('checked')) {
+            var index = Number($(elem).attr("index"));
+            var fieldSet = $(elem).parent();
+            var groupIndex = Number($(fieldSet).attr("index"));
+            var resource = resources[groupIndex].children[index];
+            if (window.localStorage.getItem($(elem).attr('id')) == "true") {
+                window.localStorage.setItem($(elem).attr('id'), 'false');
+                $(elem).removeClass("checked");
+            } else {
                 window.localStorage.setItem($(elem).attr('id'), 'true');
-                checkboxAreas.each(function () {
-                    var tempCheckbox = $(this).children()[0];
-                    if ($(tempCheckbox).prop('checked') == false) {
+                $(elem).addClass("checked");
+            }
+            var flag = true;
+            for (var i = 0; i < resources.length; i++) {
+                for (var j = 0; j < resources[i].children.length; j++) {
+                    if (window.localStorage.getItem(resources[i].children[j].id) == "false") {
                         flag = false;
                     }
-                })
-                if (flag) {
-                    $(checkboxGroup).prop('checked', true);
                 }
-            } else {
-                window.localStorage.setItem($(elem).attr('id'), 'false');
-                $(checkboxGroup).prop('checked', false);
             }
-            flag = true;
-            $('.filter').each(function () {
-                if ($(this).prop('checked') == false) {
-                    flag = false;
-                }
-            });
             if (flag) {
                 $('#filter-button').removeAttr('style');
             } else {
@@ -487,7 +472,6 @@
             calendarModel.refetchEvents();
         }
         var calendarModel;
-        var resources;
         document.addEventListener('DOMContentLoaded', function () {      //DOMが読み込まれてから、PWA対応、ダークモード設定、カレンダーの初期化、更新日時の取得、を行う
             if ('serviceWorker' in navigator) {     //PWA対応
                 console.log('Found serviceWorker');
@@ -519,12 +503,7 @@
                             if (window.localStorage.getItem(talent.id) == null) {
                                 window.localStorage.setItem(talent.id, 'true');
                             } else if (window.localStorage.getItem(talent.id) == 'false') {
-                                $('#' + talent.id).prop('checked', false);
-                                var checkboxArea = $('#' + talent.id).parent()[0];
-                                var fieldset = $(checkboxArea).parent()[0];
-                                var legend = $(fieldset).children()[0];
-                                var checkboxGroup = $(legend).children()[0];
-                                $(checkboxGroup).prop('checked', false);
+                                $('#' + talent.id).removeClass("checked");
                                 $('#filter-button').attr('style', "color: crimson;");
                             }
                         });
@@ -642,7 +621,7 @@
     <!-- End Google Tag Manager (noscript) -->
     <header id="header">
         <div>
-            <h1 id="title" class="header-item">774トゥデイ</h1>
+            <h1 id="title" class="header-item">ななしトゥデイ</h1>
             <div id="update" class="header-item"></div>
             <div id="notice" class="header-item" onclick="location.reload()">更新あり</div>
         </div>
@@ -662,233 +641,228 @@
         <div id="calendar"></div>
     </div>
     <div id="filter" class="popup filter-page" onclick="keepArticle(event)">
-        <h2>表示するタレント</h2>
-        <fieldset class="filter-group">
-            <legend class="filter-legend">
-                <input type="checkbox" class="filter" id="checkbox-animare" name="有閑喫茶あにまーれ"
-                    onclick="toggleGroupFilter(event, this)" checked>
-                有閑喫茶あにまーれ
-            </legend>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UC0Owc36U9lOyi9Gx9Ic-4qg" name="因幡はねる"
-                    onclick="toggleFilter(event, this)" checked>
+        <h2>表示するチャンネル</h2>
+        <fieldset index="0">
+            <legend>タレント</legend>
+            <div class="filter-channel checked" id="UC0Owc36U9lOyi9Gx9Ic-4qg" index="0"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/haneru.webp" width="80%" height="80%"
+                    loading="lazy">
                 因幡はねる
             </div>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UCRvpMpzAXBRKJQuk-8-Sdvg" name="日ノ隈らん"
-                    onclick="toggleFilter(event, this)" checked>
+            <div class="filter-channel checked" id="UCRvpMpzAXBRKJQuk-8-Sdvg" index="1"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/ran.webp" width="80%" height="80%"
+                    loading="lazy">
                 日ノ隈らん
             </div>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UCXp7sNC0F_qkjickvlYkg-Q" name="風見くく"
-                    onclick="toggleFilter(event, this)" checked>
-                風見くく
-            </div>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UCW8WKciBixmaqaGqrlTITRQ" name="柚原いづみ"
-                    onclick="toggleFilter(event, this)" checked>
-                柚原いづみ
-            </div>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UCFsWaTQ7kT76jNNGeGIKNSA" name="飛良ひかり"
-                    onclick="toggleFilter(event, this)" checked>
-                飛良ひかり
-            </div>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UC_WOBIopwUih0rytRnr_1Ag" name="瀬島るい"
-                    onclick="toggleFilter(event, this)" checked>
-                瀬島るい
-            </div>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UC3xG1XWzAKt5dxSxktJvtxg" name="大浦るかこ"
-                    onclick="toggleFilter(event, this)" checked>
-                大浦るかこ
-            </div>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UCqskJ0nmw-_eweWfsKvbrzQ" name="月野木ちろる"
-                    onclick="toggleFilter(event, this)" checked>
-                月野木ちろる
-            </div>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UC4PrHgUcAtOoj_LKmUL-uLQ" name="湖南みあ"
-                    onclick="toggleFilter(event, this)" checked>
-                湖南みあ
-            </div>
-        </fieldset>
-        <fieldset class="filter-group">
-            <legend class="filter-legend">
-                <input type="checkbox" class="filter" id="checkbox-honeystrap" name="ハニーストラップ"
-                    onclick="toggleGroupFilter(event, this)" checked>
-                ハニーストラップ
-            </legend>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UCeLzT-7b2PBcunJplmWtoDg" name="周防パトラ"
-                    onclick="toggleFilter(event, this)" checked>
-                周防パトラ
-            </div>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UCYTz3uIgwVY3ZU-IQJS8r3A" name="島村シャルロット"
-                    onclick="toggleFilter(event, this)" checked>
-                島村シャルロット
-            </div>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UCwePpiw1ocZRSNSkpKvVISw" name="西園寺メアリ"
-                    onclick="toggleFilter(event, this)" checked>
-                西園寺メアリ
-            </div>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UCDh2bWI5EDu7PavqwICkVpA" name="堰代ミコ"
-                    onclick="toggleFilter(event, this)" checked>
-                堰代ミコ
-            </div>
-        </fieldset>
-        <fieldset class="filter-group">
-            <legend class="filter-legend">
-                <input type="checkbox" class="filter" id="checkbox-sugarlyric" name="シュガーリリック"
-                    onclick="toggleGroupFilter(event, this)" checked>
-                シュガーリリック
-            </legend>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UC--A2dwZW7-M2kID0N6_lfA" name="獅子王クリス"
-                    onclick="toggleFilter(event, this)" checked>
-                獅子王クリス
-            </div>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UC2hc-00y-MSR6eYA4eQ4tjQ" name="龍ヶ崎リン"
-                    onclick="toggleFilter(event, this)" checked>
-                龍ヶ崎リン
-            </div>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UCrt4cTM_sWH0iySLMkwwYLQ" name="蛇宵ティア"
-                    onclick="toggleFilter(event, this)" checked>
-                蛇宵ティア
-            </div>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UCRY0-zJ1pV4EiKUSLXCXTAg" name="狼森メイ"
-                    onclick="toggleFilter(event, this)" checked>
-                狼森メイ
-            </div>
-        </fieldset>
-        <fieldset class="filter-group">
-            <legend class="filter-legend">
-                <input type="checkbox" class="filter" id="checkbox-hiyocro" name="緋翼のクロスピース"
-                    onclick="toggleGroupFilter(event, this)" checked>
-                緋翼のクロスピース
-            </legend>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UCkpqb53xiOvOgNYEbNpFSyw" name="茜音カンナ"
-                    onclick="toggleFilter(event, this)" checked>
-                茜音カンナ
-            </div>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UCBJ6nejlzes6mm9UruaxQsA" name="涼海ネモ"
-                    onclick="toggleFilter(event, this)" checked>
-                涼海ネモ
-            </div>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UCBxw5bdrbKO7E60E4s3KgQg" name="橙里セイ"
-                    onclick="toggleFilter(event, this)" checked>
-                橙里セイ
-            </div>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UC_hjHmi-ODGhHlSzD16p5Pw" name="家入ポポ"
-                    onclick="toggleFilter(event, this)" checked>
-                家入ポポ
-            </div>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UCGyywYAJd2O5Y7yUyr7qBRQ" name="瑚白ユリ"
-                    onclick="toggleFilter(event, this)" checked>
-                瑚白ユリ
-            </div>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UC3MBUvkVTI9p-p0be7y7TQA" name="紫水キキ"
-                    onclick="toggleFilter(event, this)" checked>
-                紫水キキ
-            </div>
-        </fieldset>
-        <fieldset class="filter-group">
-            <legend class="filter-legend">
-                <input type="checkbox" class="filter" id="checkbox-solo" name="ソロタレント"
-                    onclick="toggleGroupFilter(event, this)" checked>
-                ソロタレント
-            </legend>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UC2kyQhzGOB-JPgcQX9OMgEw" name="宗谷いちか"
-                    onclick="toggleFilter(event, this)" checked>
+            <div class="filter-channel checked" id="UC2kyQhzGOB-JPgcQX9OMgEw" index="2"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/ichika.webp" width="80%" height="80%"
+                    loading="lazy">
                 宗谷いちか
             </div>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UCvPPBoTOor5gm8zSlE2tg4w" name="虎城アンナ"
-                    onclick="toggleFilter(event, this)" checked>
-                虎城アンナ
+            <div class="filter-channel checked" id="UCeLzT-7b2PBcunJplmWtoDg" index="3"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/patra.webp" width="80%" height="80%"
+                    loading="lazy">
+                周防パトラ
             </div>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UC3EhsuKdEkI99TWZwZgWutg" name="杏戸ゆげ"
-                    onclick="toggleFilter(event, this)" checked>
+            <div class="filter-channel checked" id="UCYTz3uIgwVY3ZU-IQJS8r3A" index="4"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/charlotte.webp" width="80%"
+                    height="80%" loading="lazy">
+                島村シャルロット
+            </div>
+            <div class="filter-channel checked" id="UCwePpiw1ocZRSNSkpKvVISw" index="5"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/mary.webp" width="80%" height="80%"
+                    loading="lazy">
+                西園寺メアリ
+            </div>
+            <div class="filter-channel checked" id="UCDh2bWI5EDu7PavqwICkVpA" index="6"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/mico.webp" width="80%" height="80%"
+                    loading="lazy">
+                堰代ミコ
+            </div>
+            <div class="filter-channel checked" id="UC3EhsuKdEkI99TWZwZgWutg" index="7"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/uge.webp" width="80%" height="80%"
+                    loading="lazy">
                 杏戸ゆげ
             </div>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UCmqrvfLMws-GLGHQcB5dasg" name="花奏かのん"
-                    onclick="toggleFilter(event, this)" checked>
+            <div class="filter-channel checked" id="UCmqrvfLMws-GLGHQcB5dasg" index="8"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/kanon.webp" width="80%" height="80%"
+                    loading="lazy">
                 花奏かのん
             </div>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UChXm-xAYPfygrbyLo2yCASQ" name="季咲あんこ"
-                    onclick="toggleFilter(event, this)" checked>
+            <div class="filter-channel checked" id="UChXm-xAYPfygrbyLo2yCASQ" index="9"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/anko.webp" width="80%" height="80%"
+                    loading="lazy">
                 季咲あんこ
             </div>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UCV4EoK6BVNl7wxuxpUvvSWA" name="不磨わっと"
-                    onclick="toggleFilter(event, this)" checked>
+            <div class="filter-channel checked" id="UCXp7sNC0F_qkjickvlYkg-Q" index="10"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/kuku.webp" width="80%" height="80%"
+                    loading="lazy">
+                風見くく
+            </div>
+            <div class="filter-channel checked" id="UCW8WKciBixmaqaGqrlTITRQ" index="11"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/izumi.webp" width="80%" height="80%"
+                    loading="lazy">
+                柚原いづみ
+            </div>
+            <div class="filter-channel checked" id="UC2hc-00y-MSR6eYA4eQ4tjQ" index="12"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/rene.webp" width="80%" height="80%"
+                    loading="lazy">
+                龍ヶ崎リン
+            </div>
+            <div class="filter-channel checked" id="UC--A2dwZW7-M2kID0N6_lfA" index="13"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/chris.webp" width="80%" height="80%"
+                    loading="lazy">
+                獅子王クリス
+            </div>
+            <div class="filter-channel checked" id="UCvPPBoTOor5gm8zSlE2tg4w" index="14"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/anna.webp" width="80%" height="80%"
+                    loading="lazy">
+                虎城アンナ
+            </div>
+            <div class="filter-channel checked" id="UCV4EoK6BVNl7wxuxpUvvSWA" index="15"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/wat.webp" width="80%" height="80%"
+                    loading="lazy">
                 不磨わっと
             </div>
+            <div class="filter-channel checked" id="UC_WOBIopwUih0rytRnr_1Ag" index="16"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/rui.webp" width="80%" height="80%"
+                    loading="lazy">
+                瀬島るい
+            </div>
+            <div class="filter-channel checked" id="UCFsWaTQ7kT76jNNGeGIKNSA" index="17"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/hikari.webp" width="80%" height="80%"
+                    loading="lazy">
+                飛良ひかり
+            </div>
+            <div class="filter-channel checked" id="UC3xG1XWzAKt5dxSxktJvtxg" index="18"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/rukako.webp" width="80%" height="80%"
+                    loading="lazy">
+                大浦るかこ
+            </div>
+            <div class="filter-channel checked" id="UC4PrHgUcAtOoj_LKmUL-uLQ" index="19"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/mia.webp" width="80%" height="80%"
+                    loading="lazy">
+                湖南みあ
+            </div>
+            <div class="filter-channel checked" id="UCqskJ0nmw-_eweWfsKvbrzQ" index="20"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/tirol.webp" width="80%" height="80%"
+                    loading="lazy">
+                月野木ちろる
+            </div>
+            <div class="filter-channel checked" id="UCkpqb53xiOvOgNYEbNpFSyw" index="21"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/canna.webp" width="80%" height="80%"
+                    loading="lazy">
+                茜音カンナ
+            </div>
+            <div class="filter-channel checked" id="UCBJ6nejlzes6mm9UruaxQsA" index="22"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/nemo.webp" width="80%" height="80%"
+                    loading="lazy">
+                涼海ネモ
+            </div>
+            <div class="filter-channel checked" id="UCBxw5bdrbKO7E60E4s3KgQg" index="23"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/sei.webp" width="80%" height="80%"
+                    loading="lazy">
+                橙里セイ
+            </div>
+            <div class="filter-channel checked" id="UC_hjHmi-ODGhHlSzD16p5Pw" index="24"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/popo.webp" width="80%" height="80%"
+                    loading="lazy">
+                家入ポポ
+            </div>
+            <div class="filter-channel checked" id="UCGyywYAJd2O5Y7yUyr7qBRQ" index="25"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/yuri.webp" width="80%" height="80%"
+                    loading="lazy">
+                瑚白ユリ
+            </div>
+            <div class="filter-channel checked" id="UC3MBUvkVTI9p-p0be7y7TQA" index="26"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/kiki.webp" width="80%" height="80%"
+                    loading="lazy">
+                紫水キキ
+            </div>
+            <div class="filter-channel checked" id="UCRY0-zJ1pV4EiKUSLXCXTAg" index="27"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/may.webp" width="80%" height="80%"
+                    loading="lazy">
+                狼森メイ
+            </div>
+            <div class="filter-channel checked" id="UCrt4cTM_sWH0iySLMkwwYLQ" index="28"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/tier.webp" width="80%" height="80%"
+                    loading="lazy">
+                蛇宵ティア
+            </div>
         </fieldset>
-        <fieldset class="filter-group">
-            <legend class="filter-legend">
-                <input type="checkbox" class="filter" id="checkbox-official" name="公式"
-                    onclick="toggleGroupFilter(event, this)" checked>
-                公式
-            </legend>
-            <div class="checkbox-area">
-                <input type="checkbox" class="filter" id="UCJEpkwwDiTKS5lxwFttEbIQ" name="ななし公式"
-                    onclick="toggleFilter(event, this)" checked>
-                ななし公式チャンネル
+        <fieldset index="1">
+            <legend>公式</legend>
+            <div class="filter-channel checked" id="UCJEpkwwDiTKS5lxwFttEbIQ" index="0"
+                onclick="toggleFilter(event, this)">
+                <img class="filter-image" src="https://774today.ytclipplay.website/774.webp" width="60%" height="60%"
+                    loading="lazy">
+                ななしいんく<br>公式チャンネル
             </div>
         </fieldset>
     </div>
     <div id="info" class="popup info-page" onclick="keepArticle(event)">
         <h2>このサイトについて</h2>
         <ul>
-            <li>774inc.のVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。</li>
-            <li>配信スケジュールは各タレントのYouTubeチャンネルとTwitchチャンネルから取得しています。他者のチャンネルでの配信や待機所が作られていない予定は表示されません。</li>
-            <li>更新は1時間ごとに行っています。突発的な配信や長時間の配信は正しく表示されない場合があります。</li>
-            <li>スマートフォンアプリのように、ホーム画面から直接使うことができます。ブラウザのメニューから「インストール」を実行してください。(PWA対応)</li>
-            <li>画面右上の右から2番目にあるボタンから表示するタレントを選択できます。選択内容はこのサイトを離れても維持されます。この機能のために、このサイトはブラウザのローカルストレージを使用します。</li>
-            <li>ご意見・ご要望は下記TwitterアカウントのDMで受け付けています。</li>
-            <li>製作者:ねじれ図形 | <a target="_blank" href="https://twitter.com/nejire957">Twitter</a> | <a target="_blank"
-                    href="https://github.com/nejire957/774today">GitHub</a></li>
+            <li class="first">ななしいんくのVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。</li>
+            <li class="first">配信スケジュールは各タレントのYouTubeチャンネルとTwitchチャンネルから取得しています。他者のチャンネルでの配信や待機所が作られていない予定は表示されません。</li>
+            <li class="first">更新は1時間ごとに行っています。突発的な配信や長時間の配信は正しく表示されない場合があります。</li>
+            <li class="first">スマートフォンアプリのように、ホーム画面から直接使うことができます。ブラウザのメニューから「インストール」を実行してください。(PWA対応)</li>
+            <li class="first">
+                画面右上の右から2番目にあるボタンから表示するタレントを選択できます。選択内容はこのサイトを離れても維持されます。この機能のために、このサイトはブラウザのローカルストレージを使用します。</li>
+            <li class="first">ご意見・ご要望は下記TwitterアカウントのDMで受け付けています。</li>
+            <li class="first">製作者:ねじれ図形 | <a target="_blank" href="https://twitter.com/nejire957">Twitter</a> | <a
+                    target="_blank" href="https://github.com/nejire957/774today">GitHub</a></li>
         </ul>
         <h2>注意</h2>
         <ul>
-            <li>このサイトは<a target="_blank" href="https://www.774.ai">774 inc.</a>所属タレントの二次創作です。開発にあたっては<a target="_blank"
-                    href="https://www.774.ai/guideline">「774 inc.」所属タレント二次創作ガイドライン</a>に従っています。</li>
-            <li>このサイトはYouTube Data APIを使用しています。開発にあたっては<a target="_blank"
+            <li class="first">このサイトは<a target="_blank" href="https://www.774.ai">ななしいんく</a>所属タレントの二次創作です。開発にあたっては<a
+                    target="_blank" href="https://www.774.ai/guideline">「ななしいんく」所属タレント二次創作ガイドライン</a>に従っています。</li>
+            <li class="first">このサイトはYouTube Data APIを使用しています。開発にあたっては<a target="_blank"
                     href="https://www.youtube.com/t/terms">YouTubeの利用規約</a>と<a target="_blank"
                     href="https://developers.google.com/youtube/terms/developer-policies">YouTube Data
                     APIの開発方針</a>に従っています。</li>
-            <li>このサイトはTwitch APIを使用しています。開発にあたってはTwitchの<a target="_blank"
+            <li class="first">このサイトはTwitch APIを使用しています。開発にあたってはTwitchの<a target="_blank"
                     href="https://www.twitch.tv/p/ja-jp/legal/terms-of-service/">サービス利用規約</a>と<a target="_blank"
                     href="https://www.twitch.tv/p/ja-jp/legal/developer-agreement/">デベロッパー規約</a>に従っています。</li>
-            <li>このサイトはGoogle Analyticsを使用しています。
+            <li class="first">このサイトはGoogle Analyticsを使用しています。
                 <ul>
-                    <li>このサイトはユーザーからこのサイトへのアクセスに関するデータを収集します。データの収集にはcookieを使用します。</li>
-                    <li>Googleはこのデータを<a target="_blank"
+                    <li class="second">このサイトはユーザーからこのサイトへのアクセスに関するデータを収集します。データの収集にはcookieを使用します。</li>
+                    <li class="second">Googleはこのデータを<a target="_blank"
                             href="https://policies.google.com/privacy">プライバシーポリシー</a>に従って管理・分析します。</li>
-                    <li>サイト製作者はこの分析結果を受け取り、サイトの利用状況を把握しています。</li>
-                    <li>このサイトを利用することは、上記のデータ処理について同意を示すこととみなされます。</li>
-                    <li>このサイトの開発にあたっては、<a target="_blank"
+                    <li class="second">サイト製作者はこの分析結果を受け取り、サイトの利用状況を把握しています。</li>
+                    <li class="second">このサイトを利用することは、上記のデータ処理について同意を示すこととみなされます。</li>
+                    <li class="second">このサイトの開発にあたっては、<a target="_blank"
                             href="https://support.google.com/analytics/answer/4597324">Googleアナリティクスポリシー</a>に従っています。
-                    </li>
+                    </li class="second">
                 </ul>
             </li>
         </ul>

@@ -1,7 +1,7 @@
 [
     {
-        "id": "animare",
-        "title": "有閑喫茶あにまーれ",
+        "id": "talent",
+        "title": "ななしいんく",
         "order": "1",
         "children": [
             {
@@ -29,100 +29,21 @@
                 "englishTitle": "ran_hinokuma"
             },
             {
-                "id": "UCXp7sNC0F_qkjickvlYkg-Q",
-                "title": "風見くく",
+                "id": "UC2kyQhzGOB-JPgcQX9OMgEw",
+                "title": "宗谷いちか",
                 "order": "3",
-                "color": "#ff7a3a",
-                "textColor": "#ffffff",
-                "borderColor": "#ff7a3a",
-                "imageurl": "https://774today.ytclipplay.website/kuku.webp",
-                "channelName": "Kuku Channel / 風見くく 【あにまーれ】",
-                "twitchId": 825041113,
-                "englishTitle": "kuku_kazami"
-            },
-            {
-                "id": "UCW8WKciBixmaqaGqrlTITRQ",
-                "title": "柚原いづみ",
-                "order": "4",
-                "color": "#b6563b",
-                "textColor": "#ffffff",
-                "borderColor": "#b6563b",
-                "imageurl": "https://774today.ytclipplay.website/izumi.webp",
-                "channelName": "Izumi Channel / 柚原いづみ 【あにまーれ】",
-                "twitchId": 838406432,
-                "englishTitle": "izumi_yunohara"
-            },
-            {
-                "id": "UCFsWaTQ7kT76jNNGeGIKNSA",
-                "title": "飛良ひかり",
-                "order": "5",
-                "color": "#fe846d",
-                "textColor": "#ffffff",
-                "borderColor": "#fe846d",
-                "imageurl": "https://774today.ytclipplay.website/hikari.webp",
-                "channelName": "Hikari Channel / 飛良ひかり 【あにまーれ】",
-                "twitchId": 822299689,
-                "englishTitle": "hikari_hira"
-            },
-            {
-                "id": "UC_WOBIopwUih0rytRnr_1Ag",
-                "title": "瀬島るい",
-                "order": "6",
-                "color": "#d2293e",
-                "textColor": "#ffffff",
-                "borderColor": "#d2293e",
-                "imageurl": "https://774today.ytclipplay.website/rui.webp",
-                "channelName": "Rui Channel / 瀬島るい 【あにまーれ】",
-                "twitchId": -1,
-                "englishTitle": "rui_seshima"
-            },
-            {
-                "id": "UC3xG1XWzAKt5dxSxktJvtxg",
-                "title": "大浦るかこ",
-                "order": "7",
-                "color": "#3798a9",
-                "textColor": "#ffffff",
-                "borderColor": "#3798a9e",
-                "imageurl": "https://774today.ytclipplay.website/rukako.webp",
-                "channelName": "Rukako Channel / 大浦るかこ 【あにまーれ】",
-                "twitchId": -1,
-                "englishTitle": "rukako_oura"
-            },
-            {
-                "id": "UCqskJ0nmw-_eweWfsKvbrzQ",
-                "title": "月野木ちろる",
-                "order": "8",
-                "color": "#93dfd5",
+                "color": "#AFDFE4",
                 "textColor": "#000000",
-                "borderColor": "#93dfd5",
-                "imageurl": "https://774today.ytclipplay.website/tirol.webp",
-                "channelName": "Tirol Channel / 月野木ちろる 【あにまーれ】",
+                "borderColor": "#AFDFE4",
+                "imageurl": "https://774today.ytclipplay.website/ichika.webp",
+                "channelName": "Ichika Channel / 宗谷 いちか 【774inc.】",
                 "twitchId": -1,
-                "englishTitle": "tirol_tsukinoki"
+                "englishTitle": "ichika_souya"
             },
-            {
-                "id": "UC4PrHgUcAtOoj_LKmUL-uLQ",
-                "title": "湖南みあ",
-                "order": "9",
-                "color": "#f5e29e",
-                "textColor": "#000000",
-                "borderColor": "#f5e29e",
-                "imageurl": "https://774today.ytclipplay.website/mia.webp",
-                "channelName": "Mia Channel / 湖南みあ 【あにまーれ】",
-                "twitchId": -1,
-                "englishTitle": "mia_konan"
-            }
-        ]
-    },
-    {
-        "id": "honeystrap",
-        "title": "ハニーストラップ",
-        "order": "2",
-        "children": [
             {
                 "id": "UCeLzT-7b2PBcunJplmWtoDg",
                 "title": "周防パトラ",
-                "order": "1",
+                "order": "4",
                 "color": "#F25C79",
                 "textColor": "#000000",
                 "borderColor": "#F25C79",
@@ -134,7 +55,7 @@
             {
                 "id": "UCYTz3uIgwVY3ZU-IQJS8r3A",
                 "title": "島村シャルロット",
-                "order": "2",
+                "order": "5",
                 "color": "#3399FF",
                 "textColor": "#000000",
                 "borderColor": "#3399FF",
@@ -146,7 +67,7 @@
             {
                 "id": "UCwePpiw1ocZRSNSkpKvVISw",
                 "title": "西園寺メアリ",
-                "order": "3",
+                "order": "6",
                 "color": "#CC66FF",
                 "textColor": "#000000",
                 "borderColor": "#CC66FF",
@@ -158,7 +79,7 @@
             {
                 "id": "UCDh2bWI5EDu7PavqwICkVpA",
                 "title": "堰代ミコ",
-                "order": "4",
+                "order": "7",
                 "color": "#66EE9D",
                 "textColor": "#000000",
                 "borderColor": "#66EE9D",
@@ -166,176 +87,11 @@
                 "channelName": "Mico Channel / 堰代ミコ【ハニスト】",
                 "twitchId": -1,
                 "englishTitle": "mico_sekishiro"
-            }
-        ]
-    },
-    {
-        "id": "sugarlyric",
-        "title": "シュガーリリック",
-        "order": "3",
-        "children": [
-            {
-                "id": "UC--A2dwZW7-M2kID0N6_lfA",
-                "title": "獅子王クリス",
-                "order": "1",
-                "color": "#7FFFD4",
-                "textColor": "#000000",
-                "borderColor": "#7FFFD4",
-                "imageurl": "https://774today.ytclipplay.website/chris.webp",
-                "channelName": "Chris Channel / 獅子王クリス 【シュガリリ】",
-                "twitchId": -1,
-                "englishTitle": "chris_shishio"
-            },
-            {
-                "id": "UC2hc-00y-MSR6eYA4eQ4tjQ",
-                "title": "龍ヶ崎リン",
-                "order": "2",
-                "color": "#FF3300",
-                "textColor": "#000000",
-                "borderColor": "#FF3300",
-                "imageurl": "https://774today.ytclipplay.website/rene.webp",
-                "channelName": "Rene Channel / 龍ヶ崎リン 【シュガリリ】",
-                "twitchId": -1,
-                "englishTitle": "rene_ryugasaki"
-            },
-            {
-                "id": "UCrt4cTM_sWH0iySLMkwwYLQ",
-                "title": "蛇宵ティア",
-                "order": "3",
-                "color": "#84A2D4",
-                "textColor": "#000000",
-                "borderColor": "#84A2D4",
-                "imageurl": "https://774today.ytclipplay.website/tier.webp",
-                "channelName": "Tier Channel / 蛇宵ティア 【シュガリリ】",
-                "twitchId": -1,
-                "englishTitle": "tier_hebiyoi"
-            },
-            {
-                "id": "UCRY0-zJ1pV4EiKUSLXCXTAg",
-                "title": "狼森メイ",
-                "order": "4",
-                "color": "#FEEEED",
-                "textColor": "#000000",
-                "borderColor": "#FEEEED",
-                "imageurl": "https://774today.ytclipplay.website/may.webp",
-                "channelName": "May Channel / 狼森メイ 【シュガリリ】",
-                "twitchId": -1,
-                "englishTitle": "may_oinomori"
-            }
-        ]
-    },
-    {
-        "id": "hiyocro",
-        "title": "緋翼のクロスピース",
-        "order": "4",
-        "children": [
-            {
-                "id": "UCkpqb53xiOvOgNYEbNpFSyw",
-                "title": "茜音カンナ",
-                "order": "1",
-                "color": "#DC143C",
-                "textColor": "#FFFFFF",
-                "borderColor": "#DC143C",
-                "imageurl": "https://774today.ytclipplay.website/canna.webp",
-                "channelName": "Canna Channel / 茜音カンナ【ひよクロ】",
-                "twitchId": -1,
-                "englishTitle": "canna_akane"
-            },
-            {
-                "id": "UCBJ6nejlzes6mm9UruaxQsA",
-                "title": "涼海ネモ",
-                "order": "2",
-                "color": "#000080",
-                "textColor": "#FFFFFF",
-                "borderColor": "#000080",
-                "imageurl": "https://774today.ytclipplay.website/nemo.webp",
-                "channelName": "Nemo Channel / 涼海ネモ【ひよクロ】",
-                "twitchId": -1,
-                "englishTitle": "nemo_suzumi"
-            },
-            {
-                "id": "UCBxw5bdrbKO7E60E4s3KgQg",
-                "title": "橙里セイ",
-                "order": "3",
-                "color": "#FF4500",
-                "textColor": "#000000",
-                "borderColor": "#FF4500",
-                "imageurl": "https://774today.ytclipplay.website/sei.webp",
-                "channelName": "Sei Channel / 橙里セイ【ひよクロ】",
-                "twitchId": -1,
-                "englishTitle": "sei_touri"
-            },
-            {
-                "id": "UC_hjHmi-ODGhHlSzD16p5Pw",
-                "title": "家入ポポ",
-                "order": "4",
-                "color": "#FFDD61",
-                "textColor": "#000000",
-                "borderColor": "#FFDD61",
-                "imageurl": "https://774today.ytclipplay.website/popo.webp",
-                "channelName": "Popo Channel / 家入ポポ【ひよクロ】",
-                "twitchId": -1,
-                "englishTitle": "popo_ieiri"
-            },
-            {
-                "id": "UCGyywYAJd2O5Y7yUyr7qBRQ",
-                "title": "瑚白ユリ",
-                "order": "5",
-                "color": "#F0F8FF",
-                "textColor": "#000000",
-                "borderColor": "#000000",
-                "imageurl": "https://774today.ytclipplay.website/yuri.webp",
-                "channelName": "Yuri Channel / 瑚白ユリ【ひよクロ】",
-                "twitchId": -1,
-                "englishTitle": "yuri_kohaku"
-            },
-            {
-                "id": "UC3MBUvkVTI9p-p0be7y7TQA",
-                "title": "紫水キキ",
-                "order": "6",
-                "color": "#6A5ACD",
-                "textColor": "#FFFFFF",
-                "borderColor": "#6A5ACD",
-                "imageurl": "https://774today.ytclipplay.website/kiki.webp",
-                "channelName": "Kiki Channel / 紫水キキ【ひよクロ】",
-                "twitchId": -1,
-                "englishTitle": "kiki_shisui"
-            }
-        ]
-    },
-    {
-        "id": "solo",
-        "title": "ソロタレント",
-        "order": "5",
-        "children": [
-            {
-                "id": "UC2kyQhzGOB-JPgcQX9OMgEw",
-                "title": "宗谷いちか",
-                "order": "1",
-                "color": "#AFDFE4",
-                "textColor": "#000000",
-                "borderColor": "#AFDFE4",
-                "imageurl": "https://774today.ytclipplay.website/ichika.webp",
-                "channelName": "Ichika Channel / 宗谷 いちか 【774inc.】",
-                "twitchId": -1,
-                "englishTitle": "ichika_souya"
-            },
-            {
-                "id": "UCvPPBoTOor5gm8zSlE2tg4w",
-                "title": "虎城アンナ",
-                "order": "2",
-                "color": "#9966FF",
-                "textColor": "#000000",
-                "borderColor": "#9966FF",
-                "imageurl": "https://774today.ytclipplay.website/anna.webp",
-                "channelName": "Anna Channel / 虎城アンナ 【シュガリリ】",
-                "twitchId": -1,
-                "englishTitle": "anna_kojo"
             },
             {
                 "id": "UC3EhsuKdEkI99TWZwZgWutg",
                 "title": "杏戸ゆげ",
-                "order": "3",
+                "order": "8",
                 "color": "#D9DFDF",
                 "textColor": "#000000",
                 "borderColor": "#D9DFDF",
@@ -347,7 +103,7 @@
             {
                 "id": "UCmqrvfLMws-GLGHQcB5dasg",
                 "title": "花奏かのん",
-                "order": "4",
+                "order": "9",
                 "color": "#c9fff3",
                 "textColor": "#000000",
                 "borderColor": "#c9fff3",
@@ -359,7 +115,7 @@
             {
                 "id": "UChXm-xAYPfygrbyLo2yCASQ",
                 "title": "季咲あんこ",
-                "order": "5",
+                "order": "10",
                 "color": "#ffccff",
                 "textColor": "#000000",
                 "borderColor": "#ffccff",
@@ -369,9 +125,69 @@
                 "englishTitle": "anko_kisaki"
             },
             {
+                "id": "UCXp7sNC0F_qkjickvlYkg-Q",
+                "title": "風見くく",
+                "order": "11",
+                "color": "#ff7a3a",
+                "textColor": "#ffffff",
+                "borderColor": "#ff7a3a",
+                "imageurl": "https://774today.ytclipplay.website/kuku.webp",
+                "channelName": "Kuku Channel / 風見くく 【あにまーれ】",
+                "twitchId": 825041113,
+                "englishTitle": "kuku_kazami"
+            },
+            {
+                "id": "UCW8WKciBixmaqaGqrlTITRQ",
+                "title": "柚原いづみ",
+                "order": "12",
+                "color": "#b6563b",
+                "textColor": "#ffffff",
+                "borderColor": "#b6563b",
+                "imageurl": "https://774today.ytclipplay.website/izumi.webp",
+                "channelName": "Izumi Channel / 柚原いづみ 【あにまーれ】",
+                "twitchId": 838406432,
+                "englishTitle": "izumi_yunohara"
+            },
+            {
+                "id": "UC2hc-00y-MSR6eYA4eQ4tjQ",
+                "title": "龍ヶ崎リン",
+                "order": "13",
+                "color": "#FF3300",
+                "textColor": "#000000",
+                "borderColor": "#FF3300",
+                "imageurl": "https://774today.ytclipplay.website/rene.webp",
+                "channelName": "Rene Channel / 龍ヶ崎リン 【シュガリリ】",
+                "twitchId": -1,
+                "englishTitle": "rene_ryugasaki"
+            },
+            {
+                "id": "UC--A2dwZW7-M2kID0N6_lfA",
+                "title": "獅子王クリス",
+                "order": "14",
+                "color": "#7FFFD4",
+                "textColor": "#000000",
+                "borderColor": "#7FFFD4",
+                "imageurl": "https://774today.ytclipplay.website/chris.webp",
+                "channelName": "Chris Channel / 獅子王クリス 【シュガリリ】",
+                "twitchId": -1,
+                "englishTitle": "chris_shishio"
+            },
+            {
+                "id": "UCvPPBoTOor5gm8zSlE2tg4w",
+                "title": "虎城アンナ",
+                "order": "15",
+                "color": "#9966FF",
+                "textColor": "#000000",
+                "borderColor": "#9966FF",
+                "imageurl": "https://774today.ytclipplay.website/anna.webp",
+                "channelName": "Anna Channel / 虎城アンナ 【シュガリリ】",
+                "twitchId": -1,
+                "englishTitle": "anna_kojo"
+            },
+            {
                 "id": "UCV4EoK6BVNl7wxuxpUvvSWA",
                 "title": "不磨わっと",
-                "order": "7",
+                "order": "16",
                 "color": "#EE82EE",
                 "textColor": "#000000",
                 "borderColor": "#EE82EE",
@@ -379,13 +195,169 @@
                 "channelName": "Wat Channel / 不磨わっと 【774inc.】",
                 "twitchId": -1,
                 "englishTitle": "wat_huma"
+            },
+            {
+                "id": "UC_WOBIopwUih0rytRnr_1Ag",
+                "title": "瀬島るい",
+                "order": "17",
+                "color": "#d2293e",
+                "textColor": "#ffffff",
+                "borderColor": "#d2293e",
+                "imageurl": "https://774today.ytclipplay.website/rui.webp",
+                "channelName": "Rui Channel / 瀬島るい 【あにまーれ】",
+                "twitchId": -1,
+                "englishTitle": "rui_seshima"
+            },
+            {
+                "id": "UCFsWaTQ7kT76jNNGeGIKNSA",
+                "title": "飛良ひかり",
+                "order": "18",
+                "color": "#fe846d",
+                "textColor": "#ffffff",
+                "borderColor": "#fe846d",
+                "imageurl": "https://774today.ytclipplay.website/hikari.webp",
+                "channelName": "Hikari Channel / 飛良ひかり 【あにまーれ】",
+                "twitchId": 822299689,
+                "englishTitle": "hikari_hira"
+            },
+            {
+                "id": "UC3xG1XWzAKt5dxSxktJvtxg",
+                "title": "大浦るかこ",
+                "order": "19",
+                "color": "#3798a9",
+                "textColor": "#ffffff",
+                "borderColor": "#3798a9e",
+                "imageurl": "https://774today.ytclipplay.website/rukako.webp",
+                "channelName": "Rukako Channel / 大浦るかこ 【あにまーれ】",
+                "twitchId": -1,
+                "englishTitle": "rukako_oura"
+            },
+            {
+                "id": "UC4PrHgUcAtOoj_LKmUL-uLQ",
+                "title": "湖南みあ",
+                "order": "20",
+                "color": "#f5e29e",
+                "textColor": "#000000",
+                "borderColor": "#f5e29e",
+                "imageurl": "https://774today.ytclipplay.website/mia.webp",
+                "channelName": "Mia Channel / 湖南みあ 【あにまーれ】",
+                "twitchId": -1,
+                "englishTitle": "mia_konan"
+            },
+            {
+                "id": "UCqskJ0nmw-_eweWfsKvbrzQ",
+                "title": "月野木ちろる",
+                "order": "21",
+                "color": "#93dfd5",
+                "textColor": "#000000",
+                "borderColor": "#93dfd5",
+                "imageurl": "https://774today.ytclipplay.website/tirol.webp",
+                "channelName": "Tirol Channel / 月野木ちろる 【あにまーれ】",
+                "twitchId": -1,
+                "englishTitle": "tirol_tsukinoki"
+            },
+            {
+                "id": "UCkpqb53xiOvOgNYEbNpFSyw",
+                "title": "茜音カンナ",
+                "order": "22",
+                "color": "#DC143C",
+                "textColor": "#FFFFFF",
+                "borderColor": "#DC143C",
+                "imageurl": "https://774today.ytclipplay.website/canna.webp",
+                "channelName": "Canna Channel / 茜音カンナ【ひよクロ】",
+                "twitchId": -1,
+                "englishTitle": "canna_akane"
+            },
+            {
+                "id": "UCBJ6nejlzes6mm9UruaxQsA",
+                "title": "涼海ネモ",
+                "order": "23",
+                "color": "#000080",
+                "textColor": "#FFFFFF",
+                "borderColor": "#000080",
+                "imageurl": "https://774today.ytclipplay.website/nemo.webp",
+                "channelName": "Nemo Channel / 涼海ネモ【ひよクロ】",
+                "twitchId": -1,
+                "englishTitle": "nemo_suzumi"
+            },
+            {
+                "id": "UCBxw5bdrbKO7E60E4s3KgQg",
+                "title": "橙里セイ",
+                "order": "24",
+                "color": "#FF4500",
+                "textColor": "#000000",
+                "borderColor": "#FF4500",
+                "imageurl": "https://774today.ytclipplay.website/sei.webp",
+                "channelName": "Sei Channel / 橙里セイ【ひよクロ】",
+                "twitchId": -1,
+                "englishTitle": "sei_touri"
+            },
+            {
+                "id": "UC_hjHmi-ODGhHlSzD16p5Pw",
+                "title": "家入ポポ",
+                "order": "25",
+                "color": "#FFDD61",
+                "textColor": "#000000",
+                "borderColor": "#FFDD61",
+                "imageurl": "https://774today.ytclipplay.website/popo.webp",
+                "channelName": "Popo Channel / 家入ポポ【ひよクロ】",
+                "twitchId": -1,
+                "englishTitle": "popo_ieiri"
+            },
+            {
+                "id": "UCGyywYAJd2O5Y7yUyr7qBRQ",
+                "title": "瑚白ユリ",
+                "order": "26",
+                "color": "#F0F8FF",
+                "textColor": "#000000",
+                "borderColor": "#000000",
+                "imageurl": "https://774today.ytclipplay.website/yuri.webp",
+                "channelName": "Yuri Channel / 瑚白ユリ【ひよクロ】",
+                "twitchId": -1,
+                "englishTitle": "yuri_kohaku"
+            },
+            {
+                "id": "UC3MBUvkVTI9p-p0be7y7TQA",
+                "title": "紫水キキ",
+                "order": "27",
+                "color": "#6A5ACD",
+                "textColor": "#FFFFFF",
+                "borderColor": "#6A5ACD",
+                "imageurl": "https://774today.ytclipplay.website/kiki.webp",
+                "channelName": "Kiki Channel / 紫水キキ【ひよクロ】",
+                "twitchId": -1,
+                "englishTitle": "kiki_shisui"
+            },
+            {
+                "id": "UCRY0-zJ1pV4EiKUSLXCXTAg",
+                "title": "狼森メイ",
+                "order": "28",
+                "color": "#FEEEED",
+                "textColor": "#000000",
+                "borderColor": "#FEEEED",
+                "imageurl": "https://774today.ytclipplay.website/may.webp",
+                "channelName": "May Channel / 狼森メイ 【シュガリリ】",
+                "twitchId": -1,
+                "englishTitle": "may_oinomori"
+            },
+            {
+                "id": "UCrt4cTM_sWH0iySLMkwwYLQ",
+                "title": "蛇宵ティア",
+                "order": "29",
+                "color": "#84A2D4",
+                "textColor": "#000000",
+                "borderColor": "#84A2D4",
+                "imageurl": "https://774today.ytclipplay.website/tier.webp",
+                "channelName": "Tier Channel / 蛇宵ティア 【シュガリリ】",
+                "twitchId": -1,
+                "englishTitle": "tier_hebiyoi"
             }
         ]
     },
     {
         "id": "official",
         "title": "公式",
-        "order": "6",
+        "order": "2",
         "children": [
             {
                 "id": "UCJEpkwwDiTKS5lxwFttEbIQ",
