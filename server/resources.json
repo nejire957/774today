@@ -351,6 +351,42 @@
                 "channelName": "Tier Channel / 蛇宵ティア 【シュガリリ】",
                 "twitchId": -1,
                 "englishTitle": "tier_hebiyoi"
+            },
+            {
+                "id": "UCW98GVLrx8lG_ddOts3cl4g",
+                "title": "天羽衣",
+                "order": "30",
+                "color": "#bbdcf4",
+                "textColor": "#000000",
+                "borderColor": "#bbdcf4",
+                "imageurl": "https://774today.ytclipplay.website/amaui.webp",
+                "channelName": "天羽衣 / Amaui Channel【ななしいんく】",
+                "twitchId": 900270922,
+                "englishTitle": "amaui0915"
+            },
+            {
+                "id": "UCxCdPRbi-s5J74A6KgkxnQg",
+                "title": "いなうるう",
+                "order": "31",
+                "color": "#dab4d4",
+                "textColor": "#000000",
+                "borderColor": "#dab4d4",
+                "imageurl": "https://774today.ytclipplay.website/uruu.webp",
+                "channelName": "いなうるう / Uruu Channel【ななしいんく】",
+                "twitchId": 900273345,
+                "englishTitle": "Inauruu1017"
+            },
+            {
+                "id": "UCBhfuPYgo5ALbn6WmTXwHwg",
+                "title": "日向ましゅ",
+                "order": "32",
+                "color": "#f3dd6d",
+                "textColor": "#000000",
+                "borderColor": "#f3dd6d",
+                "imageurl": "https://774today.ytclipplay.website/mashu.webp",
+                "channelName": "日向ましゅ / Mashu Channel【ななしいんく】",
+                "twitchId": 900274304,
+                "englishTitle": "hinata_mashu1214"
             }
         ]
     },
