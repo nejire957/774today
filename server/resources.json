@@ -185,21 +185,9 @@
                 "englishTitle": "anna_kojo"
             },
             {
-                "id": "UCV4EoK6BVNl7wxuxpUvvSWA",
-                "title": "不磨わっと",
-                "order": "16",
-                "color": "#EE82EE",
-                "textColor": "#000000",
-                "borderColor": "#EE82EE",
-                "imageurl": "https://774today.ytclipplay.website/wat.webp",
-                "channelName": "Wat Channel / 不磨わっと 【774inc.】",
-                "twitchId": -1,
-                "englishTitle": "wat_huma"
-            },
-            {
                 "id": "UC_WOBIopwUih0rytRnr_1Ag",
                 "title": "瀬島るい",
-                "order": "17",
+                "order": "16",
                 "color": "#d2293e",
                 "textColor": "#ffffff",
                 "borderColor": "#d2293e",
@@ -211,7 +199,7 @@
             {
                 "id": "UCFsWaTQ7kT76jNNGeGIKNSA",
                 "title": "飛良ひかり",
-                "order": "18",
+                "order": "17",
                 "color": "#fe846d",
                 "textColor": "#ffffff",
                 "borderColor": "#fe846d",
@@ -223,7 +211,7 @@
             {
                 "id": "UC3xG1XWzAKt5dxSxktJvtxg",
                 "title": "大浦るかこ",
-                "order": "19",
+                "order": "18",
                 "color": "#3798a9",
                 "textColor": "#ffffff",
                 "borderColor": "#3798a9e",
@@ -235,7 +223,7 @@
             {
                 "id": "UC4PrHgUcAtOoj_LKmUL-uLQ",
                 "title": "湖南みあ",
-                "order": "20",
+                "order": "19",
                 "color": "#f5e29e",
                 "textColor": "#000000",
                 "borderColor": "#f5e29e",
@@ -247,7 +235,7 @@
             {
                 "id": "UCqskJ0nmw-_eweWfsKvbrzQ",
                 "title": "月野木ちろる",
-                "order": "21",
+                "order": "20",
                 "color": "#93dfd5",
                 "textColor": "#000000",
                 "borderColor": "#93dfd5",
@@ -259,7 +247,7 @@
             {
                 "id": "UCkpqb53xiOvOgNYEbNpFSyw",
                 "title": "茜音カンナ",
-                "order": "22",
+                "order": "21",
                 "color": "#DC143C",
                 "textColor": "#FFFFFF",
                 "borderColor": "#DC143C",
@@ -271,7 +259,7 @@
             {
                 "id": "UCBJ6nejlzes6mm9UruaxQsA",
                 "title": "涼海ネモ",
-                "order": "23",
+                "order": "22",
                 "color": "#000080",
                 "textColor": "#FFFFFF",
                 "borderColor": "#000080",
@@ -283,7 +271,7 @@
             {
                 "id": "UCBxw5bdrbKO7E60E4s3KgQg",
                 "title": "橙里セイ",
-                "order": "24",
+                "order": "23",
                 "color": "#FF4500",
                 "textColor": "#000000",
                 "borderColor": "#FF4500",
@@ -295,7 +283,7 @@
             {
                 "id": "UC_hjHmi-ODGhHlSzD16p5Pw",
                 "title": "家入ポポ",
-                "order": "25",
+                "order": "24",
                 "color": "#FFDD61",
                 "textColor": "#000000",
                 "borderColor": "#FFDD61",
@@ -307,7 +295,7 @@
             {
                 "id": "UCGyywYAJd2O5Y7yUyr7qBRQ",
                 "title": "瑚白ユリ",
-                "order": "26",
+                "order": "25",
                 "color": "#F0F8FF",
                 "textColor": "#000000",
                 "borderColor": "#000000",
@@ -319,7 +307,7 @@
             {
                 "id": "UC3MBUvkVTI9p-p0be7y7TQA",
                 "title": "紫水キキ",
-                "order": "27",
+                "order": "26",
                 "color": "#6A5ACD",
                 "textColor": "#FFFFFF",
                 "borderColor": "#6A5ACD",
@@ -331,7 +319,7 @@
             {
                 "id": "UCRY0-zJ1pV4EiKUSLXCXTAg",
                 "title": "狼森メイ",
-                "order": "28",
+                "order": "27",
                 "color": "#FEEEED",
                 "textColor": "#000000",
                 "borderColor": "#FEEEED",
@@ -343,7 +331,7 @@
             {
                 "id": "UCrt4cTM_sWH0iySLMkwwYLQ",
                 "title": "蛇宵ティア",
-                "order": "29",
+                "order": "28",
                 "color": "#84A2D4",
                 "textColor": "#000000",
                 "borderColor": "#84A2D4",
@@ -355,7 +343,7 @@
             {
                 "id": "UCW98GVLrx8lG_ddOts3cl4g",
                 "title": "天羽衣",
-                "order": "30",
+                "order": "29",
                 "color": "#bbdcf4",
                 "textColor": "#000000",
                 "borderColor": "#bbdcf4",
@@ -367,7 +355,7 @@
             {
                 "id": "UCxCdPRbi-s5J74A6KgkxnQg",
                 "title": "いなうるう",
-                "order": "31",
+                "order": "30",
                 "color": "#dab4d4",
                 "textColor": "#000000",
                 "borderColor": "#dab4d4",
@@ -379,7 +367,7 @@
             {
                 "id": "UCBhfuPYgo5ALbn6WmTXwHwg",
                 "title": "日向ましゅ",
-                "order": "32",
+                "order": "31",
                 "color": "#f3dd6d",
                 "textColor": "#000000",
                 "borderColor": "#f3dd6d",
