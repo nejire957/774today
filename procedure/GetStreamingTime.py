@@ -351,8 +351,11 @@ def lambda_handler(lambdaEvent, context):
         start = dateutil.parser.parse(knownEvent["start"])
         # 配信開始が昨日から2時間前までの場合
         if yesterday < start < twoHoursAgo:
-            # 配信中の場合は更新
-            if knownEvent["liveBroadcastContent"] == "live":
+            # 配信中または配信前の場合は更新
+            if (
+                knownEvent["liveBroadcastContent"] == "live"
+                or knownEvent["liveBroadcastContent"] == "upcoming"
+            ):
                 for group in resources:
                     for streamer in group["children"]:
                         if knownEvent["resourceId"] == streamer["id"]:
