@@ -10,34 +10,61 @@
 
 <head>
     <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-PTQFBXW');</script>
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                "gtm.start": new Date().getTime(),
+                event: "gtm.js",
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-PTQFBXW");
+    </script>
     <!-- End Google Tag Manager -->
-    <meta charset="utf8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta http-equiv="Cache-Control" content="no-cache">
-    <meta http-equiv="Expires" content="0">
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <title>ななしトゥデイ</title>
-    <meta name="keywords"
-        content="774inc.,ななしいんく,配信,予定,スケジュール,有閑喫茶あにまーれ,あにまーれ,ハニーストラップ,ハニスト,シュガーリリック,シュガリリ,緋翼のクロスピース,ひよクロ,YouTube,Twitch" />
-    <meta name="description" content="ななしいんくのVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。" />
+    <meta
+        name="keywords"
+        content="774inc.,ななしいんく,配信,予定,スケジュール,有閑喫茶あにまーれ,あにまーれ,ハニーストラップ,ハニスト,シュガーリリック,シュガリリ,緋翼のクロスピース,ひよクロ,YouTube,Twitch"
+    />
+    <meta
+        name="description"
+        content="ななしいんくのVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。"
+    />
     <link rel="canonical" href="https://774today.ytclipplay.website" />
-    <link rel="shortcut icon" href="https://774today.ytclipplay.website/favicon.png">
+    <link
+        rel="shortcut icon"
+        href="https://774today.ytclipplay.website/favicon.png"
+    />
     <meta name="twitter:site" content="@nejire957" />
     <meta name="twitter:title" content="ななしトゥデイ" />
-    <meta name="twitter:description" content="ななしいんくのVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。" />
-    <meta name="twitter:image" content="https://774today.ytclipplay.website/screenshot.png" />
+    <meta
+        name="twitter:description"
+        content="ななしいんくのVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。"
+    />
+    <meta
+        name="twitter:image"
+        content="https://774today.ytclipplay.website/screenshot.png"
+    />
     <meta name="twitter:card" content="summary" />
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.0.2/index.global.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://kit.fontawesome.com/8b2237670b.js" crossorigin="anonymous"></script>
-    <link rel="manifest" href="/manifest.json">
+    <script
+        type="text/javascript"
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+    ></script>
+    <script
+        src="https://kit.fontawesome.com/8b2237670b.js"
+        crossorigin="anonymous"
+    ></script>
+    <link rel="manifest" href="/manifest.json" />
     <style>
         html,
         body {
@@ -296,7 +323,7 @@
         }
 
         .checked {
-            background-color: #FF3278;
+            background-color: #ff3278;
         }
 
         .filter-image {
@@ -305,104 +332,130 @@
         }
     </style>
     <script>
-        var articleIsVisible = false;       //動画サムネイルの表示状態を示すパラメータ
-        var videoId = "";       //選択された動画のIDを一時保存するパラメータ
-        var thumbnailImage = new Image();       //動画のサムネイルが入るパラメータ
-        var isDarkMode = false;     //ライトモード/ダークモードの状態を示すパラメータ
-        var now = new Date();       //現在日時が入るパラメータ
-        var month = now.getMonth() + 1;     //現在の月が入るパラメータ
-        var scrollDate = 1;       //表示中の日を示すパラメータ(0:昨日, 1:今日, 2:明日)
+        var articleIsVisible = false; //動画サムネイルの表示状態を示すパラメータ
+        var videoId = ""; //選択された動画のIDを一時保存するパラメータ
+        var thumbnailImage = new Image(); //動画のサムネイルが入るパラメータ
+        var isDarkMode = false; //ライトモード/ダークモードの状態を示すパラメータ
+        var now = new Date(); //現在日時が入るパラメータ
+        var month = now.getMonth() + 1; //現在の月が入るパラメータ
+        var scrollDate = 1; //表示中の日を示すパラメータ(0:昨日, 1:今日, 2:明日)
         var yesterday = new Date(now.getTime());
         yesterday.setDate(now.getDate() - 1);
         var yesterdayMonth = yesterday.getMonth() + 1;
         var tomorrow = new Date(now.getTime());
         tomorrow.setDate(now.getDate() + 1);
         var tomorrowMonth = tomorrow.getMonth() + 1;
-        var timeoutId;      //スクロールイベントの発火量調整用
-        var cooling = false;      //スクロールイベントの発火量調整用
-        var scrollPosition = 0;     //パネル表示時のスクロール量記録
-        function toggleInfoPage(e) {      //サイト情報の表示/非表示を切り替える
+        var timeoutId; //スクロールイベントの発火量調整用
+        var cooling = false; //スクロールイベントの発火量調整用
+        var scrollPosition = 0; //パネル表示時のスクロール量記録
+        function toggleInfoPage(e) {
+            //サイト情報の表示/非表示を切り替える
             if (articleIsVisible) {
                 hideArticle();
-            }
-            else {
+            } else {
                 articleIsVisible = true;
-                $('#info').css({ zIndex: 100 });
-                $('#info').fadeIn(250);
-                scrollPosition = $('#content').scrollTop();
-                var top = scrollPosition - $('#header').height() - $('#date').height();
-                $('#content').addClass('fixed');
-                $('#content').css({ 'top': -top });
+                $("#info").css({ zIndex: 100 });
+                $("#info").fadeIn(250);
+                scrollPosition = $("#content").scrollTop();
+                var top =
+                    scrollPosition -
+                    $("#header").height() -
+                    $("#date").height();
+                $("#content").addClass("fixed");
+                $("#content").css({ top: -top });
                 e.stopPropagation();
             }
         }
-        function toggleFilterPage(e) {      //フィルターの表示/非表示を切り替える
+        function toggleFilterPage(e) {
+            //フィルターの表示/非表示を切り替える
             if (articleIsVisible) {
                 hideArticle();
-            }
-            else {
+            } else {
                 articleIsVisible = true;
-                $('#filter').css({ zIndex: 100 });
-                $('#filter').fadeIn(250);
-                scrollPosition = $('#content').scrollTop();
-                var top = scrollPosition - $('#header').height() - $('#date').height();
-                $('#content').addClass('fixed');
-                $('#content').css({ 'top': -top });
+                $("#filter").css({ zIndex: 100 });
+                $("#filter").fadeIn(250);
+                scrollPosition = $("#content").scrollTop();
+                var top =
+                    scrollPosition -
+                    $("#header").height() -
+                    $("#date").height();
+                $("#content").addClass("fixed");
+                $("#content").css({ top: -top });
                 e.stopPropagation();
             }
         }
-        function hideArticle() {     //動画詳細を非表示にする
+        function hideArticle() {
+            //動画詳細を非表示にする
             if (articleIsVisible) {
-                $('.popup').fadeOut(250);
-                $('#content').removeClass('fixed').css({ 'top': 0 });
-                $('#content').scrollTop(scrollPosition);
+                $(".popup").fadeOut(250);
+                $("#content").removeClass("fixed").css({ top: 0 });
+                $("#content").scrollTop(scrollPosition);
                 articleIsVisible = false;
             }
         }
-        function keepArticle(e) {        //動画詳細を表示したままにする
+        function keepArticle(e) {
+            //動画詳細を表示したままにする
             e.stopPropagation();
         }
-        thumbnailImage.onload = function () {     //サムネイル画像が読み込まれたときに動画詳細を表示する
+        thumbnailImage.onload = function () {
+            //サムネイル画像が読み込まれたときに動画詳細を表示する
             if (120 < thumbnailImage.naturalWidth) {
-                $('#detail-thumbnail').attr({ src: thumbnailImage.src })
+                $("#detail-thumbnail").attr({ src: thumbnailImage.src });
+            } else {
+                //サムネイル画像の幅が120以下(=読み込み失敗)の時は別画像を参照する
+                $("#detail-thumbnail").attr({
+                    src:
+                        "https://img.youtube.com/vi/" +
+                        videoId +
+                        "/mqdefault.jpg",
+                });
             }
-            else {       //サムネイル画像の幅が120以下(=読み込み失敗)の時は別画像を参照する
-                $('#detail-thumbnail').attr({ src: "https://img.youtube.com/vi/" + videoId + "/mqdefault.jpg" });
-            }
+        };
+        function showDetail() {
+            //動画詳細を表示する
+            $("#detail").css({ zIndex: 100 });
+            $("#detail").fadeIn(250);
+            scrollPosition = $("#content").scrollTop();
+            var top =
+                scrollPosition - $("#header").height() - $("#date").height();
+            $("#content").addClass("fixed");
+            $("#content").css({ top: -top });
         }
-        function showDetail() {      //動画詳細を表示する
-            $('#detail').css({ zIndex: 100 });
-            $('#detail').fadeIn(250);
-            scrollPosition = $('#content').scrollTop();
-            var top = scrollPosition - $('#header').height() - $('#date').height();
-            $('#content').addClass('fixed');
-            $('#content').css({ 'top': -top });
-        }
-        function changeColorMode() {     //ライトモード/ダークモードを切り替える
+        function changeColorMode() {
+            //ライトモード/ダークモードを切り替える
             if (isDarkMode) {
-                $('body').css({ 'background-color': 'white', color: 'black' });
-                $('#date').css({ 'background-color': 'white', color: 'black' });
-                $('#moon').show();
-                $('#sun').hide();
+                $("body").css({ "background-color": "white", color: "black" });
+                $("#date").css({ "background-color": "white", color: "black" });
+                $("#moon").show();
+                $("#sun").hide();
                 isDarkMode = false;
-                history.replaceState('', '', '/');
-            }
-            else {
-                $('body').css({ 'background-color': '#121212', color: 'white' });
-                $('#date').css({ 'background-color': '#121212', color: 'white' });
-                $('#moon').hide();
-                $('#sun').show();
+                history.replaceState("", "", "/");
+            } else {
+                $("body").css({
+                    "background-color": "#121212",
+                    color: "white",
+                });
+                $("#date").css({
+                    "background-color": "#121212",
+                    color: "white",
+                });
+                $("#moon").hide();
+                $("#sun").show();
                 isDarkMode = true;
-                history.replaceState('', '', '/?darkmode=on');
+                history.replaceState("", "", "/?darkmode=on");
             }
         }
-        function alarm() {       //毎時16分に更新のお知らせを表示する
+        function alarm() {
+            //毎時16分に更新のお知らせを表示する
             var notice = function () {
-                $('#notice').css({ 'display': 'table-cell' });
-                $('#update').css({ 'display': 'none' });
+                $("#notice").css({ display: "table-cell" });
+                $("#update").css({ display: "none" });
             };
             var now = new Date();
-            var currentSecond = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+            var currentSecond =
+                now.getHours() * 3600 +
+                now.getMinutes() * 60 +
+                now.getSeconds();
             if (now.getMinutes() < 16) {
                 var targetSecond = now.getHours() * 3600 + 16 * 60;
             } else {
@@ -413,7 +466,7 @@
             return setTimeout(notice, durationSecond * 1000);
         }
         function onScroll() {
-            scrollDate = Math.floor($('#content').scrollTop() / 80 / 24);
+            scrollDate = Math.floor($("#content").scrollTop() / 80 / 24);
             updateDate();
             clearTimeout(timeoutId);
             setTimeout(function () {
@@ -428,13 +481,34 @@
             cooling = true;
             switch (scrollDate) {
                 case 0:
-                    $('#date').text(yesterday.getFullYear() + "年" + yesterdayMonth + "月" + yesterday.getDate() + "日 (昨日)");
+                    $("#date").text(
+                        yesterday.getFullYear() +
+                            "年" +
+                            yesterdayMonth +
+                            "月" +
+                            yesterday.getDate() +
+                            "日 (昨日)"
+                    );
                     break;
                 case 1:
-                    $('#date').text(now.getFullYear() + "年" + month + "月" + now.getDate() + "日 (今日)");
+                    $("#date").text(
+                        now.getFullYear() +
+                            "年" +
+                            month +
+                            "月" +
+                            now.getDate() +
+                            "日 (今日)"
+                    );
                     break;
                 case 2:
-                    $('#date').text(tomorrow.getFullYear() + "年" + tomorrowMonth + "月" + tomorrow.getDate() + "日 (明日)");
+                    $("#date").text(
+                        tomorrow.getFullYear() +
+                            "年" +
+                            tomorrowMonth +
+                            "月" +
+                            tomorrow.getDate() +
+                            "日 (明日)"
+                    );
                     break;
                 default:
                     break;
@@ -448,166 +522,238 @@
             var index = Number($(elem).attr("index"));
             var fieldSet = $(elem).parent();
             var groupIndex = Number($(fieldSet).attr("index"));
-            if (window.localStorage.getItem($(elem).attr('id')) == "true") {
-                window.localStorage.setItem($(elem).attr('id'), 'false');
+            if (window.localStorage.getItem($(elem).attr("id")) == "true") {
+                window.localStorage.setItem($(elem).attr("id"), "false");
                 $(elem).removeClass("checked");
             } else {
-                window.localStorage.setItem($(elem).attr('id'), 'true');
+                window.localStorage.setItem($(elem).attr("id"), "true");
                 $(elem).addClass("checked");
             }
             var resource = resources[groupIndex].children[index];
             var flag = true;
             for (var i = 0; i < resources.length; i++) {
                 for (var j = 0; j < resources[i].children.length; j++) {
-                    if (window.localStorage.getItem(resources[i].children[j].id) == "false") {
+                    if (
+                        window.localStorage.getItem(
+                            resources[i].children[j].id
+                        ) == "false"
+                    ) {
                         flag = false;
                     }
                 }
             }
             if (flag) {
-                $('#filter-button').removeAttr('style');
+                $("#filter-button").removeAttr("style");
             } else {
-                $('#filter-button').attr('style', "color: crimson;");
+                $("#filter-button").attr("style", "color: crimson;");
             }
             calendarModel.refetchEvents();
         }
         var calendarModel;
-        document.addEventListener('DOMContentLoaded', function () {      //DOMが読み込まれてから、PWA対応、ダークモード設定、カレンダーの初期化、更新日時の取得、を行う
-            if ('serviceWorker' in navigator) {     //PWA対応
-                console.log('Found serviceWorker');
-                navigator.serviceWorker.register('/sw.js').then((reg) => {
-                    console.log('Service Worker Registered', reg);
+        document.addEventListener("DOMContentLoaded", function () {
+            //DOMが読み込まれてから、PWA対応、ダークモード設定、カレンダーの初期化、更新日時の取得、を行う
+            if ("serviceWorker" in navigator) {
+                //PWA対応
+                console.log("Found serviceWorker");
+                navigator.serviceWorker.register("/sw.js").then((reg) => {
+                    console.log("Service Worker Registered", reg);
                 });
             } else {
-                console.log('Not Found serviceWorker');
+                console.log("Not Found serviceWorker");
             }
             var urlParam = location.search.substring(1);
-            if (urlParam) {      //クエリに応じてダークモードを設定する
-                var param = decodeURIComponent(urlParam).split('&');
+            if (urlParam) {
+                //クエリに応じてダークモードを設定する
+                var param = decodeURIComponent(urlParam).split("&");
                 var paramArray = [];
                 for (i = 0; i < param.length; i++) {
-                    var paramItem = param[i].split('=');
+                    var paramItem = param[i].split("=");
                     paramArray[paramItem[0]] = paramItem[1];
                 }
-                if (paramArray.darkmode == 'on') {
+                if (paramArray.darkmode == "on") {
                     changeColorMode();
                 }
             }
-            $('#date').text(now.getFullYear() + "年" + month + "月" + now.getDate() + "日 (今日)");
-            var calendarView = document.getElementById('calendar');
+            $("#date").text(
+                now.getFullYear() +
+                    "年" +
+                    month +
+                    "月" +
+                    now.getDate() +
+                    "日 (今日)"
+            );
+            var calendarView = document.getElementById("calendar");
             $.when(
-                $.getJSON("https://774today.ytclipplay.website/resources.json", (data) => {
-                    resources = data;
-                    resources.forEach((group, index) => {
-                        group.children.forEach((talent, index2) => {
-                            if (window.localStorage.getItem(talent.id) == null) {
-                                window.localStorage.setItem(talent.id, 'true');
-                            } else if (window.localStorage.getItem(talent.id) == 'false') {
-                                $('#' + talent.id).removeClass("checked");
-                                $('#filter-button').attr('style', "color: crimson;");
-                            }
+                $.getJSON(
+                    "https://774today.ytclipplay.website/resources.json",
+                    (data) => {
+                        resources = data;
+                        resources.forEach((group, index) => {
+                            group.children.forEach((talent, index2) => {
+                                if (
+                                    window.localStorage.getItem(talent.id) ==
+                                    null
+                                ) {
+                                    window.localStorage.setItem(
+                                        talent.id,
+                                        "true"
+                                    );
+                                } else if (
+                                    window.localStorage.getItem(talent.id) ==
+                                    "false"
+                                ) {
+                                    $("#" + talent.id).removeClass("checked");
+                                    $("#filter-button").attr(
+                                        "style",
+                                        "color: crimson;"
+                                    );
+                                }
+                            });
                         });
-                    });
-                })
+                    }
+                )
             ).done(
-                calendarModel = new FullCalendar.Calendar(calendarView, {        //カレンダーを初期化する
-                    schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
+                (calendarModel = new FullCalendar.Calendar(calendarView, {
+                    //カレンダーを初期化する
+                    schedulerLicenseKey: "GPL-My-Project-Is-Open-Source",
                     locale: "jp",
                     height: "auto",
                     headerToolbar: {
-                        left: '',
-                        center: '',
-                        right: ''
+                        left: "",
+                        center: "",
+                        right: "",
                     },
-                    initialView: 'timeGridDay',
+                    initialView: "timeGridDay",
                     titleFormat: {
-                        day: "numeric"
+                        day: "numeric",
                     },
                     eventTimeFormat: {
-                        hour: 'numeric',
-                        minute: 'numeric',
-                        hour12: false
+                        hour: "numeric",
+                        minute: "numeric",
+                        hour12: false,
                     },
                     slotLabelFormat: {
-                        hour: 'numeric',
-                        minute: 'numeric',
-                        hour12: false
+                        hour: "numeric",
+                        minute: "numeric",
+                        hour12: false,
                     },
                     allDaySlot: false,
                     slotMinTime: "-24:00:00",
                     slotMaxTime: "48:00:00",
                     nowIndicator: true,
                     dayHeaders: false,
-                    eventDidMount: function (arg) {      //イベントに顔画像を入れる
+                    eventDidMount: function (arg) {
+                        //イベントに顔画像を入れる
                         if (arg.event.extendedProps.imageurl) {
-                            var div = document.createElement('img');
-                            div.setAttribute('src', arg.event.extendedProps.imageurl);
-                            div.setAttribute('width', 50);
-                            div.setAttribute('height', 50);
-                            div.setAttribute('loading', 'lazy')
+                            var div = document.createElement("img");
+                            div.setAttribute(
+                                "src",
+                                arg.event.extendedProps.imageurl
+                            );
+                            div.setAttribute("width", 50);
+                            div.setAttribute("height", 50);
+                            div.setAttribute("loading", "lazy");
                             if (arg.event.extendedProps.platform == "twitch") {
-                                arg.el.firstChild.firstChild.firstChild.textContent = arg.el.firstChild.firstChild.firstChild.textContent + " (Twitch)"
+                                arg.el.firstChild.firstChild.firstChild.textContent =
+                                    arg.el.firstChild.firstChild.firstChild
+                                        .textContent + " (Twitch)";
                             }
-                            arg.el.firstChild.firstChild.firstChild.insertBefore(div, arg.el.firstChild.firstChild.firstChild.firstChild);
+                            arg.el.firstChild.firstChild.firstChild.insertBefore(
+                                div,
+                                arg.el.firstChild.firstChild.firstChild
+                                    .firstChild
+                            );
                         }
                     },
-                    eventClick: function (info) {        //イベントクリック時に動画詳細を表示する
+                    eventClick: function (info) {
+                        //イベントクリック時に動画詳細を表示する
                         if (articleIsVisible) {
                             hideArticle();
-                        }
-                        else {
+                        } else {
                             articleIsVisible = true;
                             videoId = info.event.id;
-                            if (info.event.extendedProps.platform == "youtube") {
-                                $('#detail-title').text(info.event.title);
-                                $('#detail-link').attr({ href: "https://www.youtube.com/watch?v=" + info.event.id });
-                            }
-                            else {
-                                $('#detail-title').text("(Twitch)\n" + info.event.title);
-                                if (info.event.extendedProps.liveBroadcastContent == "live") {
-                                    $('#detail-link').attr({ href: info.event.extendedProps.channelUrl });
-                                }
-                                else {
-                                    $('#detail-link').attr({ href: "https://www.twitch.tv/videos/" + info.event.id });
+                            if (
+                                info.event.extendedProps.platform == "youtube"
+                            ) {
+                                $("#detail-title").text(info.event.title);
+                                $("#detail-link").attr({
+                                    href:
+                                        "https://www.youtube.com/watch?v=" +
+                                        info.event.id,
+                                });
+                            } else {
+                                $("#detail-title").text(
+                                    "(Twitch)\n" + info.event.title
+                                );
+                                if (
+                                    info.event.extendedProps
+                                        .liveBroadcastContent == "live"
+                                ) {
+                                    $("#detail-link").attr({
+                                        href: info.event.extendedProps
+                                            .channelUrl,
+                                    });
+                                } else {
+                                    $("#detail-link").attr({
+                                        href:
+                                            "https://www.twitch.tv/videos/" +
+                                            info.event.id,
+                                    });
                                 }
                             }
                             if (info.event.extendedProps.thumbnailUrl == "") {
-                                thumbnailImage.src = "https://774today.ytclipplay.website/no_image.png"
+                                thumbnailImage.src =
+                                    "https://774today.ytclipplay.website/no_image.png";
+                            } else {
+                                thumbnailImage.src =
+                                    info.event.extendedProps.thumbnailUrl;
                             }
-                            else {
-                                thumbnailImage.src = info.event.extendedProps.thumbnailUrl;
-                            }
-                            $('#detail-channel').attr({ href: info.event.extendedProps.channelUrl });
-                            $('#detail-name').text(info.event.extendedProps.channelName)
-                            $('#detail-banner').attr({ src: info.event.extendedProps.imageurl });
+                            $("#detail-channel").attr({
+                                href: info.event.extendedProps.channelUrl,
+                            });
+                            $("#detail-name").text(
+                                info.event.extendedProps.channelName
+                            );
+                            $("#detail-banner").attr({
+                                src: info.event.extendedProps.imageurl,
+                            });
                             info.jsEvent.stopPropagation();
                         }
                     },
                     eventSourceSuccess: function (contents, response) {
                         var events = [];
-                        contents.forEach(content => {
-                            if (window.localStorage.getItem(content.resourceId) == 'true') {
+                        contents.forEach((content) => {
+                            if (
+                                window.localStorage.getItem(
+                                    content.resourceId
+                                ) == "true"
+                            ) {
                                 events.push(content);
                             }
                         });
                         return events;
                     },
                     events: "https://774today.ytclipplay.website/events.json",
-                    resources: resources
-                })
+                    resources: resources,
+                }))
             );
             calendarModel.render();
-            $('body').show();
-            $('#content').scrollTop((24 + now.getHours() - 3) * 80);
+            $("body").show();
+            $("#content").scrollTop((24 + now.getHours() - 3) * 80);
             var req = new XMLHttpRequest();
-            req.onreadystatechange = function () {       //更新日時を取得する
+            req.onreadystatechange = function () {
+                //更新日時を取得する
                 if (req.readyState == 4 && req.status == 200) {
                     log = JSON.parse(req.responseText);
                     logDatetime = new Date(log.datetime);
-                    $('#update').text(logDatetime.toLocaleString());
+                    $("#update").text(logDatetime.toLocaleString());
                 }
             };
-            req.open("GET", "https://774today.ytclipplay.website/log.json", false);
+            req.open(
+                "GET",
+                "https://774today.ytclipplay.website/log.json",
+                false
+            );
             req.send(null);
             alarm();
         });
@@ -616,22 +762,48 @@
 
 <body onclick="hideArticle(event)">
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PTQFBXW" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript
+        ><iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-PTQFBXW"
+            height="0"
+            width="0"
+            style="display: none; visibility: hidden"
+        ></iframe
+    ></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <header id="header">
         <div>
             <h1 id="title" class="header-item">ななしトゥデイ</h1>
             <div id="update" class="header-item"></div>
-            <div id="notice" class="header-item" onclick="location.reload(true)">更新あり</div>
+            <div
+                id="notice"
+                class="header-item"
+                onclick="location.reload(true)"
+            >
+                更新あり
+            </div>
         </div>
         <div id="header-buttons">
-            <div id="darkmode-button" class="header-item" onclick="changeColorMode()"><i id="sun"
-                    class="fas fa-sun"></i><i id="moon" class="fas fa-moon"></i></div>
-            <div id="filter-button" class="header-item" onclick="toggleFilterPage(event)">
+            <div
+                id="darkmode-button"
+                class="header-item"
+                onclick="changeColorMode()"
+            >
+                <i id="sun" class="fas fa-sun"></i
+                ><i id="moon" class="fas fa-moon"></i>
+            </div>
+            <div
+                id="filter-button"
+                class="header-item"
+                onclick="toggleFilterPage(event)"
+            >
                 <i class="fa-solid fa-filter"></i>
             </div>
-            <div id="info-button" class="header-item" onclick="toggleInfoPage(event)">
+            <div
+                id="info-button"
+                class="header-item"
+                onclick="toggleInfoPage(event)"
+            >
                 <i class="fa-solid fa-circle-info"></i>
             </div>
         </div>
@@ -644,242 +816,594 @@
         <h2>表示するチャンネル</h2>
         <fieldset index="0">
             <legend>タレント</legend>
-            <div class="filter-channel checked" id="UC0Owc36U9lOyi9Gx9Ic-4qg" index="0"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/haneru.webp" width="80%" height="80%"
-                    loading="lazy">
+            <div
+                class="filter-channel checked"
+                id="UC0Owc36U9lOyi9Gx9Ic-4qg"
+                index="0"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/haneru.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
                 因幡はねる
             </div>
-            <div class="filter-channel checked" id="UC2kyQhzGOB-JPgcQX9OMgEw" index="1"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/ichika.webp" width="80%" height="80%"
-                    loading="lazy">
+            <div
+                class="filter-channel checked"
+                id="UC2kyQhzGOB-JPgcQX9OMgEw"
+                index="1"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/ichika.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
                 宗谷いちか
             </div>
-            <div class="filter-channel checked" id="UCRvpMpzAXBRKJQuk-8-Sdvg" index="2"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/ran.webp" width="80%" height="80%"
-                    loading="lazy">
+            <div
+                class="filter-channel checked"
+                id="UCRvpMpzAXBRKJQuk-8-Sdvg"
+                index="2"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/ran.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
                 日ノ隈らん
             </div>
-            <div class="filter-channel checked" id="UCYTz3uIgwVY3ZU-IQJS8r3A" index="3"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/charlotte.webp" width="80%"
-                    height="80%" loading="lazy">
+            <div
+                class="filter-channel checked"
+                id="UCYTz3uIgwVY3ZU-IQJS8r3A"
+                index="3"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/charlotte.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
                 島村シャルロット
             </div>
-            <div class="filter-channel checked" id="UCwePpiw1ocZRSNSkpKvVISw" index="4"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/mary.webp" width="80%" height="80%"
-                    loading="lazy">
+            <div
+                class="filter-channel checked"
+                id="UCwePpiw1ocZRSNSkpKvVISw"
+                index="4"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/mary.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
                 西園寺メアリ
             </div>
-            <div class="filter-channel checked" id="UCDh2bWI5EDu7PavqwICkVpA" index="5"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/mico.webp" width="80%" height="80%"
-                    loading="lazy">
+            <div
+                class="filter-channel checked"
+                id="UCDh2bWI5EDu7PavqwICkVpA"
+                index="5"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/mico.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
                 堰代ミコ
             </div>
-            <div class="filter-channel checked" id="UC3EhsuKdEkI99TWZwZgWutg" index="6"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/uge.webp" width="80%" height="80%"
-                    loading="lazy">
+            <div
+                class="filter-channel checked"
+                id="UC3EhsuKdEkI99TWZwZgWutg"
+                index="6"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/uge.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
                 杏戸ゆげ
             </div>
-            <div class="filter-channel checked" id="UCmqrvfLMws-GLGHQcB5dasg" index="7"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/kanon.webp" width="80%" height="80%"
-                    loading="lazy">
+            <div
+                class="filter-channel checked"
+                id="UCmqrvfLMws-GLGHQcB5dasg"
+                index="7"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/kanon.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
                 花奏かのん
             </div>
-            <div class="filter-channel checked" id="UChXm-xAYPfygrbyLo2yCASQ" index="8"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/anko.webp" width="80%" height="80%"
-                    loading="lazy">
+            <div
+                class="filter-channel checked"
+                id="UChXm-xAYPfygrbyLo2yCASQ"
+                index="8"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/anko.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
                 季咲あんこ
             </div>
-            <div class="filter-channel checked" id="UCXp7sNC0F_qkjickvlYkg-Q" index="9"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/kuku.webp" width="80%" height="80%"
-                    loading="lazy">
+            <div
+                class="filter-channel checked"
+                id="UCXp7sNC0F_qkjickvlYkg-Q"
+                index="9"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/kuku.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
                 風見くく
             </div>
-            <div class="filter-channel checked" id="UCW8WKciBixmaqaGqrlTITRQ" index="10"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/izumi.webp" width="80%" height="80%"
-                    loading="lazy">
+            <div
+                class="filter-channel checked"
+                id="UCW8WKciBixmaqaGqrlTITRQ"
+                index="10"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/izumi.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
                 柚原いづみ
             </div>
-            <div class="filter-channel checked" id="UC2hc-00y-MSR6eYA4eQ4tjQ" index="11"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/rene.webp" width="80%" height="80%"
-                    loading="lazy">
+            <div
+                class="filter-channel checked"
+                id="UC2hc-00y-MSR6eYA4eQ4tjQ"
+                index="11"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/rene.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
                 龍ヶ崎リン
             </div>
-            <div class="filter-channel checked" id="UC--A2dwZW7-M2kID0N6_lfA" index="12"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/chris.webp" width="80%" height="80%"
-                    loading="lazy">
+            <div
+                class="filter-channel checked"
+                id="UC--A2dwZW7-M2kID0N6_lfA"
+                index="12"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/chris.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
                 獅子王クリス
             </div>
-            <div class="filter-channel checked" id="UCvPPBoTOor5gm8zSlE2tg4w" index="13"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/anna.webp" width="80%" height="80%"
-                    loading="lazy">
+            <div
+                class="filter-channel checked"
+                id="UCvPPBoTOor5gm8zSlE2tg4w"
+                index="13"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/anna.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
                 虎城アンナ
             </div>
-            <div class="filter-channel checked" id="UC_WOBIopwUih0rytRnr_1Ag" index="14"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/rui.webp" width="80%" height="80%"
-                    loading="lazy">
+            <div
+                class="filter-channel checked"
+                id="UC_WOBIopwUih0rytRnr_1Ag"
+                index="14"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/rui.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
                 瀬島るい
             </div>
-            <div class="filter-channel checked" id="UCFsWaTQ7kT76jNNGeGIKNSA" index="15"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/hikari.webp" width="80%" height="80%"
-                    loading="lazy">
+            <div
+                class="filter-channel checked"
+                id="UCFsWaTQ7kT76jNNGeGIKNSA"
+                index="15"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/hikari.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
                 飛良ひかり
             </div>
-            <div class="filter-channel checked" id="UC4PrHgUcAtOoj_LKmUL-uLQ" index="16"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/mia.webp" width="80%" height="80%"
-                    loading="lazy">
+            <div
+                class="filter-channel checked"
+                id="UC4PrHgUcAtOoj_LKmUL-uLQ"
+                index="16"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/mia.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
                 湖南みあ
             </div>
-            <div class="filter-channel checked" id="UCqskJ0nmw-_eweWfsKvbrzQ" index="17"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/tirol.webp" width="80%" height="80%"
-                    loading="lazy">
+            <div
+                class="filter-channel checked"
+                id="UCqskJ0nmw-_eweWfsKvbrzQ"
+                index="17"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/tirol.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
                 月野木ちろる
             </div>
-            <div class="filter-channel checked" id="UCkpqb53xiOvOgNYEbNpFSyw" index="18"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/canna.webp" width="80%" height="80%"
-                    loading="lazy">
+            <div
+                class="filter-channel checked"
+                id="UCkpqb53xiOvOgNYEbNpFSyw"
+                index="18"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/canna.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
                 茜音カンナ
             </div>
-            <div class="filter-channel checked" id="UCBJ6nejlzes6mm9UruaxQsA" index="19"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/nemo.webp" width="80%" height="80%"
-                    loading="lazy">
+            <div
+                class="filter-channel checked"
+                id="UCBJ6nejlzes6mm9UruaxQsA"
+                index="19"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/nemo.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
                 涼海ネモ
             </div>
-            <div class="filter-channel checked" id="UCBxw5bdrbKO7E60E4s3KgQg" index="20"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/sei.webp" width="80%" height="80%"
-                    loading="lazy">
+            <div
+                class="filter-channel checked"
+                id="UCBxw5bdrbKO7E60E4s3KgQg"
+                index="20"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/sei.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
                 橙里セイ
             </div>
-            <div class="filter-channel checked" id="UC_hjHmi-ODGhHlSzD16p5Pw" index="21"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/popo.webp" width="80%" height="80%"
-                    loading="lazy">
+            <div
+                class="filter-channel checked"
+                id="UC_hjHmi-ODGhHlSzD16p5Pw"
+                index="21"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/popo.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
                 家入ポポ
             </div>
-            <div class="filter-channel checked" id="UCGyywYAJd2O5Y7yUyr7qBRQ" index="22"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/yuri.webp" width="80%" height="80%"
-                    loading="lazy">
+            <div
+                class="filter-channel checked"
+                id="UCGyywYAJd2O5Y7yUyr7qBRQ"
+                index="22"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/yuri.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
                 瑚白ユリ
             </div>
-            <div class="filter-channel checked" id="UC3MBUvkVTI9p-p0be7y7TQA" index="23"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/kiki.webp" width="80%" height="80%"
-                    loading="lazy">
+            <div
+                class="filter-channel checked"
+                id="UC3MBUvkVTI9p-p0be7y7TQA"
+                index="23"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/kiki.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
                 紫水キキ
             </div>
-            <div class="filter-channel checked" id="UCRY0-zJ1pV4EiKUSLXCXTAg" index="24"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/may.webp" width="80%" height="80%"
-                    loading="lazy">
+            <div
+                class="filter-channel checked"
+                id="UCRY0-zJ1pV4EiKUSLXCXTAg"
+                index="24"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/may.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
                 狼森メイ
             </div>
-            <div class="filter-channel checked" id="UCrt4cTM_sWH0iySLMkwwYLQ" index="25"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/tier.webp" width="80%" height="80%"
-                    loading="lazy">
+            <div
+                class="filter-channel checked"
+                id="UCrt4cTM_sWH0iySLMkwwYLQ"
+                index="25"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/tier.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
                 蛇宵ティア
             </div>
-            <div class="filter-channel checked" id="UCW98GVLrx8lG_ddOts3cl4g" index="26"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/amaui.webp" width="80%" height="80%"
-                    loading="lazy">
+            <div
+                class="filter-channel checked"
+                id="UCW98GVLrx8lG_ddOts3cl4g"
+                index="26"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/amaui.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
                 天羽衣
             </div>
-            <div class="filter-channel checked" id="UCxCdPRbi-s5J74A6KgkxnQg" index="27"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/uruu.webp" width="80%" height="80%"
-                    loading="lazy">
+            <div
+                class="filter-channel checked"
+                id="UCxCdPRbi-s5J74A6KgkxnQg"
+                index="27"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/uruu.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
                 いなうるう
             </div>
-            <div class="filter-channel checked" id="UCBhfuPYgo5ALbn6WmTXwHwg" index="28"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/mashu.webp" width="80%" height="80%"
-                    loading="lazy">
+            <div
+                class="filter-channel checked"
+                id="UCBhfuPYgo5ALbn6WmTXwHwg"
+                index="28"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/mashu.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
                 日向ましゅ
             </div>
         </fieldset>
         <fieldset index="1">
             <legend>公式</legend>
-            <div class="filter-channel checked" id="UCJEpkwwDiTKS5lxwFttEbIQ" index="0"
-                onclick="toggleFilter(event, this)">
-                <img class="filter-image" src="https://774today.ytclipplay.website/774.webp" width="60%" height="60%"
-                    loading="lazy">
-                ななしいんく<br>公式チャンネル
+            <div
+                class="filter-channel checked"
+                id="UCJEpkwwDiTKS5lxwFttEbIQ"
+                index="0"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/774.webp"
+                    width="60%"
+                    height="60%"
+                    loading="lazy"
+                />
+                ななしいんく<br />公式チャンネル
             </div>
         </fieldset>
     </div>
     <div id="info" class="popup info-page" onclick="keepArticle(event)">
         <h2>このサイトについて</h2>
         <ul>
-            <li class="first">ななしいんくのVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。</li>
-            <li class="first">配信スケジュールは各タレントのYouTubeチャンネルとTwitchチャンネルから取得しています。他者のチャンネルでの配信や待機所が作られていない予定は表示されません。</li>
-            <li class="first">更新は1時間ごとに行っています。突発的な配信や長時間の配信は正しく表示されない場合があります。</li>
-            <li class="first">スマートフォンアプリのように、ホーム画面から直接使うことができます。ブラウザのメニューから「インストール」を実行してください。(PWA対応)</li>
             <li class="first">
-                画面右上の右から2番目にあるボタンから表示するタレントを選択できます。選択内容はこのサイトを離れても維持されます。この機能のために、このサイトはブラウザのローカルストレージを使用します。</li>
-            <li class="first">ご意見・ご要望は下記TwitterアカウントのDMで受け付けています。</li>
-            <li class="first">製作者:ねじれ図形 | <a target="_blank" href="https://twitter.com/nejire957">Twitter</a> | <a
-                    target="_blank" href="https://github.com/nejire957/774today">GitHub</a></li>
+                ななしいんくのVTuberの配信スケジュールをタイムライン形式で表示する非公式ファンサイトです。
+            </li>
+            <li class="first">
+                配信スケジュールは各タレントのYouTubeチャンネルとTwitchチャンネルから取得しています。他者のチャンネルでの配信や待機所が作られていない予定は表示されません。
+            </li>
+            <li class="first">
+                更新は1時間ごとに行っています。突発的な配信や長時間の配信は正しく表示されない場合があります。
+            </li>
+            <li class="first">
+                スマートフォンアプリのように、ホーム画面から直接使うことができます。ブラウザのメニューから「インストール」を実行してください。(PWA対応)
+            </li>
+            <li class="first">
+                画面右上の右から2番目にあるボタンから表示するタレントを選択できます。選択内容はこのサイトを離れても維持されます。この機能のために、このサイトはブラウザのローカルストレージを使用します。
+            </li>
+            <li class="first">
+                ご意見・ご要望は下記TwitterアカウントのDMで受け付けています。
+            </li>
+            <li class="first">
+                製作者:ねじれ図形 |
+                <a target="_blank" href="https://twitter.com/nejire957"
+                    >X(Twitter)</a
+                >
+                |
+                <a target="_blank" href="https://github.com/nejire957/774today"
+                    >GitHub</a
+                >
+            </li>
         </ul>
         <h2>注意</h2>
         <ul>
-            <li class="first">このサイトは<a target="_blank" href="https://www.774.ai">ななしいんく</a>所属タレントの二次創作です。開発にあたっては<a
-                    target="_blank" href="https://www.774.ai/guideline">「ななしいんく」所属タレント二次創作ガイドライン</a>に従っています。
-            </li>
-            <li class="first">このサイトはYouTube APIを使用しています。開発にあたっては<a target="_blank"
-                    href="https://www.youtube.com/t/terms">YouTubeの利用規約</a>と、YouTube APIの<a target="_blank"
-                    href="https://developers.google.com/youtube/terms/api-services-terms-of-service-apac">利用規約</a>および<a
+            <li class="first">
+                このサイトは<a target="_blank" href="https://www.774.ai"
+                    >ななしいんく</a
+                >所属タレントの二次創作です。開発にあたっては<a
                     target="_blank"
-                    href="https://developers.google.com/youtube/terms/developer-policies">開発方針</a>に従っています。
-                    このサイトを利用することは、上記の規約に同意することとみなされます。
+                    href="https://www.774.ai/guideline"
+                    >「ななしいんく」所属タレント二次創作ガイドライン</a
+                >に従っています。
             </li>
-            <li class="first">このサイトはTwitch APIを使用しています。開発にあたってはTwitchの<a target="_blank"
-                    href="https://www.twitch.tv/p/ja-jp/legal/terms-of-service/">サービス利用規約</a>と<a target="_blank"
-                    href="https://www.twitch.tv/p/ja-jp/legal/developer-agreement/">デベロッパー規約</a>に従っています。
+            <li class="first">
+                このサイトはYouTube APIを使用しています。開発にあたっては<a
+                    target="_blank"
+                    href="https://www.youtube.com/t/terms"
+                    >YouTubeの利用規約</a
+                >と、YouTube APIの<a
+                    target="_blank"
+                    href="https://developers.google.com/youtube/terms/api-services-terms-of-service-apac"
+                    >利用規約</a
+                >および<a
+                    target="_blank"
+                    href="https://developers.google.com/youtube/terms/developer-policies"
+                    >開発方針</a
+                >に従っています。
+                このサイトを利用することは、上記の規約に同意することとみなされます。
             </li>
-            <li class="first">このサイトはGoogle Analyticsを使用しています。
+            <li class="first">
+                このサイトはTwitch
+                APIを使用しています。開発にあたってはTwitchの<a
+                    target="_blank"
+                    href="https://www.twitch.tv/p/ja-jp/legal/terms-of-service/"
+                    >サービス利用規約</a
+                >と<a
+                    target="_blank"
+                    href="https://www.twitch.tv/p/ja-jp/legal/developer-agreement/"
+                    >デベロッパー規約</a
+                >に従っています。
+            </li>
+            <li class="first">
+                このサイトはGoogle Analyticsを使用しています。
                 <ul>
-                    <li class="second">このサイトはユーザーからこのサイトへのアクセスに関するデータを収集します。データの収集にはcookieを使用します。</li>
-                    <li class="second">Googleはこのデータを<a target="_blank"
-                            href="https://policies.google.com/privacy">プライバシーポリシー</a>に従って管理・分析します。
+                    <li class="second">
+                        このサイトはユーザーからこのサイトへのアクセスに関するデータを収集します。データの収集にはcookieを使用します。
                     </li>
-                    <li class="second">サイト製作者はこの分析結果を受け取り、サイトの利用状況を把握しています。</li>
-                    <li class="second">このサイトを利用することは、上記のデータ処理について同意を示すこととみなされます。</li>
-                    <li class="second">このサイトの開発にあたっては、<a target="_blank"
-                            href="https://support.google.com/analytics/answer/4597324">Googleアナリティクスポリシー</a>に従っています。
-                    </li class="second">
+                    <li class="second">
+                        Googleはこのデータを<a
+                            target="_blank"
+                            href="https://policies.google.com/privacy"
+                            >プライバシーポリシー</a
+                        >に従って管理・分析します。
+                    </li>
+                    <li class="second">
+                        サイト製作者はこの分析結果を受け取り、サイトの利用状況を把握しています。
+                    </li>
+                    <li class="second">
+                        収集されたデータはGoogleが一定期間保持します。データの保持期間は最長で14か月です。それ以外の方法で、サイト製作者がデータを保持することはありません。
+                    </li>
+                    <li class="second">
+                        サイト制作者は、以下の場合を除いて、個人を特定できる情報を他の企業、組織、個人と共有することはありません。
+                    </li>
+                    <ul>
+                        <li class="second">
+                            法律上の義務に応じて、または法律上認められる範囲内で、一般の人々に害が及ぶことを防ぐため。
+                        </li>
+                    </ul>
+                    <li class="second">
+                        サイト制作者は、サイトの一般的な利用傾向などの、個人を特定できない情報を公開することがあります。
+                    </li>
+                    <li class="second">
+                        このサイトを利用することは、上記のデータ処理について同意を示すこととみなされます。
+                    </li>
+                    <li class="second">
+                        このサイトの開発にあたっては、<a
+                            target="_blank"
+                            href="https://support.google.com/analytics/answer/4597324"
+                            >Googleアナリティクスポリシー</a
+                        >に従っています。
+                    </li>
                 </ul>
             </li>
         </ul>
     </div>
     <div id="detail" class="popup" onclick="keepArticle(event)">
-        <a id="detail-link" target="_blank" href=""><img id="detail-thumbnail" width="100%" src="" alt="サムネイル"
-                onload="showDetail()" /></a>
+        <a id="detail-link" target="_blank" href=""
+            ><img
+                id="detail-thumbnail"
+                width="100%"
+                src=""
+                alt="サムネイル"
+                onload="showDetail()"
+        /></a>
         <p id="detail-title">タイトル</p>
         <a id="detail-channel" target="_blank" rel="noopener" href="">
-            <img id="detail-banner" src="https://774today.ytclipplay.website/met.webp" width="40" height="40"
-                loading="lazy">
+            <img
+                id="detail-banner"
+                src="https://774today.ytclipplay.website/met.webp"
+                width="40"
+                height="40"
+                loading="lazy"
+            />
             <div id="detail-name">チャンネル</div>
         </a>
     </div>
