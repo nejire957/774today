@@ -60,10 +60,6 @@
         type="text/javascript"
         src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
     ></script>
-    <script
-        src="https://kit.fontawesome.com/8b2237670b.js"
-        crossorigin="anonymous"
-    ></script>
     <link rel="manifest" href="/manifest.json" />
     <style>
         html,
@@ -110,7 +106,14 @@
             padding-right: 5px;
             font-size: calc(8px + 0.7vw);
             height: calc(28px + 0.6vw);
+            width: auto;
             vertical-align: middle;
+        }
+
+        .header-img {
+            max-width: 100%;
+            height: calc(14px + 0.3vw);
+            width: auto;
         }
 
         #title {
@@ -543,9 +546,15 @@
                 }
             }
             if (flag) {
-                $("#filter-button").removeAttr("style");
+                $("#filter-img").attr(
+                    "src",
+                    "https://774today.ytclipplay.website/filter_white.png"
+                );
             } else {
-                $("#filter-button").attr("style", "color: crimson;");
+                $("#filter-img").attr(
+                    "src",
+                    "https://774today.ytclipplay.website/filter_red.png"
+                );
             }
             calendarModel.refetchEvents();
         }
@@ -603,9 +612,9 @@
                                     "false"
                                 ) {
                                     $("#" + talent.id).removeClass("checked");
-                                    $("#filter-button").attr(
-                                        "style",
-                                        "color: crimson;"
+                                    $("#filter-img").attr(
+                                        "src",
+                                        "https://774today.ytclipplay.website/filter_red.png"
                                     );
                                 }
                             });
@@ -789,22 +798,37 @@
                 class="header-item"
                 onclick="changeColorMode()"
             >
-                <i id="sun" class="fas fa-sun"></i
-                ><i id="moon" class="fas fa-moon"></i>
+                <img
+                    id="sun"
+                    class="header-img"
+                    src="https://774today.ytclipplay.website/sun.png"
+                />
+                <img
+                    id="moon"
+                    class="header-img"
+                    src="https://774today.ytclipplay.website/moon.png"
+                />
             </div>
             <div
                 id="filter-button"
                 class="header-item"
                 onclick="toggleFilterPage(event)"
             >
-                <i class="fa-solid fa-filter"></i>
+                <img
+                    id="filter-img"
+                    class="header-img"
+                    src="https://774today.ytclipplay.website/filter_white.png"
+                />
             </div>
             <div
                 id="info-button"
                 class="header-item"
                 onclick="toggleInfoPage(event)"
             >
-                <i class="fa-solid fa-circle-info"></i>
+                <img
+                    class="header-img"
+                    src="https://774today.ytclipplay.website/info.png"
+                />
             </div>
         </div>
     </header>
