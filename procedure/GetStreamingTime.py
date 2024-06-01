@@ -453,8 +453,8 @@ def lambda_handler(lambdaEvent, context):
                     events.append(streamEvent)
                 videos = getTwitchArchive(headers, streamer)
                 for video in filter(
-                    lambda x: "title" not in streamEvent
-                    or x["title"] != streamEvent["title"],
+                    lambda x: "id" not in streamEvent
+                    or x["stream_id"] != streamEvent["id"],
                     videos,
                 ):
                     eventData = parseTwitchEventData(streamer, video)
