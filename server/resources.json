@@ -193,7 +193,7 @@
                 "borderColor": "#93dfd5",
                 "imageurl": "https://774today.ytclipplay.website/tirol.webp",
                 "channelName": "Tirol Channel / 月野木ちろる 【ななしいんく】",
-                "twitchId": -1,
+                "twitchId": 1094762249,
                 "englishTitle": "tirol_tsukinoki"
             },
             {
@@ -257,21 +257,9 @@
                 "englishTitle": "yuri_kohaku"
             },
             {
-                "id": "UC3MBUvkVTI9p-p0be7y7TQA",
-                "title": "紫水キキ",
-                "order": "22",
-                "color": "#6A5ACD",
-                "textColor": "#FFFFFF",
-                "borderColor": "#6A5ACD",
-                "imageurl": "https://774today.ytclipplay.website/kiki.webp",
-                "channelName": "Kiki Channel / 紫水キキ【ななしいんく】",
-                "twitchId": -1,
-                "englishTitle": "kiki_shisui"
-            },
-            {
                 "id": "UCRY0-zJ1pV4EiKUSLXCXTAg",
                 "title": "狼森メイ",
-                "order": "23",
+                "order": "22",
                 "color": "#FEEEED",
                 "textColor": "#000000",
                 "borderColor": "#FEEEED",
@@ -283,7 +271,7 @@
             {
                 "id": "UCrt4cTM_sWH0iySLMkwwYLQ",
                 "title": "蛇宵ティア",
-                "order": "24",
+                "order": "23",
                 "color": "#84A2D4",
                 "textColor": "#000000",
                 "borderColor": "#84A2D4",
@@ -295,7 +283,7 @@
             {
                 "id": "UCW98GVLrx8lG_ddOts3cl4g",
                 "title": "天羽衣",
-                "order": "25",
+                "order": "24",
                 "color": "#bbdcf4",
                 "textColor": "#000000",
                 "borderColor": "#bbdcf4",
@@ -307,7 +295,7 @@
             {
                 "id": "UCBhfuPYgo5ALbn6WmTXwHwg",
                 "title": "日向ましゅ",
-                "order": "26",
+                "order": "25",
                 "color": "#f3dd6d",
                 "textColor": "#000000",
                 "borderColor": "#f3dd6d",
