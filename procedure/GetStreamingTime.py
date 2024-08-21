@@ -1,8 +1,13 @@
 # Copyright (c) 2022 nejire957
 # This file is part of 774today.
-# 774today is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
-# 774today is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
-# You should have received a copy of the GNU General Public License along with Foobar. If not, see <https://www.gnu.org/licenses/>.
+# 774today is free software: you can redistribute it and/or modify it under the terms of the
+# GNU General Public License as published by the Free Software Foundation, either version 3
+# of the License, or (at your option) any later version.
+# 774today is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+# without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details.
+# You should have received a copy of the GNU General Public License along with Foobar.
+# If not, see <https://www.gnu.org/licenses/>.
 
 import requests
 import json
@@ -12,6 +17,7 @@ import os
 import io
 import re
 from ftplib import FTP
+from xml.etree import ElementTree
 
 
 def getEventData(streamer, id):
@@ -22,7 +28,7 @@ def getEventData(streamer, id):
             "key": apiKey,
             "id": id,
             "part": "snippet,liveStreamingDetails",
-            "fields": "items(snippet(title,publishedAt),liveStreamingDetails(actualStartTime,actualEndTime,scheduledStartTime))",
+            "fields": "items(snippet(title,publishedAt),liveStreamingDetails(actualStartTime,actualEndTime,scheduledStartTime))",  # noqa
         },
     )
     videoData = videoResponse.json()
@@ -63,8 +69,7 @@ def getEventData(streamer, id):
                         "thumbnailUrl": "https://img.youtube.com/vi/{0}/maxresdefault.jpg".replace(
                             "{0}", id
                         ),
-                        "channelUrl": "https://www.youtube.com/channel/"
-                        + streamer["id"],
+                        "channelUrl": "https://www.youtube.com/channel/" + streamer["id"],
                     }
                 # 配信時間が1時間以内の場合
                 else:
@@ -85,8 +90,7 @@ def getEventData(streamer, id):
                         "thumbnailUrl": "https://img.youtube.com/vi/{0}/maxresdefault.jpg".replace(
                             "{0}", id
                         ),
-                        "channelUrl": "https://www.youtube.com/channel/"
-                        + streamer["id"],
+                        "channelUrl": "https://www.youtube.com/channel/" + streamer["id"],
                     }
             # 配信中の場合
             else:
@@ -100,9 +104,7 @@ def getEventData(streamer, id):
                         "textColor": streamer["textColor"],
                         "borderColor": streamer["borderColor"],
                         "start": start.astimezone(JST).isoformat(),
-                        "end": (now + datetime.timedelta(hours=1))
-                        .astimezone(JST)
-                        .isoformat(),
+                        "end": (now + datetime.timedelta(hours=1)).astimezone(JST).isoformat(),
                         "imageurl": streamer["imageurl"],
                         "liveBroadcastContent": "live",
                         "channelName": streamer["channelName"],
@@ -111,8 +113,7 @@ def getEventData(streamer, id):
                         "thumbnailUrl": "https://img.youtube.com/vi/{0}/maxresdefault.jpg".replace(
                             "{0}", id
                         ),
-                        "channelUrl": "https://www.youtube.com/channel/"
-                        + streamer["id"],
+                        "channelUrl": "https://www.youtube.com/channel/" + streamer["id"],
                     }
                 # 配信時間が30分以内の場合
                 else:
@@ -133,8 +134,7 @@ def getEventData(streamer, id):
                         "thumbnailUrl": "https://img.youtube.com/vi/{0}/maxresdefault.jpg".replace(
                             "{0}", id
                         ),
-                        "channelUrl": "https://www.youtube.com/channel/"
-                        + streamer["id"],
+                        "channelUrl": "https://www.youtube.com/channel/" + streamer["id"],
                     }
         # 配信開始前の場合
         else:
@@ -181,9 +181,7 @@ def getEventData(streamer, id):
             "channelName": streamer["channelName"],
             "mode": "auto",
             "platform": "youtube",
-            "thumbnailUrl": "https://img.youtube.com/vi/{0}/maxresdefault.jpg".replace(
-                "{0}", id
-            ),
+            "thumbnailUrl": "https://img.youtube.com/vi/{0}/maxresdefault.jpg".replace("{0}", id),
             "channelUrl": "https://www.youtube.com/channel/" + streamer["id"],
         }
 
@@ -333,7 +331,7 @@ def lambda_handler(lambdaEvent, context):
     yesterday = (now - datetime.timedelta(days=2)).replace(hour=12, minute=0)
     sevenDaysAgo = (now - datetime.timedelta(days=7)).replace(hour=0, minute=0)
     dayAfterTomorrow = (now + datetime.timedelta(days=2)).replace(hour=0, minute=0)
-    twoHoursAgo = now - datetime.timedelta(hours=2)
+    # twoHoursAgo = now - datetime.timedelta(hours=2)
     global apiKey
     apiKey = os.environ["apiKey"]
     events = []
@@ -342,44 +340,26 @@ def lambda_handler(lambdaEvent, context):
     idList = []
     knownIdList = []
     # リソースデータとイベントデータを取得
-    resources = requests.get(
-        "https://774today.ytclipplay.website/resources.json"
-    ).json()
+    resources = requests.get("https://774today.ytclipplay.website/resources.json").json()
     knownEvents = requests.get("https://774today.ytclipplay.website/events.json").json()
     # 既存イベントの整理(youtubeのみ)
     for knownEvent in filter(lambda x: x["platform"] == "youtube", knownEvents):
-        start = dateutil.parser.parse(knownEvent["start"])
-        # 配信開始が昨日から2時間前までの場合
-        if yesterday < start < twoHoursAgo:
-            # 配信中または配信前の場合は更新
-            if (
-                knownEvent["liveBroadcastContent"] == "live"
-                or knownEvent["liveBroadcastContent"] == "upcoming"
-            ):
-                for group in resources:
-                    for streamer in group["children"]:
-                        if knownEvent["resourceId"] == streamer["id"]:
-                            eventData = getEventData(streamer, knownEvent["id"])
-                            if eventData != None:
-                                events.append(eventData)
-                                knownIdList.append(eventData["id"])
-            # それ以外は既存データを維持
-            else:
-                events.append(knownEvent)
-                knownIdList.append(knownEvent["id"])
+        knownIdList.append(knownEvent["id"])
+        # 配信中または配信前の場合はラベルを維持して更新
+        if (
+            knownEvent["liveBroadcastContent"] == "live"
+            or knownEvent["liveBroadcastContent"] == "upcoming"
+        ):
+            for group in resources:
+                for streamer in group["children"]:
+                    if knownEvent["resourceId"] == streamer["id"]:
+                        eventData = getEventData(streamer, knownEvent["id"])
+                        if eventData is not None:
+                            eventData["mode"] = knownEvent["mode"]
+                            events.append(eventData)
+        # それ以外は既存データを維持
         else:
-            # 配信開始が2時間前以降の場合
-            if twoHoursAgo < start:
-                # 手動追加イベントの場合は手動追加ラベルを維持して更新
-                if knownEvent["mode"] == "manual":
-                    for group in resources:
-                        for streamer in group["children"]:
-                            if knownEvent["resourceId"] == streamer["id"]:
-                                eventData = getEventData(streamer, knownEvent["id"])
-                                if eventData != None:
-                                    eventData["mode"] = "manual"
-                                    events.append(eventData)
-                                    knownIdList.append(eventData["id"])
+            events.append(knownEvent)
 
     # グループごとに繰り返し
     for group in resources:
@@ -412,9 +392,10 @@ def lambda_handler(lambdaEvent, context):
                     ]
                     # idごとに繰り返し
                     for id in idList:
+                        knownIdList.append(id)
                         # イベントデータを取得
                         eventData = getEventData(streamer, id)
-                        if eventData != None:
+                        if eventData is not None:
                             events.append(eventData)
                     # ページがまだあれば繰り返し
                     if pageNum < checkPageCount - 1 and "nextPageToken" in channelData:
@@ -434,6 +415,21 @@ def lambda_handler(lambdaEvent, context):
                         )
                     else:
                         break
+                # RSSフィードから近日の配信予定を取得
+                streamerId = streamer["id"]
+                namespace = "{http://www.w3.org/2005/Atom}"
+                yt = "{http://www.youtube.com/xml/schemas/2015}"
+                rssPage = requests.get(
+                    f"https://www.youtube.com/feeds/videos.xml?channel_id={streamerId}"
+                ).text
+                root = ElementTree.fromstring(rssPage)
+                for item in root.findall(f"{namespace}entry/{yt}videoId"):
+                    videoId = item.text
+                    if videoId not in knownIdList:
+                        eventData = getEventData(streamer, videoId)
+                        if eventData is not None:
+                            eventData["mode"] = "rss"
+                            events.append(eventData)
             except:
                 failedResource.append(streamer["title"])
                 continue
@@ -453,19 +449,18 @@ def lambda_handler(lambdaEvent, context):
                     events.append(streamEvent)
                 videos = getTwitchArchive(headers, streamer)
                 for video in filter(
-                    lambda x: "id" not in streamEvent
-                    or x["stream_id"] != streamEvent["id"],
+                    lambda x: "id" not in streamEvent or x["stream_id"] != streamEvent["id"],
                     videos,
                 ):
                     eventData = parseTwitchEventData(streamer, video)
-                    if eventData != None:
+                    if eventData is not None:
                         events.append(eventData)
             except:
                 failedResource.append(streamer["title"] + "(Twitch)")
                 continue
 
     log = {
-        "datetime": now.astimezone(JST).isoformat(),
+        "datetime": datetime.datetime.now(JST).isoformat(),
         "totalEvents": str(len(events)),
         "failedResource": ",".join(failedResource),
     }
