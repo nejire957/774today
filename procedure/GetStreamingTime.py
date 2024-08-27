@@ -357,9 +357,14 @@ def lambda_handler(lambdaEvent, context):
                         if eventData is not None:
                             eventData["mode"] = knownEvent["mode"]
                             events.append(eventData)
-        # それ以外は既存データを維持
         else:
-            events.append(knownEvent)
+            start = dateutil.parser.parse(knownEvent["start"])
+            # 配信開始が昨日以降の場合は既存データを維持
+            if yesterday < start:
+                events.append(knownEvent)
+            # それ以外は維持しない（削除）
+            else:
+                pass
 
     # グループごとに繰り返し
     for group in resources:
