@@ -209,21 +209,9 @@
                 "englishTitle": "nemo_suzumi"
             },
             {
-                "id": "UCBxw5bdrbKO7E60E4s3KgQg",
-                "title": "橙里セイ",
-                "order": "18",
-                "color": "#FF4500",
-                "textColor": "#000000",
-                "borderColor": "#FF4500",
-                "imageurl": "https://774today.ytclipplay.website/sei.webp",
-                "channelName": "Sei Channel / 橙里セイ【ななしいんく】",
-                "twitchId": 1079433398,
-                "englishTitle": "sei_touri"
-            },
-            {
                 "id": "UC_hjHmi-ODGhHlSzD16p5Pw",
                 "title": "家入ポポ",
-                "order": "19",
+                "order": "18",
                 "color": "#FFDD61",
                 "textColor": "#000000",
                 "borderColor": "#FFDD61",
@@ -235,7 +223,7 @@
             {
                 "id": "UCGyywYAJd2O5Y7yUyr7qBRQ",
                 "title": "瑚白ユリ",
-                "order": "20",
+                "order": "19",
                 "color": "#F0F8FF",
                 "textColor": "#000000",
                 "borderColor": "#000000",
@@ -247,7 +235,7 @@
             {
                 "id": "UCRY0-zJ1pV4EiKUSLXCXTAg",
                 "title": "狼森メイ",
-                "order": "21",
+                "order": "20",
                 "color": "#FEEEED",
                 "textColor": "#000000",
                 "borderColor": "#FEEEED",
@@ -259,7 +247,7 @@
             {
                 "id": "UCrt4cTM_sWH0iySLMkwwYLQ",
                 "title": "蛇宵ティア",
-                "order": "22",
+                "order": "21",
                 "color": "#84A2D4",
                 "textColor": "#000000",
                 "borderColor": "#84A2D4",
@@ -271,7 +259,7 @@
             {
                 "id": "UCW98GVLrx8lG_ddOts3cl4g",
                 "title": "天羽衣",
-                "order": "23",
+                "order": "22",
                 "color": "#bbdcf4",
                 "textColor": "#000000",
                 "borderColor": "#bbdcf4",
@@ -283,7 +271,7 @@
             {
                 "id": "UCBhfuPYgo5ALbn6WmTXwHwg",
                 "title": "日向ましゅ",
-                "order": "24",
+                "order": "23",
                 "color": "#f3dd6d",
                 "textColor": "#000000",
                 "borderColor": "#f3dd6d",
