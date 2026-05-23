@@ -291,6 +291,66 @@
                 "channelName": "羽流鷲りりり.RIriri Cannel-ななしいんく",
                 "twitchId": 1299335227,
                 "englishTitle": "ririri_uruwashi"
+            },
+            {
+                "id": "UC4oIghT3W9Y99nyiNCTXwlg",
+                "title": "アズリ",
+                "order": "25",
+                "color": "#dcb067",
+                "textColor": "#ffffff",
+                "borderColor": "#dcb067",
+                "imageurl": "https://774today.ytclipplay.website/azri.webp",
+                "channelName": "アズリ / Azri",
+                "twitchId": -1,
+                "englishTitle": "Azri_0822"
+            },
+            {
+                "id": "UCiWkgRl4asSN5kRUSWgRLWQ",
+                "title": "緑青くれは",
+                "order": "26",
+                "color": "#ceebe0",
+                "textColor": "#000000",
+                "borderColor": "#ceebe0",
+                "imageurl": "https://774today.ytclipplay.website/kureha.webp",
+                "channelName": "緑青くれは / Kureha Channel【ななしいんく】",
+                "twitchId": -1,
+                "englishTitle": "Rokusho_Kureha"
+            },
+            {
+                "id": "UCuDfldiO-ujdFC-36eYMl2g",
+                "title": "ここ・じぇす汰",
+                "order": "27",
+                "color": "#ecbed5",
+                "textColor": "#000000",
+                "borderColor": "#ecbed5",
+                "imageurl": "https://774today.ytclipplay.website/coco.webp",
+                "channelName": "ここ・じぇす汰 / Coco･Jester",
+                "twitchId": -1,
+                "englishTitle": "Coco_Jester"
+            },
+            {
+                "id": "UCoXWDfyKkziR0C01Zp559-Q",
+                "title": "汐鳴みりね",
+                "order": "28",
+                "color": "#b6566a",
+                "textColor": "#ffffff",
+                "borderColor": "#b6566a",
+                "imageurl": "https://774today.ytclipplay.website/mirine.webp",
+                "channelName": "汐鳴みりね / Mirine Shionari",
+                "twitchId": -1,
+                "englishTitle": "Mirine_Shionari"
+            },
+            {
+                "id": "UCpFy8D37SUStmeWh38NuppA",
+                "title": "漆瀬レイ",
+                "order": "29",
+                "color": "#d6d3dd",
+                "textColor": "#000000",
+                "borderColor": "#d6d3dd",
+                "imageurl": "https://774today.ytclipplay.website/ray.webp",
+                "channelName": "漆瀬レイ / Ray Nanase",
+                "twitchId": -1,
+                "englishTitle": "Ray_Nanase"
             }
         ]
     },

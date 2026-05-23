@@ -272,7 +272,7 @@ def parseTwitchEventData(streamer, videoData):
     if start < yesterday:
         return None
     regex = re.compile(r"((?P<hours>\d+?)h)?((?P<minutes>\d+?)m)?((?P<seconds>\d+?)s)?")
-    parts = regex.match(videoData["duration"]).groupdict()  # type:ignore
+    parts = regex.match(videoData["duration"]).groupdict()  # type: ignore
     time_params = {}
     for name, param in parts.items():
         if param:
@@ -424,9 +424,13 @@ def lambda_handler(lambdaEvent, context):
                 streamerId = streamer["id"]
                 namespace = "{http://www.w3.org/2005/Atom}"
                 yt = "{http://www.youtube.com/xml/schemas/2015}"
-                rssPage = requests.get(
+                response = requests.get(
                     f"https://www.youtube.com/feeds/videos.xml?channel_id={streamerId}"
-                ).text
+                )
+                if not response.ok:
+                    print("RSS feed is temporarily unavailable")
+                    continue
+                rssPage = response.text
                 root = ElementTree.fromstring(rssPage)
                 for item in root.findall(f"{namespace}entry/{yt}videoId"):
                     videoId = item.text
@@ -472,9 +476,9 @@ def lambda_handler(lambdaEvent, context):
 
     ftp = FTP("sv37.star.ne.jp", "ytclipplay.website", os.environ["serverPassword"])
     ftp.cwd("774today.ytclipplay.website")
-    f = io.BytesIO(json.dumps(events, indent=4).encode())
+    f = io.BytesIO(json.dumps(events, indent=4, ensure_ascii=False).encode())
     ftp.storlines("STOR events.json", f)
-    f = io.BytesIO(json.dumps(log, indent=4).encode())
+    f = io.BytesIO(json.dumps(log, indent=4, ensure_ascii=False).encode())
     ftp.storlines("STOR log.json", f)
     ftp.quit()
 
