@@ -197,21 +197,9 @@
                 "englishTitle": "canna_akane"
             },
             {
-                "id": "UCBJ6nejlzes6mm9UruaxQsA",
-                "title": "涼海ネモ",
-                "order": "17",
-                "color": "#000080",
-                "textColor": "#FFFFFF",
-                "borderColor": "#000080",
-                "imageurl": "https://774today.ytclipplay.website/nemo.webp",
-                "channelName": "Nemo Channel / 涼海ネモ【ななしいんく】",
-                "twitchId": -1,
-                "englishTitle": "nemo_suzumi"
-            },
-            {
                 "id": "UC_hjHmi-ODGhHlSzD16p5Pw",
                 "title": "家入ポポ",
-                "order": "18",
+                "order": "17",
                 "color": "#FFDD61",
                 "textColor": "#000000",
                 "borderColor": "#FFDD61",
@@ -223,7 +211,7 @@
             {
                 "id": "UCGyywYAJd2O5Y7yUyr7qBRQ",
                 "title": "瑚白ユリ",
-                "order": "19",
+                "order": "18",
                 "color": "#F0F8FF",
                 "textColor": "#000000",
                 "borderColor": "#000000",
@@ -235,7 +223,7 @@
             {
                 "id": "UCrt4cTM_sWH0iySLMkwwYLQ",
                 "title": "蛇宵ティア",
-                "order": "20",
+                "order": "19",
                 "color": "#84A2D4",
                 "textColor": "#000000",
                 "borderColor": "#84A2D4",
@@ -247,7 +235,7 @@
             {
                 "id": "UCW98GVLrx8lG_ddOts3cl4g",
                 "title": "天羽衣",
-                "order": "21",
+                "order": "20",
                 "color": "#bbdcf4",
                 "textColor": "#000000",
                 "borderColor": "#bbdcf4",
@@ -259,7 +247,7 @@
             {
                 "id": "UCBhfuPYgo5ALbn6WmTXwHwg",
                 "title": "日向ましゅ",
-                "order": "22",
+                "order": "21",
                 "color": "#f3dd6d",
                 "textColor": "#000000",
                 "borderColor": "#f3dd6d",
@@ -271,7 +259,7 @@
             {
                 "id": "UCuX1NOTF2wZVXo8WP1q7uLw",
                 "title": "天絆ささは",
-                "order": "23",
+                "order": "22",
                 "color": "#d9edbd",
                 "textColor": "#000000",
                 "borderColor": "#d9edbd",
@@ -283,7 +271,7 @@
             {
                 "id": "UCTbEua7o1f8I7EMBQlLjTpQ",
                 "title": "幽音しの",
-                "order": "24",
+                "order": "23",
                 "color": "#98d6f2",
                 "textColor": "#000000",
                 "borderColor": "#98d6f2",
@@ -295,7 +283,7 @@
             {
                 "id": "UCLK0cRXu3PY7cPbdWiVYemA",
                 "title": "羽流鷲りりり",
-                "order": "25",
+                "order": "24",
                 "color": "#996699",
                 "textColor": "#ffffff",
                 "borderColor": "#996699",

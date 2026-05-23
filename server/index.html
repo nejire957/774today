@@ -6,7 +6,7 @@
     You should have received a copy of the GNU General Public License along with Foobar. If not, see <https://www.gnu.org/licenses/>. 
 -->
 
-<!DOCTYPE html>
+<!doctype html>
 
 <head>
     <!-- Google Tag Manager -->
@@ -490,7 +490,7 @@
                             yesterdayMonth +
                             "月" +
                             yesterday.getDate() +
-                            "日 (昨日)"
+                            "日 (昨日)",
                     );
                     break;
                 case 1:
@@ -500,7 +500,7 @@
                             month +
                             "月" +
                             now.getDate() +
-                            "日 (今日)"
+                            "日 (今日)",
                     );
                     break;
                 case 2:
@@ -510,7 +510,7 @@
                             tomorrowMonth +
                             "月" +
                             tomorrow.getDate() +
-                            "日 (明日)"
+                            "日 (明日)",
                     );
                     break;
                 default:
@@ -538,7 +538,7 @@
                 for (var j = 0; j < resources[i].children.length; j++) {
                     if (
                         window.localStorage.getItem(
-                            resources[i].children[j].id
+                            resources[i].children[j].id,
                         ) == "false"
                     ) {
                         flag = false;
@@ -548,12 +548,12 @@
             if (flag) {
                 $("#filter-img").attr(
                     "src",
-                    "https://774today.ytclipplay.website/filter_white.png"
+                    "https://774today.ytclipplay.website/filter_white.png",
                 );
             } else {
                 $("#filter-img").attr(
                     "src",
-                    "https://774today.ytclipplay.website/filter_red.png"
+                    "https://774today.ytclipplay.website/filter_red.png",
                 );
             }
             calendarModel.refetchEvents();
@@ -589,7 +589,7 @@
                     month +
                     "月" +
                     now.getDate() +
-                    "日 (今日)"
+                    "日 (今日)",
             );
             var calendarView = document.getElementById("calendar");
             $.when(
@@ -605,7 +605,7 @@
                                 ) {
                                     window.localStorage.setItem(
                                         talent.id,
-                                        "true"
+                                        "true",
                                     );
                                 } else if (
                                     window.localStorage.getItem(talent.id) ==
@@ -614,13 +614,13 @@
                                     $("#" + talent.id).removeClass("checked");
                                     $("#filter-img").attr(
                                         "src",
-                                        "https://774today.ytclipplay.website/filter_red.png"
+                                        "https://774today.ytclipplay.website/filter_red.png",
                                     );
                                 }
                             });
                         });
-                    }
-                )
+                    },
+                ),
             ).done(
                 (calendarModel = new FullCalendar.Calendar(calendarView, {
                     //カレンダーを初期化する
@@ -657,7 +657,7 @@
                             var div = document.createElement("img");
                             div.setAttribute(
                                 "src",
-                                arg.event.extendedProps.imageurl
+                                arg.event.extendedProps.imageurl,
                             );
                             div.setAttribute("width", 50);
                             div.setAttribute("height", 50);
@@ -670,7 +670,7 @@
                             arg.el.firstChild.firstChild.firstChild.insertBefore(
                                 div,
                                 arg.el.firstChild.firstChild.firstChild
-                                    .firstChild
+                                    .firstChild,
                             );
                         }
                     },
@@ -692,7 +692,7 @@
                                 });
                             } else {
                                 $("#detail-title").text(
-                                    "(Twitch)\n" + info.event.title
+                                    "(Twitch)\n" + info.event.title,
                                 );
                                 if (
                                     info.event.extendedProps
@@ -721,7 +721,7 @@
                                 href: info.event.extendedProps.channelUrl,
                             });
                             $("#detail-name").text(
-                                info.event.extendedProps.channelName
+                                info.event.extendedProps.channelName,
                             );
                             $("#detail-banner").attr({
                                 src: info.event.extendedProps.imageurl,
@@ -734,7 +734,7 @@
                         contents.forEach((content) => {
                             if (
                                 window.localStorage.getItem(
-                                    content.resourceId
+                                    content.resourceId,
                                 ) == "true"
                             ) {
                                 events.push(content);
@@ -744,7 +744,7 @@
                     },
                     events: "https://774today.ytclipplay.website/events.json",
                     resources: resources,
-                }))
+                })),
             );
             calendarModel.render();
             $("body").show();
@@ -761,7 +761,7 @@
             req.open(
                 "GET",
                 "https://774today.ytclipplay.website/log.json",
-                false
+                false,
             );
             req.send(null);
             alarm();
@@ -1082,23 +1082,8 @@
             </div>
             <div
                 class="filter-channel checked"
-                id="UCBJ6nejlzes6mm9UruaxQsA"
-                index="16"
-                onclick="toggleFilter(event, this)"
-            >
-                <img
-                    class="filter-image"
-                    src="https://774today.ytclipplay.website/nemo.webp"
-                    width="80%"
-                    height="80%"
-                    loading="lazy"
-                />
-                涼海ネモ
-            </div>
-            <div
-                class="filter-channel checked"
                 id="UC_hjHmi-ODGhHlSzD16p5Pw"
-                index="19"
+                index="16"
                 onclick="toggleFilter(event, this)"
             >
                 <img
@@ -1113,7 +1098,7 @@
             <div
                 class="filter-channel checked"
                 id="UCGyywYAJd2O5Y7yUyr7qBRQ"
-                index="20"
+                index="17"
                 onclick="toggleFilter(event, this)"
             >
                 <img
@@ -1128,7 +1113,7 @@
             <div
                 class="filter-channel checked"
                 id="UCrt4cTM_sWH0iySLMkwwYLQ"
-                index="21"
+                index="18"
                 onclick="toggleFilter(event, this)"
             >
                 <img
@@ -1143,7 +1128,7 @@
             <div
                 class="filter-channel checked"
                 id="UCW98GVLrx8lG_ddOts3cl4g"
-                index="22"
+                index="19"
                 onclick="toggleFilter(event, this)"
             >
                 <img
@@ -1158,7 +1143,7 @@
             <div
                 class="filter-channel checked"
                 id="UCBhfuPYgo5ALbn6WmTXwHwg"
-                index="23"
+                index="20"
                 onclick="toggleFilter(event, this)"
             >
                 <img
@@ -1173,7 +1158,7 @@
             <div
                 class="filter-channel checked"
                 id="UCuX1NOTF2wZVXo8WP1q7uLw"
-                index="24"
+                index="21"
                 onclick="toggleFilter(event, this)"
             >
                 <img
@@ -1188,7 +1173,7 @@
             <div
                 class="filter-channel checked"
                 id="UCTbEua7o1f8I7EMBQlLjTpQ"
-                index="25"
+                index="22"
                 onclick="toggleFilter(event, this)"
             >
                 <img
@@ -1203,7 +1188,7 @@
             <div
                 class="filter-channel checked"
                 id="UCLK0cRXu3PY7cPbdWiVYemA"
-                index="26"
+                index="23"
                 onclick="toggleFilter(event, this)"
             >
                 <img
