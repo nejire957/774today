@@ -1,0 +1,12 @@
+#####wpcomment_nojpdeny#####
+SetEnvIf Request_URI ".*" WpCommentDeny
+Options +FollowSymLinks
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^ytclipplay\.website
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://ytclipplay.website [R=301,L]
+RewriteCond %{HTTP_HOST} ^www\.ytclipplay\.website
+RewriteRule ^(.*)$ https://ytclipplay.website [R=301,L]
+RewriteCond %{HTTP_HOST} ^ytclipplay\.website
+RewriteRule ^(.*)index.html$ https://ytclipplay.website/$1 [R=301,L]
+#####end:wpcomment_nojpdeny#####

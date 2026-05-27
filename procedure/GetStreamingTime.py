@@ -420,28 +420,28 @@ def lambda_handler(lambdaEvent, context):
                         )
                     else:
                         break
-                # RSSフィードから近日の配信予定を取得
-                streamerId = streamer["id"]
-                namespace = "{http://www.w3.org/2005/Atom}"
-                yt = "{http://www.youtube.com/xml/schemas/2015}"
-                response = requests.get(
-                    f"https://www.youtube.com/feeds/videos.xml?channel_id={streamerId}"
-                )
-                if not response.ok:
-                    print("RSS feed is temporarily unavailable")
-                    continue
-                rssPage = response.text
-                root = ElementTree.fromstring(rssPage)
-                for item in root.findall(f"{namespace}entry/{yt}videoId"):
-                    videoId = item.text
-                    if videoId not in knownIdList:
-                        eventData = getEventData(streamer, videoId)
-                        if eventData is not None:
-                            eventData["mode"] = "rss"
-                            events.append(eventData)
             except:
                 failedResource.append(streamer["title"])
+            # RSSフィードから近日の配信予定を取得
+            streamerId = streamer["id"]
+            namespace = "{http://www.w3.org/2005/Atom}"
+            yt = "{http://www.youtube.com/xml/schemas/2015}"
+            response = requests.get(
+                f"https://www.youtube.com/feeds/videos.xml?channel_id={streamerId}"
+            )
+            if not response.ok:
+                print("RSS feed is temporarily unavailable")
                 continue
+            rssPage = response.text
+            root = ElementTree.fromstring(rssPage)
+            for item in root.findall(f"{namespace}entry/{yt}videoId"):
+                videoId = item.text
+                if videoId not in knownIdList:
+                    knownIdList.append(id)
+                    eventData = getEventData(streamer, videoId)
+                    if eventData is not None:
+                        eventData["mode"] = "rss"
+                        events.append(eventData)
 
     # Twitch配信データ更新
     clientId = os.environ["clientId"]
@@ -473,9 +473,10 @@ def lambda_handler(lambdaEvent, context):
         "totalEvents": str(len(events)),
         "failedResource": ",".join(failedResource),
     }
-
-    ftp = FTP("sv37.star.ne.jp", "ytclipplay.website", os.environ["serverPassword"])
-    ftp.cwd("774today.ytclipplay.website")
+    # print(",".join(failedResource))
+    # print(json.dumps(events, ensure_ascii=False))
+    ftp = FTP("ss179807.stars.ne.jp", os.environ["ftpUser"], os.environ["serverPassword"])
+    ftp.cwd("ytclipplay.website/public_html/774today.ytclipplay.website")
     f = io.BytesIO(json.dumps(events, indent=4, ensure_ascii=False).encode())
     ftp.storlines("STOR events.json", f)
     f = io.BytesIO(json.dumps(log, indent=4, ensure_ascii=False).encode())
