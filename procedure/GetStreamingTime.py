@@ -35,26 +35,23 @@ def getEventData(streamer, id):
     # 取得できないなら終了
     if "items" not in videoData or len(videoData["items"]) == 0:
         return None
+    videoDataItem = videoData["items"][0]
     # 生放送の場合
-    if "liveStreamingDetails" in videoData["items"][0]:
+    if "liveStreamingDetails" in videoDataItem:
         # 配信開始後の場合
-        if "actualStartTime" in videoData["items"][0]["liveStreamingDetails"]:
-            start = dateutil.parser.parse(
-                videoData["items"][0]["liveStreamingDetails"]["actualStartTime"]
-            )
+        if "actualStartTime" in videoDataItem["liveStreamingDetails"]:
+            start = dateutil.parser.parse(videoDataItem["liveStreamingDetails"]["actualStartTime"])
             # 配信開始時間が昨日より前なら終了
             if start < yesterday:
                 return None
             # 配信終了後の場合
-            if "actualEndTime" in videoData["items"][0]["liveStreamingDetails"]:
-                end = dateutil.parser.parse(
-                    videoData["items"][0]["liveStreamingDetails"]["actualEndTime"]
-                )
+            if "actualEndTime" in videoDataItem["liveStreamingDetails"]:
+                end = dateutil.parser.parse(videoDataItem["liveStreamingDetails"]["actualEndTime"])
                 # 配信時間が1時間以上の場合
                 if (end - start) > datetime.timedelta(minutes=55):
                     return {
                         "id": id,
-                        "title": videoData["items"][0]["snippet"]["title"],
+                        "title": videoDataItem["snippet"]["title"],
                         "resourceId": streamer["id"],
                         "color": streamer["color"],
                         "textColor": streamer["textColor"],
@@ -75,7 +72,7 @@ def getEventData(streamer, id):
                 else:
                     return {
                         "id": id,
-                        "title": videoData["items"][0]["snippet"]["title"],
+                        "title": videoDataItem["snippet"]["title"],
                         "resourceId": streamer["id"],
                         "color": streamer["color"],
                         "textColor": streamer["textColor"],
@@ -98,7 +95,7 @@ def getEventData(streamer, id):
                 if (now - start) > datetime.timedelta(minutes=25):
                     return {
                         "id": id,
-                        "title": videoData["items"][0]["snippet"]["title"],
+                        "title": videoDataItem["snippet"]["title"],
                         "resourceId": streamer["id"],
                         "color": streamer["color"],
                         "textColor": streamer["textColor"],
@@ -119,7 +116,7 @@ def getEventData(streamer, id):
                 else:
                     return {
                         "id": id,
-                        "title": videoData["items"][0]["snippet"]["title"],
+                        "title": videoDataItem["snippet"]["title"],
                         "resourceId": streamer["id"],
                         "color": streamer["color"],
                         "textColor": streamer["textColor"],
@@ -137,15 +134,14 @@ def getEventData(streamer, id):
                         "channelUrl": "https://www.youtube.com/channel/" + streamer["id"],
                     }
         # 配信開始前の場合
-        else:
-            start = dateutil.parser.parse(
-                videoData["items"][0]["liveStreamingDetails"]["scheduledStartTime"]
-            )
+        elif "scheduledStartTime" in videoDataItem["liveStreamingDetails"]:
+            scheduledStartTime = videoDataItem["liveStreamingDetails"]["scheduledStartTime"]
+            start = dateutil.parser.parse(scheduledStartTime)
             if start < yesterday:
                 return None
             return {
                 "id": id,
-                "title": videoData["items"][0]["snippet"]["title"],
+                "title": videoDataItem["snippet"]["title"],
                 "resourceId": streamer["id"],
                 "color": streamer["color"],
                 "textColor": streamer["textColor"],
@@ -162,14 +158,17 @@ def getEventData(streamer, id):
                 ),
                 "channelUrl": "https://www.youtube.com/channel/" + streamer["id"],
             }
+        # たまにliveStreamingDetailsが空のイレギュラーデータである場合がある
+        else:
+            return None
     # 動画の場合
     else:
-        start = dateutil.parser.parse(videoData["items"][0]["snippet"]["publishedAt"])
+        start = dateutil.parser.parse(videoDataItem["snippet"]["publishedAt"])
         if start < yesterday:
             return None
         return {
             "id": id,
-            "title": videoData["items"][0]["snippet"]["title"],
+            "title": videoDataItem["snippet"]["title"],
             "resourceId": streamer["id"],
             "color": streamer["color"],
             "textColor": streamer["textColor"],
