@@ -351,6 +351,18 @@
                 "channelName": "漆瀬レイ / Ray Nanase",
                 "twitchId": -1,
                 "englishTitle": "Ray_Nanase"
+            },
+            {
+                "id": "UCnuAMfQpNCNT6ZHAL60kHwA",
+                "title": "ぴかまる NS-PT01",
+                "order": "30",
+                "color": "#333231",
+                "textColor": "#ffffff",
+                "borderColor": "#333231",
+                "imageurl": "https://774today.ytclipplay.website/pikamaru.webp",
+                "channelName": "ぴかまる NS-PT01",
+                "twitchId": -1,
+                "englishTitle": "Pikamaru_NS-PT01"
             }
         ]
     },

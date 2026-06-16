@@ -270,6 +270,10 @@
             font-size: calc(6px + 0.6vw);
         }
 
+        #UCnuAMfQpNCNT6ZHAL60kHwA > p {
+            font-size: calc(6px + 0.5vw);
+        }
+
         .filter-page {
             overflow-x: hidden;
             overflow-y: scroll;
@@ -600,7 +604,7 @@
             var calendarView = document.getElementById("calendar");
             $.when(
                 $.getJSON(
-                    "https://774today.ytclipplay.website/resources.json",
+                    `https://774today.ytclipplay.website/resources.json?v=${$.now()}`,
                     (data) => {
                         resources = data;
                         resources.forEach((group, index) => {
@@ -766,7 +770,7 @@
             };
             req.open(
                 "GET",
-                "https://774today.ytclipplay.website/log.json",
+                `https://774today.ytclipplay.website/log.json?v=${$.now()}`,
                 false,
             );
             req.send(null);
@@ -1280,6 +1284,21 @@
                     loading="lazy"
                 />
                 <p>漆瀬レイ</p>
+            </div>
+            <div
+                class="filter-channel checked"
+                id="UCnuAMfQpNCNT6ZHAL60kHwA"
+                index="29"
+                onclick="toggleFilter(event, this)"
+            >
+                <img
+                    class="filter-image"
+                    src="https://774today.ytclipplay.website/pikamaru.webp"
+                    width="80%"
+                    height="80%"
+                    loading="lazy"
+                />
+                <p>ぴかまる NS-PT01</p>
             </div>
         </fieldset>
         <fieldset index="1">
